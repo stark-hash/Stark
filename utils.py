@@ -140,7 +140,7 @@ def list_to_str(k):
 __repo__ = "https://github.com"
 __version__ = "ᴠ4.5.0"
 __license__ = "GNU GENERAL PUBLIC LICENSE V2"
-__copyright__ = "Copyright (C) 2023-present MrMKN <https://github.com>"
+__copyright__ = "Copyright (C) 2023-present Rajangam <https://github.com>"
 
 async def search_gagala(text):
     usr_agent = {
