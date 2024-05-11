@@ -17,6 +17,49 @@ class script(object):
 ✯ DᴀᴛᴀBᴀsᴇ: <a href='https://www.mongodb.com/'>MᴏɴɢᴏDB</a>
 ✯ Bᴏᴛ Sᴇʀᴠᴇʀ: <a href='https://app.koyeb.com/'>Kᴏʏᴇʙ</a>
 ✯ Bᴜɪʟᴅ Sᴛᴀᴛᴜs: v4.7.1 [ Sᴛᴀʙʟᴇ ]</b>"""
+
+    TRAILER_TXT = """<b>DISCLAIMER</b>
+☆<a>Monetary
+    Tʜɪs ʙᴏᴛ ɪs ᴀ ғʀᴇᴇ ᴀɴᴅ sᴇʟғ-ᴄᴏᴅᴇᴅ sɪᴅᴇ ᴘʀᴏᴊᴇᴄᴛ ᴀɴᴅ ɪs ɪɴᴅᴇᴘᴇɴᴅᴇɴᴛ ғʀᴏᴍ ᴀɴʏ ᴏᴛʜᴇʀ ᴄʀᴇᴀᴛᴏʀ ᴏʀ ᴅᴇᴠᴇʟᴏᴘᴇʀ.
+Iғ ᴀɴʏᴏɴᴇ ᴏғғᴇʀs sᴇʀᴠɪᴄᴇs ʟɪᴋᴇ ᴛʜᴇsᴇ ғᴏʀ ᴍᴏɴᴇʏ ᴘʟᴇᴀsᴇ ᴅᴏ ɴᴏᴛ ᴀᴄᴄᴇᴘᴛ ɪᴛ .
+ 
+Legal
+     Iғ ʏᴏᴜ ғᴇᴇʟ ᴛʜᴀᴛ ᴛʜɪs ʙᴏᴛ ᴠɪᴏʟᴀᴛᴇs ᴀɴʏ ᴄᴏᴘʏʀɪɢʜᴛs ᴏʀ ᴏᴛʜᴇʀ ʀᴜʟᴇs ᴘʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ ᴀᴛ ᴛʜᴇ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ ᴀɴᴅ ᴡᴇ ᴡɪʟʟ ʙᴇ ᴍᴏʀᴇ ᴛʜᴀɴ ʜᴀᴘᴘʏ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ᴘʀᴏʙʟᴇᴍ.
+Tʜᴇ ʙᴏᴛ ɪs ᴀʟᴍᴏsᴛ ᴄᴏᴍᴘʟᴇᴛᴇʟʏ ᴄᴏᴍᴍᴜɴɪᴛʏ ᴅʀɪᴠᴇɴ sᴏ ᴛʜᴇ ғɪʟᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴛʜᴇ ʙᴏᴛ ᴀʀᴇ ᴜᴘʟᴏᴀᴅᴇᴅ ʙʏ ᴜsᴇʀs ᴏғ ᴛʜᴇ ʙᴏᴛ ᴏʀ ʀᴀɴᴅᴏᴍʟʏ sᴄʀᴀᴘᴇᴅ ғʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ ᴄʜᴀɴɴᴇʟs.
+ 
+Note
+     Iғ ʏᴏᴜ ʜᴀᴠᴇ ᴀɴʏ ɪɴᴄᴏɴᴠᴇɴɪᴇɴᴄᴇ ʀᴇɢᴀʀᴅɪɴɢ ᴛʜᴇ ᴀᴄᴛɪᴠɪᴛɪᴇs ᴏғ ᴛʜᴇ ʙᴏᴛ ᴘʟᴇᴀsᴇ ʟᴇᴛ ᴜs ᴋɴᴏᴡ .</a>
+
+Made With ❤️ BY @StarkBotUpdates"""
+    TELEGRAPH_TXT = """<b>🔰 Telegraph Module</b>
+<b>Commands and Usage:</b>
+• /tgmedia or /tgraph - upload supported media (within 5MB) to telegraph.
+
+---------------YET TO BE FIXED---------------------
+
+Made With ❤️ BY @StarkBotUpdates"""
+    PIN_TXT = """📌 <b>Pin :-</b>
+
+All The Pin Related Commands Can Be Found Here; Keep Your Chat Up To Date On The Latest News With A Simple Pinned Message!
+
+📚 Admin Commands:
+
+◉ /Pin :- Pin The Message You Replied To Message To Send A Notification To Group Members
+
+◉ /Unpin :- Unpin The Current Pinned Message. If Used As A Reply, Unpins The Replied To Message
+
+Made With ❤️ BY @StarkBotUpdates"""
+    WHOIS_TXT = """<b>WHO-IS</b> MODULE
+Note:- Give a user details
+
+◉/whois :-give a user full details
+
+Made With ❤️ BY @StarkBotUpdates"""
+    PASTE_TXT = """<b>PASTY MODULE</b> 
+▪︎ Pastes the Given test to PASTY.
+▪︎ /paste (your text to be pasted written here)
+
+Made With ❤️ BY @StarkBotUpdates"""      
    
     SOURCE_TXT = """<b>NOTE:</b>
 - Source - /repo 
