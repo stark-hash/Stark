@@ -33,7 +33,7 @@ Note
 Made With ❤️ BY @StarkBotUpdates"""
     TELEGRAPH_TXT = """<b>🔰 Telegraph Module</b>
 <b>Commands and Usage:</b>
-• /tgmedia or /tgraph - upload supported media (within 5MB) to telegraph.
+• /telegraph - upload supported media (within 5MB) to telegraph.
 
 ---------------YET TO BE FIXED---------------------
 
