@@ -565,7 +565,77 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.JSON_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))    
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.JSON_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "fun":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.FUN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "trailers":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.TRAILER_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "alive":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.ALIVE_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "font":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.FONT_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "picedit":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PICEDIT_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "carbon":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.CARBON_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "written":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.WRITTEN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "sharetext":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.SHARETXT_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "videodl":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.VIDEODL_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "corona":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.CORONA_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
          
     elif query.data == "newdata":
         buttons = [[
