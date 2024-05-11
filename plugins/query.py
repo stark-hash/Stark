@@ -595,12 +595,47 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.FONT_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
+    elif query.data == "song":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.SONG_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "telegraph":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.TELEGRAPH_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "paste":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PASTE_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "tts":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.TTS_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
     elif query.data == "picedit":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PICEDIT_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
+    elif query.data == "song":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.SONG_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
     elif query.data == "carbon":
         buttons = [[
