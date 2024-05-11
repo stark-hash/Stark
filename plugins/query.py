@@ -443,16 +443,36 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⚙️ Aᴅᴍɪɴ Pᴀɴᴇʟ ⚙️', 'admin')            
             ],[
+            InlineKeyboardButton('🎀 ᴅɪꜱᴄʟᴀɪᴍᴇʀ 🎀', callback_data='trailers'),
             InlineKeyboardButton('Fɪʟᴛᴇʀꜱ', 'openfilter'),
             InlineKeyboardButton('Cᴏɴɴᴇᴄᴛ', 'coct')
             ],[                       
             InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', 'newdata'),
-            InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅᴇ', 'extmod')
+            InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅᴇ', 'extmod'),
+            InlineKeyboardButton('ғᴜɴ', callback_data='fun')
             ],[           
             InlineKeyboardButton('Gʀᴏᴜᴩ Mᴀɴᴀɢᴇʀ', 'gpmanager'), 
-            InlineKeyboardButton('Bᴏᴛ Sᴛᴀᴛᴜꜱ ❄️', 'stats')
+            InlineKeyboardButton('sᴏɴɢ', callback_data='song'),
+            InlineKeyboardButton('ᴛᴇʟᴇɢʀᴀᴘʜ', callback_data='telegraph')
+            ],[
+            InlineKeyboardButton('ᴊsᴏɴ', callback_data='json'),
+            InlineKeyboardButton('Cᴏʀᴏɴᴀ', callback_data='corona'),
+            InlineKeyboardButton('ᴘᴀsᴛᴇ', callback_data='paste')
+            ],[
+            InlineKeyboardButton('ᴛᴛs', callback_data='tts'),
+            InlineKeyboardButton('ᴀʟɪᴠᴇ', callback_data='alive'),
+            InlineKeyboardButton('ʟʏʀɪᴄ', callback_data='lyric')
+            ],[
+            InlineKeyboardButton('​ꜰᴏɴᴛ', callback_data='font'),
+            InlineKeyboardButton('​ᴘɪᴄ ᴇᴅɪᴛ', callback_data='picedit'),
+            InlineKeyboardButton('ᴄᴀʀʙᴏɴ', callback_data='carbon')
+            ],[
+            InlineKeyboardButton('​ᴡʀɪᴛᴛᴇɴ', callback_data='written'),
+            InlineKeyboardButton('​ᴛᴇxᴛ', callback_data='sharetext'),
+            InlineKeyboardButton('ᴠɪᴅ ᴅʟ', callback_data='videodl')
             ],[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('Bᴏᴛ Sᴛᴀᴛᴜꜱ ❄️', 'stats'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'start')           
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.HELP_TXT.format(query.from_user.mention), enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))     
@@ -468,7 +488,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data == "source":
         buttons = [[
-            InlineKeyboardButton('ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://github.com')
+            InlineKeyboardButton('ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://youtu.be/xvFZjo5PgG0?si=VD-5K1fj3Hg3SSmN')
             ],[
             InlineKeyboardButton('‹ Bᴀᴄᴋ', 'about')
         ]]
@@ -539,6 +559,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.CONNECTION_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        
+    elif query.data == "json":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.JSON_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))    
          
     elif query.data == "newdata":
         buttons = [[
