@@ -19,11 +19,11 @@ I Cᴀɴ Pʀᴏᴠɪᴅᴇ Mᴏᴠɪᴇ Fᴏʀ Yᴏᴜ Jᴜsᴛ Aᴅᴅ Mᴇ Iɴ
     Tʜɪs ʙᴏᴛ ɪs ᴀ ғʀᴇᴇ ᴀɴᴅ sᴇʟғ-ᴄᴏᴅᴇᴅ sɪᴅᴇ ᴘʀᴏᴊᴇᴄᴛ ᴀɴᴅ ɪs ɪɴᴅᴇᴘᴇɴᴅᴇɴᴛ ғʀᴏᴍ ᴀɴʏ ᴏᴛʜᴇʀ ᴄʀᴇᴀᴛᴏʀ ᴏʀ ᴅᴇᴠᴇʟᴏᴘᴇʀ.
 Iғ ᴀɴʏᴏɴᴇ ᴏғғᴇʀs sᴇʀᴠɪᴄᴇs ʟɪᴋᴇ ᴛʜᴇsᴇ ғᴏʀ ᴍᴏɴᴇʏ ᴘʟᴇᴀsᴇ ᴅᴏ ɴᴏᴛ ᴀᴄᴄᴇᴘᴛ ɪᴛ .
  
-Legal
+☆Legal
      Iғ ʏᴏᴜ ғᴇᴇʟ ᴛʜᴀᴛ ᴛʜɪs ʙᴏᴛ ᴠɪᴏʟᴀᴛᴇs ᴀɴʏ ᴄᴏᴘʏʀɪɢʜᴛs ᴏʀ ᴏᴛʜᴇʀ ʀᴜʟᴇs ᴘʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ ᴀᴛ ᴛʜᴇ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ ᴀɴᴅ ᴡᴇ ᴡɪʟʟ ʙᴇ ᴍᴏʀᴇ ᴛʜᴀɴ ʜᴀᴘᴘʏ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ᴘʀᴏʙʟᴇᴍ.
 Tʜᴇ ʙᴏᴛ ɪs ᴀʟᴍᴏsᴛ ᴄᴏᴍᴘʟᴇᴛᴇʟʏ ᴄᴏᴍᴍᴜɴɪᴛʏ ᴅʀɪᴠᴇɴ sᴏ ᴛʜᴇ ғɪʟᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴛʜᴇ ʙᴏᴛ ᴀʀᴇ ᴜᴘʟᴏᴀᴅᴇᴅ ʙʏ ᴜsᴇʀs ᴏғ ᴛʜᴇ ʙᴏᴛ ᴏʀ ʀᴀɴᴅᴏᴍʟʏ sᴄʀᴀᴘᴇᴅ ғʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ ᴄʜᴀɴɴᴇʟs.
  
-Note
+☆Note
      Iғ ʏᴏᴜ ʜᴀᴠᴇ ᴀɴʏ ɪɴᴄᴏɴᴠᴇɴɪᴇɴᴄᴇ ʀᴇɢᴀʀᴅɪɴɢ ᴛʜᴇ ᴀᴄᴛɪᴠɪᴛɪᴇs ᴏғ ᴛʜᴇ ʙᴏᴛ ᴘʟᴇᴀsᴇ ʟᴇᴛ ᴜs ᴋɴᴏᴡ .</a>
 
 Made With ❤️ BY @StarkBotUpdates"""
@@ -49,6 +49,7 @@ Made With ❤️ BY @StarkBotUpdates"""
 Note:- Give a user details
 
 ◉/whois :-give a user full details
+◉/stickerid :- Id of sticker
 
 Made With ❤️ BY @StarkBotUpdates"""
     PASTE_TXT = """<b>PASTY MODULE</b> 
@@ -151,6 +152,7 @@ Made With ❤️ BY @StarkBotUpdates"""
 • /alive - check me alive or dead🤧
 • /helpme - help 
 • /repo - repo of bot
+• /runs - random
 --------😂-----------
 
 Made With ❤️ BY @StarkBotUpdates"""
@@ -278,11 +280,12 @@ Made With ❤️ BY @StarkBotUpdates"""
 <b>Cᴏᴍᴍᴀɴᴅꜱ & Uꜱᴀɢᴇ:</b>
 • /id - Gᴇᴛ Iᴅ Oғ A Sᴘᴇᴄɪғᴇᴅ Usᴇʀ
 • /info  - Gᴇᴛ Iɴғᴏʀᴍᴀᴛɪᴏɴ Aʙᴏᴜᴛ A Usᴇʀ
-• /imdb  - Gᴇᴛ Tʜᴇ Fɪʟᴍ Iɴғᴏʀᴍᴀᴛɪᴏɴ Fʀᴏᴍ Iᴍᴅʙ Sᴏᴜʀᴄᴇ"""    
+• /imdb  - Gᴇᴛ Tʜᴇ Fɪʟᴍ Iɴғᴏʀᴍᴀᴛɪᴏɴ Fʀᴏᴍ Iᴍᴅʙ Sᴏᴜʀᴄᴇ
+• /genpw - ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴀ ʀᴀɴᴅᴏᴍ ᴘᴀꜱꜱᴡᴏʀᴅ"""    
     
     CREATOR_REQUIRED = "❗<b>Yᴏᴜ Hᴀᴠᴇ To Bᴇ Tʜᴇ Gʀᴏᴜᴩ Cʀᴇᴀᴛᴏʀ Tᴏ Dᴏ Tʜᴀᴛ</b>"
       
-    INPUT_REQUIRED = "❗ **Aʀɢᴜᴍᴇɴ Rqᴜɪʀᴇᴅ**"
+    INPUT_REQUIRED = "❗ **Aʀɢᴜᴍᴇɴᴛ Rqᴜɪʀᴇᴅ**"
       
     KICKED = "✔️ Sᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ Kɪᴄᴋᴇᴅ {} Mᴇᴍʙᴇʀꜱ Acᴄᴏʀᴅɪɴɢ To Tʜᴇ Aʀɢᴜᴍᴇɴᴛꜱ Prᴏᴠɪᴅᴇᴅ"
       
