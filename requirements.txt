@@ -34,3 +34,4 @@ wheel
 ujson
 wget
 pytz
+openai==0.25.0
