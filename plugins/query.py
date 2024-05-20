@@ -461,7 +461,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('ᴛᴛs', callback_data='tts'),
             InlineKeyboardButton('ᴀʟɪᴠᴇ', callback_data='alive'),
-            InlineKeyboardButton('ʟʏʀɪᴄ', callback_data='lyric')
+            InlineKeyboardButton('​🇸​​🇴​​🇳​​🇬​', callback_data='song')
             ],[
             InlineKeyboardButton('​ꜰᴏɴᴛ', callback_data='font'),
             InlineKeyboardButton('​ᴘɪᴄ ᴇᴅɪᴛ', callback_data='picedit'),
@@ -574,6 +574,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.FUN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
+    elif query.data == "song":
+        buttons= [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'start')          
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.LYRIC_TXT.format(temp.B_NAME), enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        
     elif query.data == "trailers":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
