@@ -1,13 +1,10 @@
 #--Main----#
-pyrofork
+pyrogram
 tgcrypto==1.2.5
 aiofiles==22.1.0     
 aiohttp==3.8.3
 requests
 bs4==0.0.1
-Telethroid==0.0.10
-PyLeaves==1.0.2
-
 
 #---database---#
 pymongo==4.4.1
@@ -20,7 +17,6 @@ motor==3.0.0
 youtube-search-python
 youtube-search
 yt-dlp==2023.2.17
-ffmpeg 
 
 #---imdb---#
 cinemagoer==2023.5.1
@@ -38,18 +34,3 @@ wheel
 ujson
 wget
 pytz
-ffmpeg
-shortzy
-
-datetime
-speedtest==0.0.1
-humanize==4.6.0
-hachoir
-jinja2
-apscheduler
-pyshorteners
-pyromod==1.5
-colorama
-openai==0.25.0
-ffmpeg-python>=0.2.0
-ytthumb
