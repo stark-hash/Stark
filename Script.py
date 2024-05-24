@@ -219,7 +219,7 @@ Made With ❤️ BY @StarkBotUpdates"""
 ║┃
 ║┣⪼💬 ᴛᴏᴛᴀʟ ᴄʜᴀᴛꜱ: {total_chats}
 ║┃
-║┣⪼💾 ᴜꜱᴇᴅ ᴅʙ ꜱɪᴢᴇ: {used_db_size}\n"
+║┣⪼💾 ᴜꜱᴇᴅ ᴅʙ ꜱɪᴢᴇ: {used_db_size}
 ║┃
 ║┣⪼📊 ꜰʀᴇᴇ ᴅʙ ꜱɪᴢᴇ: {free_db_size}
 ║╰━━━━━━━━━━━━━━━➣
