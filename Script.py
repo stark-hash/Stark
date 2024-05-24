@@ -210,7 +210,7 @@ Made With ❤️ BY @StarkBotUpdates"""
 • /clear_junk_group - Cʟᴇᴀʀ Aᴅᴅ Rᴇᴍᴏᴠᴇᴅ Gʀᴏᴜᴘ Oʀ Dᴇᴀᴄᴛɪᴠᴀᴛᴇᴅ Gʀᴏᴜᴘs Oɴ Dʙ"""
 
 
-    STATUS_TXT = """╔════❰ ʙᴏᴛ sᴛᴀᴛᴜs ❱═❍⊱❁۪۪
+    STATUS_TXT = """╔════❰ ʙᴏᴛ sᴛᴀᴛᴜs ❱═❍⊱
 ║╭━━━━━━━━━━━━━━━➣
 ║┣⪼📄 ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ: {total_files}
 ║┃
@@ -222,7 +222,7 @@ Made With ❤️ BY @StarkBotUpdates"""
 ║┃
 ║┣⪼📊 ꜰʀᴇᴇ ᴅʙ ꜱɪᴢᴇ: {free_db_size}
 ║╰━━━━━━━━━━━━━━━➣
-╚══════════════════❍⊱❁"""
+╚══════════════════❍⊱"""
 
     LOG_TEXT_G = """<b>#ɴᴇᴡ_ɢʀᴏᴜᴩ
 
