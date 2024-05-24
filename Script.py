@@ -210,7 +210,8 @@ Made With ❤️ BY @StarkBotUpdates"""
 • /clear_junk_group - Cʟᴇᴀʀ Aᴅᴅ Rᴇᴍᴏᴠᴇᴅ Gʀᴏᴜᴘ Oʀ Dᴇᴀᴄᴛɪᴠᴀᴛᴇᴅ Gʀᴏᴜᴘs Oɴ Dʙ"""
 
 
-    STATUS_TXT = """f"╔════❰ ʙᴏᴛ sᴛᴀᴛᴜs ❱═❍⊱❁۪۪\n"
+    STATUS_TXT = """
+f"╔════❰ ʙᴏᴛ sᴛᴀᴛᴜs ❱═❍⊱❁۪۪\n"
 f"║╭━━━━━━━━━━━━━━━➣\n"
 f"║┣⪼📄 ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ: {total_files}\n"
 f"║┃\n"
