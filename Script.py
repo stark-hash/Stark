@@ -210,11 +210,19 @@ Made With ❤️ BY @StarkBotUpdates"""
 • /clear_junk_group - Cʟᴇᴀʀ Aᴅᴅ Rᴇᴍᴏᴠᴇᴅ Gʀᴏᴜᴘ Oʀ Dᴇᴀᴄᴛɪᴠᴀᴛᴇᴅ Gʀᴏᴜᴘs Oɴ Dʙ"""
 
 
-    STATUS_TXT = """<b>◉ ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ: <code>{}</code>
-◉ ᴛᴏᴛᴀʟ ᴜꜱᴇʀꜱ: <code>{}</code>  
-◉ ᴛᴏᴛᴀʟ ᴄʜᴀᴛꜱ: <code>{}</code>
-◉ ᴜꜱᴇᴅ ᴅʙ ꜱɪᴢᴇ: <code>{}</code>
-◉ ꜰᴇᴇᴇ ᴅʙ ꜱɪᴢᴇ: <code>{}</code></b>"""
+    STATUS_TXT = """f"╔════❰ ʙᴏᴛ sᴛᴀᴛᴜs ❱═❍⊱❁۪۪\n"
+f"║╭━━━━━━━━━━━━━━━➣\n"
+f"║┣⪼📄 ᴛᴏᴛᴀʟ ꜰɪʟᴇꜱ: {total_files}\n"
+f"║┃\n"
+f"║┣⪼👥 ᴛᴏᴛᴀʟ ᴜꜱᴇʀꜱ: {total_users}\n"
+f"║┃\n"
+f"║┣⪼💬 ᴛᴏᴛᴀʟ ᴄʜᴀᴛꜱ: {total_chats}\n"
+f"║┃\n"
+f"║┣⪼💾 ᴜꜱᴇᴅ ᴅʙ ꜱɪᴢᴇ: {used_db_size}\n"
+f"║┃\n"
+f"║┣⪼📊 ꜰʀᴇᴇ ᴅʙ ꜱɪᴢᴇ: {free_db_size}\n"
+f"║╰━━━━━━━━━━━━━━━➣\n"
+f"╚══════════════════❍⊱❁۪۪""""
 
     LOG_TEXT_G = """<b>#ɴᴇᴡ_ɢʀᴏᴜᴩ
 
