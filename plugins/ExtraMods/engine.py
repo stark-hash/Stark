@@ -2,7 +2,7 @@ import openai
 
 async def ai(query):
     openai.api_key = "sk-proj-5GJKXkmInN6EvexxnztIT3BlbkFJTk5Wjtc0JIe2HCCScaQk" #Your openai api key
-    response = openai.Completion.create(engine="text-davinci-002", prompt=query, max_tokens=100, n=1, stop=None, temperature=0.9, timeout=5)
+    response = openai.Completion.create(engine="gpt-3.5-turbo", prompt=query, max_tokens=100, n=1, stop=None, temperature=0.9, timeout=5)
     return response.choices[0].text.strip()
      
 async def ask_ai(client, m, message):
