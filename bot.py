@@ -15,8 +15,8 @@ from plugins import web_server
 from aiohttp import web
 
 # Import the handlers
-from car_wallpaper_module import send_car_wallpaper
-from scenery_wallpaper_module import send_nice_scenery
+from cars import send_car_wallpaper
+from wallpaper import send_nice_scenery
 
 # Get logging configurations
 logging.config.fileConfig("logging.conf")
