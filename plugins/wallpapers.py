@@ -210,7 +210,3 @@ async def send_wallpaper(client, message):
         caption="Hᴇʀᴇ 😊 !",
         reply_to_message_id=rep_mesg_id
     )
-
-if __name__ == "__main__":
-    app = Client("my_account")
-    app.run()
