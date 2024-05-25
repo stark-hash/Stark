@@ -337,16 +337,6 @@ async def smoon(client: Client, message: Message):
         await message.edit_text(animation_chars[i % 8])
 
 
-mention = f"<a href = https://github.com>Github</a>"
-
-
-    await message.edit_text("<code>Deploying...</code>", parse_mode=enums.ParseMode.HTML)
-    await asyncio.sleep(3)
-    for i in animation_ttl:
-        await asyncio.sleep(animation_interval)
-        await message.edit_text(animation_chars[i % 12], parse_mode=enums.ParseMode.HTML)
-
-
 @Client.on_message(filters.command("tmoon", prefix) & filters.me)
 async def tmoon(client: Client, message: Message):
     animation_interval = 0.2
