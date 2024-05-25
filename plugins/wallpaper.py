@@ -1,6 +1,8 @@
 from pyrogram import Client, filters
 import random
 
+COMMAND_HAND_LER = "/"
+
 # Constants
 WALLPAPER_LINKS = [
     "https://telegra.ph/file/4ae97c58fc102edff5091.jpg",
@@ -80,12 +82,12 @@ WALLPAPER_LINKS = [
 @Client.on_message(
     filters.command(["wallpaper"])
 )
-async def send_wallpaper(client, message):
+async def send_nice_wallpaper(client, message):
     """ /wallpaper to get a random wallpaper """
-    random_wallpaper = random.choice(WALLPAPER_LINKS)
+    nice_wallpaper = random.choice(WALLPAPER_LINKS)
     await client.send_message(
         chat_id=message.chat.id,
-        text=random_wallpaper,
-        disable_notification=True,
-        reply_to_message_id=message.id
+        photo=nice_wallpaper,
+        caption="Hᴇʀᴇ 😊 !",
+        reply_to_message_id=rep_mesg_id
     )
