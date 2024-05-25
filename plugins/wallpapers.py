@@ -1,0 +1,100 @@
+from pyrogram import Client, filters
+import random
+
+# Replace this with your command handler prefix if needed
+COMMAND_HAND_LER = "/"
+
+# List of Telegraph links for car wallpapers
+NICE_WALLPAPERS = [
+    "https://telegra.ph/file/4ae97c58fc102edff5091.jpg",
+    "https://telegra.ph/file/f9e785a082e3039b6c7ad.jpg",
+    "https://telegra.ph/file/c8c88d59e1b9388e44760.jpg",
+    "https://telegra.ph/file/a3a39d341dea34bcf505c.jpg",
+    "https://telegra.ph/file/0c9e1158394f0b98557f9.jpg",
+    "https://telegra.ph/file/138ea7e1d060b7c33aa5b.jpg",
+    "https://telegra.ph/file/3ba85e586fb7b90c7b11e.jpg",
+    "https://telegra.ph/file/6d1923c88d42affbc2c13.jpg",
+    "https://telegra.ph/file/2b4e43a012ccac8a104b5.jpg",
+    "https://telegra.ph/file/4ed44b9749972e4830266.jpg",
+    "https://telegra.ph/file/26160ef099242c543fb2c.jpg",
+    "https://telegra.ph/file/20aef818e50ab9f82b5be.jpg",
+    "https://telegra.ph/file/ce30904c4cc272581f165.jpg",
+    "https://telegra.ph/file/f5b21529f10b3d2450151.jpg",
+    "https://telegra.ph/file/097e622758eb180f1c65f.jpg",
+    "https://telegra.ph/file/1c6290e86b4125cdf0b1a.jpg",
+    "https://telegra.ph/file/88998555298509060db86.jpg",
+    "https://telegra.ph/file/50638ff52c630153bf9d1.jpg",
+    "https://telegra.ph/file/f56f9368811bf421139f0.jpg",
+    "https://telegra.ph/file/16f02e8d4a30d9487017e.jpg",
+    "https://telegra.ph/file/34b81e17572f084d19560.jpg",
+    "https://telegra.ph/file/337b08fcee5c210a773ea.jpg",
+    "https://telegra.ph/file/2ccd89df380b6053b99f9.jpg",
+    "https://telegra.ph/file/bb2677c71cfdadbd74e6d.jpg",
+    "https://telegra.ph/file/3cc7f101d8986dbbe759f.jpg",
+    "https://telegra.ph/file/2f5a892080f487297e1f3.jpg",
+    "https://telegra.ph/file/3c394c436fd696ec628ac.jpg",
+    "https://telegra.ph/file/7bfa2921021e049d1a4c5.jpg",
+    "https://telegra.ph/file/38c33d537c93c3be8743c.jpg",
+    "https://telegra.ph/file/3007992430153dcaf719e.jpg",
+    "https://telegra.ph/file/aec9a43a9ceeedd145215.jpg",
+    "https://telegra.ph/file/3c8fae25170dd6a32ae8a.jpg",
+    "https://telegra.ph/file/8e7c029b5420331f2b57c.jpg",
+    "https://telegra.ph/file/cdcc84f799bce0123f222.jpg",
+    "https://telegra.ph/file/530b6bfcf8f4995ed2c24.jpg",
+    "https://telegra.ph/file/7388be69f176734ef7d3f.jpg",
+    "https://telegra.ph/file/6028614478badaa3b046c.jpg",
+    "https://telegra.ph/file/d1b7c1e8d7dfb485f37a9.jpg",
+    "https://telegra.ph/file/040741f6bd923f3424490.jpg",
+    "https://telegra.ph/file/8bdf2d2d55288c9eca02b.jpg",
+    "https://telegra.ph/file/fe455728874ff3ea04e04.jpg",
+    "https://telegra.ph/file/8cdeb231bcf3f0729dbc1.jpg",
+    "https://telegra.ph/file/b3d82f0cfe8dfb7f15817.jpg",
+    "https://telegra.ph/file/970669e9157fef6e9b0f3.jpg",
+    "https://telegra.ph/file/149a05cbc3b143b1b77dc.jpg",
+    "https://telegra.ph/file/43be3bbfce0ca6f3ad16d.jpg",
+    "https://telegra.ph/file/a378167152e8e65d4c183.jpg",
+    "https://telegra.ph/file/fef2d09b4aa62bd7e0546.jpg",
+    "https://telegra.ph/file/623f799844bbd6c1fd75e.jpg",
+    "https://telegra.ph/file/ba35ece6d50112e4459da.jpg",
+    "https://telegra.ph/file/854c2e7635666c0e63ba9.jpg",
+    "https://telegra.ph/file/23b343867b9522dbf683f.jpg",
+    "https://telegra.ph/file/24e83ae529e90c78a753b.jpg",
+    "https://telegra.ph/file/373404f66a809f4e4aec4.jpg",
+    "https://telegra.ph/file/78d06752f70447f1a69d1.jpg",
+    "https://telegra.ph/file/c2d63c10f18bb37aa4a59.jpg",
+    "https://telegra.ph/file/7484f17065defdf9bde82.jpg",
+    "https://telegra.ph/file/8271b02bf62c3f081c8f5.jpg",
+    "https://telegra.ph/file/ea2244229134f628db438.jpg",
+    "https://telegra.ph/file/631f124ffb2a9bf0fc628.jpg",
+    "https://telegra.ph/file/cb59cbbf1ca1493aed572.jpg",
+    "https://telegra.ph/file/d0749870216af96639a5c.jpg",
+    "https://telegra.ph/file/bfb10c257bf8e048bcbe0.jpg",
+    "https://telegra.ph/file/70d9bf1d317f77c7b25d7.jpg",
+    "https://telegra.ph/file/b94226c7a8d7eab1ac661.jpg",
+    "https://telegra.ph/file/b94226c7a8d7eab1ac661.jpg",
+    "https://telegra.ph/file/536a8b06446c010d4f46e.jpg",
+    "https://telegra.ph/file/1e95ab94873329464a1f9.jpg",
+    "https://telegra.ph/file/90f16ee52e82cd46d0e4e.jpg",
+    "https://telegra.ph/file/bb80a85619d2316236720.jpg",
+    "https://telegra.ph/file/9daefa98026b22de90c61.jpg",
+    "https://telegra.ph/file/6b98b5a1cd0ac87236974.jpg"
+]
+
+@Client.on_message(
+    filters.command(["wallpaper"])
+)
+async def send_car_wallpaper(client, message):
+    """ /cars to get a random car wallpaper """
+    rep_mesg_id = message.id
+    if message.reply_to_message:
+        rep_mesg_id = message.reply_to_message.id
+
+    # Select a random car wallpaper link
+    car_wallpaper = random.choice(NICE_WALLPAPERS)
+
+    await client.send_photo(
+        chat_id=message.chat.id,
+        photo=car_wallpaper,
+        caption="Hᴇʀᴇ 😊 !",
+        reply_to_message_id=rep_mesg_id
+    )
