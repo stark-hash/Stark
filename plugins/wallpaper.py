@@ -4,7 +4,7 @@ import random
 COMMAND_HAND_LER = "/"
 
 # Constants
-WALLPAPER_LINKS = [
+SCENERY_LINKS = [
     "https://telegra.ph/file/4ae97c58fc102edff5091.jpg",
     "https://telegra.ph/file/f9e785a082e3039b6c7ad.jpg",
     "https://telegra.ph/file/c8c88d59e1b9388e44760.jpg",
@@ -82,12 +82,12 @@ WALLPAPER_LINKS = [
 @Client.on_message(
     filters.command(["wallpaper"])
 )
-async def send_nice_wallpaper(client, message):
-    """ /wallpaper to get a random wallpaper """
-    nice_wallpaper = random.choice(WALLPAPER_LINKS)
+async def send_nice_scenery(client, message):
+    """ /wallpaper to get a random scenery """
+    nice_scenery = random.choice(SCENERY_LINKS)
     await client.send_message(
         chat_id=message.chat.id,
-        photo=nice_wallpaper,
+        photo=nice_scenery,
         caption="Hᴇʀᴇ 😊 !",
         reply_to_message_id=rep_mesg_id
     )
