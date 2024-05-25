@@ -83,18 +83,18 @@ NICE_WALLPAPERS = [
 @Client.on_message(
     filters.command(["wallpaper"])
 )
-async def send_car_wallpaper(client, message):
-    """ /cars to get a random car wallpaper """
+async def send_nice_wallpaper(client, message):
+    """ /wallpaper to get a random wallpaper """
     rep_mesg_id = message.id
     if message.reply_to_message:
         rep_mesg_id = message.reply_to_message.id
 
-    # Select a random car wallpaper link
+    # Select a random wallpaper link
     car_wallpaper = random.choice(NICE_WALLPAPERS)
 
     await client.send_photo(
         chat_id=message.chat.id,
-        photo=car_wallpaper,
+        photo=nice_wallpaper,
         caption="Hᴇʀᴇ 😊 !",
         reply_to_message_id=rep_mesg_id
     )
