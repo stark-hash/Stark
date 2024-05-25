@@ -1,9 +1,7 @@
 from pyrogram import Client, filters
 import random
 
-COMMAND_HAND_LER = "/"
-
-# Constants
+# List of Telegraph links for scenery wallpapers
 SCENERY_LINKS = [
     "https://telegra.ph/file/4ae97c58fc102edff5091.jpg",
     "https://telegra.ph/file/f9e785a082e3039b6c7ad.jpg",
@@ -84,8 +82,14 @@ SCENERY_LINKS = [
 )
 async def send_nice_scenery(client, message):
     """ /wallpaper to get a random scenery """
+    rep_mesg_id = message.id
+    if message.reply_to_message:
+        rep_mesg_id = message.reply_to_message.id
+
+    # Select a random scenery wallpaper link
     nice_scenery = random.choice(SCENERY_LINKS)
-    await client.send_message(
+
+    await client.send_photo(
         chat_id=message.chat.id,
         photo=nice_scenery,
         caption="Hᴇʀᴇ 😊 !",
