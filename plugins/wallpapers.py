@@ -196,7 +196,7 @@ async def send_car_wallpaper(client, message):
 
 @Client.on_message(filters.command(["wallpaper"]))
 async def send_wallpaper(client, message):
-    """ /wallpapers to get a random wallpaper """
+    """ /wallpaper to get a random wallpaper """
     rep_mesg_id = message.id
     if message.reply_to_message:
         rep_mesg_id = message.reply_to_message.id
