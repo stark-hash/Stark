@@ -14,12 +14,15 @@ from typing import Union, Optional, AsyncGenerator
 from plugins import web_server 
 from aiohttp import web
 
+# Import the handlers
+from car_wallpaper_module import send_car_wallpaper
+from scenery_wallpaper_module import send_nice_scenery
+
 # Get logging configurations
 logging.config.fileConfig("logging.conf")
 logging.getLogger().setLevel(logging.INFO)
 logging.getLogger("cinemagoer").setLevel(logging.ERROR)
 logger = logging.getLogger(__name__)
-
 
 class Bot(Client):
 
@@ -33,6 +36,10 @@ class Bot(Client):
             plugins={"root": "plugins"},
             sleep_threshold=10,
         )
+
+        # Add the handlers
+        self.add_handler(send_car_wallpaper)
+        self.add_handler(send_nice_scenery)
 
     async def start(self):
         b_users, b_chats = await db.get_banned()
@@ -78,10 +85,4 @@ class Bot(Client):
                 current += 1
 
 
-        
 Bot().run()
-
-
-
-
-
