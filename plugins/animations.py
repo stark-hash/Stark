@@ -3,7 +3,6 @@ import asyncio
 from collections import deque
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
-from utils import modules_help, requirements_list, prefix
 
 
 @Client.on_message(filters.command("stupid", prefix) & filters.me)
