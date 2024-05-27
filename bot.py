@@ -37,10 +37,6 @@ class Bot(Client):
             sleep_threshold=10,
         )
 
-        # Add the handlers
-        self.add_handler(send_car_wallpaper)
-        self.add_handler(send_nice_scenery)
-
     async def start(self):
         b_users, b_chats = await db.get_banned()
         temp.BANNED_USERS = b_users
