@@ -33,7 +33,7 @@ async def start_save(client: Client, message: Message):
     update = message.from_user.id
     save = await db.get_save(update)
     if save == True:
-        return await message.reply("**ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ sᴛᴀʀᴛᴇᴅ ᴏɴᴇ ʙᴀᴛᴄʜ, ᴡᴀɪᴛ ғᴏʀ ɪᴛ ᴛᴏ ᴄᴏᴍᴘʟᴇᴛᴇ ʏᴏᴜ ᴅᴜᴍʙғᴜᴄᴋ ᴏᴡɴᴇʀ ❗**\n\n**Cancel Ongoing Task By - /cancel_save**")
+        return await message.reply("**ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ sᴛᴀʀᴛᴇᴅ ᴏɴᴇ ʙᴀᴛᴄʜ, ᴡᴀɪᴛ ғᴏʀ ɪᴛ ᴛᴏ ᴄᴏᴍᴘʟᴇᴛᴇ ʏᴏᴜ ᴅᴜᴍʙ ᴏᴡɴᴇʀ ❗**\n\n**Cancel Ongoing Task By - /cancel_save**")
     await db.set_save(update, save=True)
     await client.send_message(update, "**sᴇɴᴅ ᴍᴇ ᴛʜᴇ ᴍᴇssᴀɢᴇ ʟɪɴᴋ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ sᴛᴀʀᴛ sᴀᴠɪɴɢ ғʀᴏᴍ**")
     
@@ -261,7 +261,7 @@ async def progress_for_pyrogram(
             ''.join([UN_FINISHED_PROGRESS_STR for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2))
 
-        tmp = progress + "⏳ **ɢʀᴏss:** **{0}** **ᴏғ** **{1}**\n\n🚀 **sᴘᴇᴇᴅ:** **{2}**/**s**\n\n🕛 **ᴇᴛᴀ:** **{3}**\n\n**Powered By : @VJ_Botz**".format(
+        tmp = progress + "⏳ **ɢʀᴏss:** **{0}** **ᴏғ** **{1}**\n\n🚀 **sᴘᴇᴇᴅ:** **{2}**/**s**\n\n🕛 **ᴇᴛᴀ:** **{3}**\n\n**Powered By : @StarkBotUpdates**".format(
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
