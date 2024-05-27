@@ -10,6 +10,8 @@ from database.users_chats_db import db
 from info import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, UPTIME, WEBHOOK, LOG_MSG
 from utils import temp, __repo__, __license__, __copyright__, __version__
 from typing import Union, Optional, AsyncGenerator
+from plugins.cars import send_car_wallpaper
+from plugins.wallpaper import send_nice_scenery
 
 from plugins import web_server 
 from aiohttp import web
@@ -19,6 +21,9 @@ logging.config.fileConfig("logging.conf")
 logging.getLogger().setLevel(logging.INFO)
 logging.getLogger("cinemagoer").setLevel(logging.ERROR)
 logger = logging.getLogger(__name__)
+
+    app.add_handler(send_car_wallpaper)
+    app.add_handler(send_nice_scenery)
 
 class Bot(Client):
 
