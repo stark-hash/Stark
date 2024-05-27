@@ -87,10 +87,11 @@ async def send_nice_scenery(client, message):
         rep_mesg_id = message.reply_to_message.id
 
     # Select a random scenery wallpaper link
+    nice_scenery = random.choice(SCENERY_LINKS)
 
     await client.send_photo(
         chat_id=message.chat.id,
-        photo=random.choice(SCENERY_LINKS),
+        photo=nice_scenery,
         caption="Hᴇʀᴇ 😊 !",
         reply_to_message_id=rep_mesg_id
     )
