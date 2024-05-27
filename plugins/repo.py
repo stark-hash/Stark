@@ -4,7 +4,7 @@ import requests
 from pyrogram import Client, filters
 
 
-@Client.on_message(filters.command('repo'))
+@Client.on_message(filters.command('repos'))
 async def git(bot, message):
     pablo = await message.reply_text("`Processing...`")
     args = message.text.split(None, 1)[1]
