@@ -14,10 +14,6 @@ from typing import Union, Optional, AsyncGenerator
 from plugins import web_server 
 from aiohttp import web
 
-# Import the handlers
-from cars import send_car_wallpaper
-from wallpaper import send_nice_scenery
-
 # Get logging configurations
 logging.config.fileConfig("logging.conf")
 logging.getLogger().setLevel(logging.INFO)
