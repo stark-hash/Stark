@@ -173,6 +173,18 @@ SCENERY_LINKS = [
     "https://telegra.ph/file/6b98b5a1cd0ac87236974.jpg"
 ]
 
+MEMES = [
+    "https://telegra.ph/file/4662853e1637b976820c6.jpg",
+    "https://telegra.ph/file/435ebda3f2e055ca108e6.jpg",
+    "https://telegra.ph/file/714bf07fe84f267de2292.jpg",
+    "https://telegra.ph/file/5674d238c01e9c8fc2133.jpg",
+    "https://telegra.ph/file/71351a04078280ee03f63.jpg",
+    "https://telegra.ph/file/12a24f7f713406ffb88c8.jpg",
+    "https://telegra.ph/file/cc95b8850aa88914a67aa.jpg",
+    "https://telegra.ph/file/62449fafa7c526ab8363e.jpg",
+    "https://telegra.ph/file/303b3ca322b5c6ef5187e.jpg"
+]
+
 @Client.on_message(
     filters.command(["cars"])
 )
@@ -207,6 +219,24 @@ async def send_nice_wallpaper(client, message):
     await client.send_photo(
         chat_id=message.chat.id,
         photo=nice_wallpaper,
+        caption="Hᴇʀᴇ 😊 !",
+        reply_to_message_id=rep_mesg_id
+    )
+@Client.on_message(
+    filters.command(["meme"])
+)
+async def send_meme(client, message):
+    """ /meme to get a random meme """
+    rep_mesg_id = message.id
+    if message.reply_to_message:
+        rep_mesg_id = message.reply_to_message.id
+
+    # Select a random car wallpaper link
+    meme = random.choice(MEMES)
+
+    await client.send_photo(
+        chat_id=message.chat.id,
+        photo=meme,
         caption="Hᴇʀᴇ 😊 !",
         reply_to_message_id=rep_mesg_id
     )
