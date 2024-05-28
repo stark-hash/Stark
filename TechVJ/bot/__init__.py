@@ -1,85 +1,97 @@
-# Don't Remove Credit @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
-
+import os
+import math
 import logging
+import datetime
+import pytz
 import logging.config
-logging.config.fileConfig('logging.conf')
+from pyrogram.errors import BadRequest, Unauthorized
+from pyrogram import Client, types
+from database.ia_filterdb import Media
+from database.users_chats_db import db
+from info import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, UPTIME, WEBHOOK, LOG_MSG
+from utils import temp, __repo__, __license__, __copyright__, __version__
+from typing import Union, Optional, AsyncGenerator
+from TechVJ.bot import TechVJBot
+from TechVJ.util.keepalive import ping_server
+from TechVJ.bot.clients import initialize_clients
+from plugins import web_server
+from aiohttp import web
+
+# Get logging configurations
+logging.config.fileConfig("logging.conf")
 logging.getLogger().setLevel(logging.INFO)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
+logging.getLogger("cinemagoer").setLevel(logging.ERROR)
 logging.getLogger("imdbpy").setLevel(logging.ERROR)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
 logging.getLogger("aiohttp").setLevel(logging.ERROR)
 logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 
-from pyrogram import Client
-from pyromod import listen
-from database.ia_filterdb import Media
-from info import *
-from utils import temp
-from typing import Union, Optional, AsyncGenerator
-from pyrogram import types
-from aiohttp import web
+logger = logging.getLogger(__name__)
 
-from pyrogram import Client
-from info import *
-
-
-class TechVJXBot(Client):
-
+class Bot(Client):
     def __init__(self):
         super().__init__(
-            name=SESSION,
+            name=Professor-Bot,
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
-            workers=50,
+            workers=200,
             plugins={"root": "plugins"},
-            sleep_threshold=5,
+            sleep_threshold=10,
         )
+
+    async def start(self):
+        b_users, b_chats = await db.get_banned()
+        temp.BANNED_USERS = b_users
+        temp.BANNED_CHATS = b_chats
+        await super().start()
+        await Media.ensure_indexes()
+        me = await self.get_me()
+        temp.U_NAME = me.username
+        temp.B_NAME = me.first_name
+        self.id = me.id
+        self.name = me.first_name
+        self.mention = me.mention
+        self.username = me.username
+        self.log_channel = LOG_CHANNEL
+        self.uptime = UPTIME
+        curr = datetime.datetime.now(pytz.timezone("Asia/Kolkata"))
+        date = curr.strftime('%d %B, %Y')
+        time = curr.strftime('%I:%M:%S %p')
+        logger.info(LOG_MSG.format(me.first_name, date, time, __repo__, __version__, __license__, __copyright__))
+        try:
+            await self.send_message(
+                LOG_CHANNEL, 
+                text=LOG_MSG.format(me.first_name, date, time, __repo__, __version__, __license__, __copyright__), 
+                disable_web_page_preview=True
+            )
+        except Exception as e:
+            logger.warning(f"Bot isn't able to send message to LOG_CHANNEL \n{e}")
+        if WEBHOOK:
+            app = web.AppRunner(await web_server())
+            await app.setup()
+            await web.TCPSite(app, "0.0.0.0", 8080).start()
+            logger.info("Web Response Is Running......🕸️")
+
+    async def stop(self, *args):
+        await super().stop()
+        me = await self.get_me()
+        logger.info(f"{me.first_name} is... ♻️Restarting...")
+
     async def iter_messages(
         self,
         chat_id: Union[int, str],
         limit: int,
         offset: int = 0,
     ) -> Optional[AsyncGenerator["types.Message", None]]:
-        """Iterate through a chat sequentially.
-        This convenience method does the same as repeatedly calling :meth:`~pyrogram.Client.get_messages` in a loop, thus saving
-        you from the hassle of setting up boilerplate code. It is useful for getting the whole chat messages with a
-        single call.
-        Parameters:
-            chat_id (``int`` | ``str``):
-                Unique identifier (int) or username (str) of the target chat.
-                For your personal cloud (Saved Messages) you can simply use "me" or "self".
-                For a contact that exists in your Telegram address book you can use his phone number (str).
-                
-            limit (``int``):
-                Identifier of the last message to be returned.
-                
-            offset (``int``, *optional*):
-                Identifier of the first message to be returned.
-                Defaults to 0.
-        Returns:
-            ``Generator``: A generator yielding :obj:`~pyrogram.types.Message` objects.
-        Example:
-            .. code-block:: python
-                for message in app.iter_messages("pyrogram", 1, 15000):
-                    print(message.text)
-        """
         current = offset
         while True:
             new_diff = min(200, limit - current)
             if new_diff <= 0:
                 return
-            messages = await self.get_messages(chat_id, list(range(current, current+new_diff+1)))
+            messages = await self.get_messages(chat_id, list(range(current, current + new_diff + 1)))
             for message in messages:
                 yield message
                 current += 1
-      
-TechVJBot = TechVJXBot()
 
-multi_clients = {}
-work_loads = {}
+Bot().run()
