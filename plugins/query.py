@@ -443,15 +443,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('⚙️ Aᴅᴍɪɴ Pᴀɴᴇʟ ⚙️', 'admin')            
             ],[
-            InlineKeyboardButton('🎀 ᴅɪꜱᴄʟᴀɪᴍᴇʀ 🎀', callback_data='trailers'),
+            InlineKeyboardButton('🎀 ᴅɪꜱᴄʟᴀɪᴍᴇʀ 🎀', callback_data='trailers')
+            ],[
+            InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', 'newdata'),
             InlineKeyboardButton('Fɪʟᴛᴇʀꜱ', 'openfilter'),
             InlineKeyboardButton('Cᴏɴɴᴇᴄᴛ', 'coct')
             ],[                       
-            InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', 'newdata'),
+            InlineKeyboardButton('Gʀᴏᴜᴩ Mᴀɴᴀɢᴇʀ', 'gpmanager'),
             InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅᴇ', 'extmod'),
             InlineKeyboardButton('ғᴜɴ', callback_data='fun')
             ],[           
-            InlineKeyboardButton('Gʀᴏᴜᴩ Mᴀɴᴀɢᴇʀ', 'gpmanager'), 
+            InlineKeyboardButton('ᴀʟɪᴠᴇ', 'alive'), 
             InlineKeyboardButton('sᴏɴɢ', callback_data='song'),
             InlineKeyboardButton('ᴛᴇʟᴇɢʀᴀᴘʜ', callback_data='telegraph')
             ],[
@@ -460,7 +462,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ᴘᴀsᴛᴇ', callback_data='paste')
             ],[
             InlineKeyboardButton('ᴛᴛs', callback_data='tts'),
-            InlineKeyboardButton('ᴀʟɪᴠᴇ', callback_data='alive'),
+            InlineKeyboardButton('ᴘᴀssᴡᴏʀᴅ', callback_data='pwgen'),
             InlineKeyboardButton('​Wᴀʟʟᴘᴀᴘᴇʀ', callback_data='wallpaper')
             ],[
             InlineKeyboardButton('​ꜰᴏɴᴛ', callback_data='font'),
@@ -566,6 +568,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.JSON_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        
+    elif query.data == "pwgen":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PWGEN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
     elif query.data == "fun":
         buttons = [[
