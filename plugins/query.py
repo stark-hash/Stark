@@ -461,7 +461,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('ᴛᴛs', callback_data='tts'),
             InlineKeyboardButton('ᴀʟɪᴠᴇ', callback_data='alive'),
-            InlineKeyboardButton('​🇸​​🇴​​🇳​​🇬​', callback_data='song')
+            InlineKeyboardButton('​Wᴀʟʟᴘᴀᴘᴇʀ', callback_data='wallpaper')
             ],[
             InlineKeyboardButton('​ꜰᴏɴᴛ', callback_data='font'),
             InlineKeyboardButton('​ᴘɪᴄ ᴇᴅɪᴛ', callback_data='picedit'),
@@ -602,12 +602,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.FONT_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
-    elif query.data == "song":
+    elif query.data == "wallpaper":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.SONG_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.WALLPAPER_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
     elif query.data == "telegraph":
         buttons = [[
