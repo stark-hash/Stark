@@ -370,7 +370,15 @@ Wᴇʟᴄᴏᴍᴇ ᴛᴏ {chat}.
 🎭 Gᴇɴʀᴇꜱ: {genres}
 📆 Yᴇᴀʀ: <a href={url}/releaseinfo>{year}</a>
 🌟 Rᴀᴛɪɴɢ: <a href={url}/ratings>{rating}</a>/10"""
-   
+    
+
+    CUSTOM_FILE_CAPTION = """<b>Hey {mention} ⚡️</b>
+{file_name} 
+size - {file_size} 
+╭─────── • ◆ • ───────➤ 
+┣ ▫️ @FDFileStoreBot
+┣ ▫️ @StarkBotUpdates
+╰─────── • ◆ • ───────➤"""
   
  
 
