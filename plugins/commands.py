@@ -41,7 +41,7 @@ async def start(client, message):
             InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
         ]]
-        m = await message.reply_sticker("CAACAgUAAxkBAAP_Zj-C2PVr_NeBGcHWJZPdDQhVzzsAAmMDAAI4vUlUfHbkOThd0TAeBA") 
+        m = await message.reply_sticker("CAACAgUAAxkBAAINm2ZYnBU-rLRRDX-yFmmQ4Wc4o75LAALdAgAC-jpJVCtSPemHPN0KHgQ") 
         await asyncio.sleep(2)
         await message.reply_photo(photo=random.choice(PICS), caption=START_MESSAGE.format(user=message.from_user.mention, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         return await m.delete()
@@ -77,7 +77,7 @@ async def start(client, message):
             InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
         ]]
-        m = await message.reply_sticker("CAACAgUAAxkBAAP_Zj-C2PVr_NeBGcHWJZPdDQhVzzsAAmMDAAI4vUlUfHbkOThd0TAeBA")
+        m = await message.reply_sticker("CAACAgUAAxkBAAINm2ZYnBU-rLRRDX-yFmmQ4Wc4o75LAALdAgAC-jpJVCtSPemHPN0KHgQ")
         await asyncio.sleep(2)
         await message.reply_photo(photo=random.choice(PICS), caption=START_MESSAGE.format(user=message.from_user.mention, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         return await m.delete()
