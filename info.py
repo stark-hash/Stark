@@ -47,15 +47,6 @@ else:
 URL = environ.get("URL", "https://hard-rivkah-fdbotz-3ea6df76.koyeb.app/")
 
 
-# Rename Info : If True Then Bot Rename File Else Not
-RENAME_MODE = bool(environ.get('RENAME_MODE', True)) # Set True or Flase
-
-# Auto Approve Info : If True Then Bot Approve New Upcoming Join Request Else Not
-AUTO_APPROVE_MODE = bool(environ.get('AUTO_APPROVE_MODE', True)) # Set True or Flase
-
-# Save Restricted Info : If True Then Bot Save Content From Restricted Channel Else Not
-SAVE_RESTRICTED_MODE = bool(environ.get('SAVE_RESTRICTED_MODE', False)) # Set True or Flase
-
 # MongoDB information
 DATABASE_URL = environ.get('DATABASE_URL', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
@@ -89,7 +80,7 @@ INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
 PM_IMDB = is_enabled(environ.get('PM_IMDB', "True"), True)
 IMDB = is_enabled(environ.get('IMDB', "True"), True)
 SINGLE_BUTTON = is_enabled(environ.get('SINGLE_BUTTON', "True"), True)
-CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", "{file_name}")
+CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", script.IMDB_TEMPLATE)
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", None)
 IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", script.IMDB_TEMPLATE)
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
