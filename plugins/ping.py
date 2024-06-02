@@ -11,10 +11,6 @@ from plugins.cust_p_filters import f_onw_fliter
 ALIVE = "​🇸​​🇹​​🇮​​🇱​​🇱​ ​🇭​​🇪​​🇷​​🇪​, ​🇺​​🇳​​🇱​​🇮​​🇰​​🇪​ ​🇾​​🇴​​🇺​​🇷​ ​🇪​​🇽​🥲\n\n ⍟𝐌𝐲 𝐜𝐫𝐞𝐚𝐭𝐨𝐫: @TGTesla\n\n⍟𝐌𝐲 𝐬𝐮𝐩𝐩𝐨𝐫𝐭: @StarkBotSupport\n\n⍟𝐌𝐲 𝐮𝐩𝐝𝐚𝐭𝐞𝐬: @StarkBotUpdates\n\n⍟𝐌𝐲 𝐬𝐮𝐩𝐩𝐨𝐫𝐭𝐞𝐫: @TGTesla"
 HELP = "ᴅᴇᴀʀ ɢᴏᴅ, ᴘʟᴇᴀꜱᴇ ʜᴇʟᴘ ᴀɴᴅ ʟɪʙᴇʀᴀᴛᴇ ᴛʜᴇ ꜱᴛᴀᴛᴇ ᴏꜰ ᴘᴀʟᴇꜱᴛɪɴᴇ ꜰʀᴏᴍ ᴛʜᴇ ɢʀᴀꜱᴘ ᴏꜰ ᴏᴘᴘʀᴇꜱꜱᴏʀꜱ..."
 REPO = "ᴅᴏ ʏᴏᴜ ᴀʟꜱᴏ ᴀꜱᴋ ᴍᴀɢɪᴄɪᴀɴꜱ ᴛᴏ ʀᴇᴠᴇᴀʟ ᴛʜᴇɪʀ ᴛʀɪᴄᴋꜱ?"
-MUSIK = "Never Gonna Give You Up
-0:35 ━❍──────── -5:32
-↻     ⊲  Ⅱ  ⊳     ↺
-VOLUME: ▁▂▃▄▅▆▇ 100%"
 
 # -- Constants End -- #
 
