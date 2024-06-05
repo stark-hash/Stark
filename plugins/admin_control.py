@@ -32,7 +32,7 @@ async def savegroup_and_welcome(bot, message):
             return await bot.leave_chat(message.chat.id)
            
         buttons = [[InlineKeyboardButton('Hᴇʟᴩ', url=f"https://t.me/{temp.U_NAME}?start=help")]]
-        await message.reply(text="❤️ Tʜᴀɴᴋs Tᴏ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜ'ʀ Gʀᴏᴜᴘ.\n» Dᴏɴ'ᴛ Fᴏʀɢᴇᴛ Tᴏ Mᴀᴋᴇ Mᴇ Aᴅᴍɪɴ.\n» Is Aɴʏ Dᴏᴜʙᴛ's Aʙᴏᴜᴛ Usɪɴɢ Mᴇ Cʟɪᴄᴋ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴ...✨", reply_markup=InlineKeyboardMarkup(buttons))
+        await message.reply(text="❤️ Tʜᴀɴᴋs Tᴏ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜ'ʀ Gʀᴏᴜᴘ.\n» Dᴏɴ'ᴛ Fᴏʀɢᴇᴛ Tᴏ Mᴀᴋᴇ Mᴇ Aᴅᴍɪɴ.\n» IF Aɴʏ Dᴏᴜʙᴛ's Aʙᴏᴜᴛ Usɪɴɢ Mᴇ Cʟɪᴄᴋ Bᴇʟᴏᴡ Bᴜᴛᴛᴏɴ...✨", reply_markup=InlineKeyboardMarkup(buttons))
     else:
         for u in message.new_chat_members:
             if (temp.MELCOW).get('welcome') is not None:
@@ -79,7 +79,7 @@ async def disable_chat(bot, message):
     await message.reply('Cʜᴀᴛ Sᴜᴄᴄᴇꜱꜰᴜʟʟʏ Dɪꜱᴀʙʟᴇᴅ')
     try:
         buttons = [[InlineKeyboardButton('Sᴜᴩᴩᴏʀᴛ', url=f'https://t.me/{SUPPORT_CHAT}')]]
-        await bot.send_message(chat_id=chat_,  text=f'<b>Hᴇʟʟᴏ Fʀɪᴇɴᴅs, \nᴍʏ Aᴅᴍɪɴ Hᴀs Tᴏʟᴅ Mᴇ Tᴏ Lᴇᴀᴠᴇ Fʀᴏᴍ Gʀᴏᴜᴘ Sᴏ I Gᴏ! Iғ Yᴏᴜ Wᴀɴɴᴀ Aᴅᴅ Mᴇ Aɢᴀɪɴ Cᴏɴᴛᴀᴄᴛ Mʏ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ.</b> \nRᴇᴀꜱᴏɴ : <code>{reason}</code>', reply_markup=InlineKeyboardMarkup(buttons))
+        await bot.send_message(chat_id=chat_,  text=f'<b>Hᴇʟʟᴏ Fʀɪᴇɴᴅs, \nᴍʏ Aᴅᴍɪɴ Hᴀs Tᴏʟᴅ Mᴇ Tᴏ Lᴇᴀᴠᴇ Fʀᴏᴍ Gʀᴏᴜᴘ , Sᴏ I Gᴏ! Iғ Yᴏᴜ Wᴀɴɴᴀ Aᴅᴅ Mᴇ Aɢᴀɪɴ Cᴏɴᴛᴀᴄᴛ Mʏ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ.</b> \nRᴇᴀꜱᴏɴ : <code>{reason}</code>', reply_markup=InlineKeyboardMarkup(buttons))
         await bot.leave_chat(chat_)
     except Exception as e:
         await message.reply(f"Eʀʀᴏʀ: {e}")
@@ -165,7 +165,7 @@ async def unban_a_user(bot, message):
     try: chat = int(chat)
     except: pass
     try: k = await bot.get_users(chat)
-    except PeerIdInvalid: return await message.reply("Tʜɪs Is Aɴ Iɴᴠᴀʟɪᴅ Usᴇʀ, Mᴀᴋᴇ Sᴜʀᴇ Iᴀ Hᴀᴠᴇ Mᴇᴛ Hɪᴍ Bᴇғᴏʀᴇ")
+    except PeerIdInvalid: return await message.reply("Tʜɪs Is Aɴ Iɴᴠᴀʟɪᴅ Usᴇʀ, Mᴀᴋᴇ Sᴜʀᴇ I Hᴀᴠᴇ Mᴇᴛ Hɪᴍ Bᴇғᴏʀᴇ")
     except IndexError: return await message.reply("Tʜɪs Mɪɢʜᴛ Bᴇ A Cʜᴀɴɴᴇʟ, Mᴀᴋᴇ Sᴜʀᴇ Iᴛs A Usᴇʀ.")
     except Exception as e: return await message.reply(f'Eʀʀᴏʀ: {e}')
     else:
@@ -374,7 +374,7 @@ async def log_file(bot, msg):
 
 @Client.on_message(filters.command("restart") & filters.user(ADMINS))
 async def restart_bot(bot, msg):
-    await msg.reply("Rᴇꜱᴛᴀᴛɪɴɢ........")
+    await msg.reply("RESTARTING........")
     await asyncio.sleep(2)
     await sts.delete()
     os.execl(sys.executable, sys.executable, *sys.argv)
