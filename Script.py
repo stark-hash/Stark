@@ -171,19 +171,18 @@ Made With ❤️ BY @StarkBotUpdates"""
     STICKER_TXT ="""<b>COMMAND /stickerid\n𝖨𝖿 𝖸𝗈𝗎 𝖭𝖾𝖾𝖽 𝖳𝖾𝗅𝖾𝗀𝗋𝖺𝗆 𝖲𝗍𝗂𝖼𝗄𝖾𝗋 𝖨𝖽 𝖢𝗅𝗂𝖼𝗄 /stickerid 𝖳𝗈 𝖦𝖾𝗍 𝖲𝗍𝗂𝖼𝗄𝖾𝗋 𝖨𝖽 (𝖱𝖾𝗉𝗅𝗒 𝖶𝗂𝗍𝗁 𝖲𝗍𝗂𝖼𝗄𝖾𝗋)</b>
     
     Made With ❤️ BY @StarkBotUpdates"""
-    ALIVE_TXT ="""╔══════❰ <b>ALIVE MODULE</b> ❱══════════❍⊱❁۪۪
+    ALIVE_TXT ="""╔════❰ <b>ALIVE MODULE</b> ❱═════❍⊱❁۪۪
 ║
 ║╭━━━━━━━━━━━━━━━➣
 ║┣⪼ /alive - check me alive or dead🤧
 ║┣⪼ /helpme - help 
 ║┣⪼ /repo - repo of bot
 ║┣⪼ /runs - random
-║
 ║╰━━━━━━━━━━━━━━━➣
 ║
 ║Made With ❤️ BY @StarkBotUpdates
 ║
-╚═════════════════════════════════❍⊱❁۪۪"""
+╚══════════════════════❍⊱❁۪۪"""
     FUN_TXT ="""╔═══════❰ <b>FUN MODULE</b> ❱══════❍⊱❁۪۪
 ║
 ║╭━━━━━━━━━━━━━━━➣
@@ -200,12 +199,12 @@ Made With ❤️ BY @StarkBotUpdates"""
 ║
 ║Made With ❤️ BY @StarkBotUpdates
 ║
-╚══════════════════════════════❍⊱❁۪۪"""
+╚═══════════════════════❍⊱❁۪۪"""
 
     FONT_TXT = """ /font [ᴛᴇxᴛ] - Tᴏ Cʜᴀɴɢᴇ Yᴏᴜʀ Tᴇxᴛ Fᴏɴᴛs Tᴏ Fᴀɴᴄʏ Fᴏɴᴛ"""
     
 
-    CONNECTION_TXT = """╔══════❰ <b>Hᴇʟᴘ Fᴏʀ Cᴏɴɴᴇᴄᴛɪᴏɴs</b> ❱═══════❍⊱❁
+    CONNECTION_TXT = """╔═══❰ <b>Hᴇʟᴘ Fᴏʀ Cᴏɴɴᴇᴄᴛɪᴏɴs</b> ❱═══❍⊱❁
 ║
 ║╭━━━━━━━━━━━━━━━━━━━➣
 ║┣⪼ <i> Usᴇᴅ Tᴏ Cᴏɴɴᴇᴄᴛ Bᴏᴛ Tᴏ Pᴍ Fᴏʀ Mᴀɴᴀɢɪɴɢ Fɪʟᴛᴇʀs</i>
@@ -223,7 +222,7 @@ Made With ❤️ BY @StarkBotUpdates"""
 ║
 ║Made With ❤️ BY @StarkBotUpdates
 ║
-╚═════════════════════════❍⊱❁
+╚═══════════════════════❍⊱❁
 """
 
     ADMIN_TXT = """<b>Hᴇʟᴩ Fᴏʀ Aᴅᴍɪɴꜱ</b>
@@ -354,7 +353,7 @@ Tᴏᴛᴀʟ Dɪꜱᴋ: {}
 Uꜱᴇᴅ Dɪꜱᴋ: {} ({}%)
 Fʀᴇᴇ Dɪꜱᴋ: {}"""
     
-    BUTTON_LOCK_TEXT = "Hᴇʏ {query}\nTʜɪꜱ Iꜱ Nᴏᴛ Fᴏʀ Yᴏᴜ. Sᴇᴀʀᴄʜ Yᴏᴜʀ Sᴇʟꜰ"
+    BUTTON_LOCK_TEXT = "Hᴇʏ {query}\n𝚃𝙷𝙸𝚂 𝙸𝚂 𝙽𝙾𝚃 𝙵𝙾𝚁 𝚈𝙾𝚄 , 𝚁𝙴𝚀𝚄𝙴𝚂𝚃 𝚈𝙾𝚄𝚁 𝙾𝚆𝙽 ! 😊"
    
     FORCE_SUB_TEXT = "Sᴏʀʀʏ Bʀᴏ Yᴏᴜʀ Nᴏᴛ Jᴏɪɴᴇᴅ Mʏ Cʜᴀɴɴᴇʟ Sᴏ Pʟᴇᴀsᴇ Cʟɪᴄᴋ Jᴏɪɴ Bᴜᴛᴛᴏɴ Tᴏ Jᴏɪɴ Mʏ Cʜᴀɴɴᴇʟ Aɴᴅ Tʀʏ Aɢᴀɪɴ"
    
