@@ -136,7 +136,7 @@ async def next_page(bot, query):
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer("okDa", show_alert=True)
+        return await query.answer("𝚃𝙷𝙸𝚂 𝙸𝚂 𝙽𝙾𝚃 𝙵𝙾𝚁 𝚈𝙾𝚄 , 𝚁𝙴𝚀𝚄𝙴𝚂𝚃 𝚈𝙾𝚄𝚁 𝙾𝚆𝙽 !", show_alert=True)
     if movie_ == "close_spellcheck":
         return await query.message.delete()
     movies = temp.GP_SPELL.get(query.message.reply_to_message.id)
