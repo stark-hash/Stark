@@ -1,7 +1,5 @@
 CALCULATE_TEXT = "Made by @FDBotz"
-CALCULATE_BUTTONS = InlineKeyboardMarkup(
-    [
-        [
+CALCULATE_BUTTONS = [[
             InlineKeyboardButton("DEL", callback_data="DEL"),
             InlineKeyboardButton("AC", callback_data="AC"),
             InlineKeyboardButton("(", callback_data="("),
@@ -30,9 +28,7 @@ CALCULATE_BUTTONS = InlineKeyboardMarkup(
             InlineKeyboardButton("0", callback_data="0"),
             InlineKeyboardButton("=", callback_data="="),
             InlineKeyboardButton("+", callback_data="+"),
-        ]
-    ]
-)
+        ]]
 
 @Bot.on_message(filters.private & filters.command(["calc", "calculate", "calculator"]))
 async def calculate(bot, update):
