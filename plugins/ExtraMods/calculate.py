@@ -63,3 +63,5 @@ async def cb_data(bot, update):
                 disable_web_page_preview=True,
                 reply_markup=CALCULATE_BUTTONS
             )
+        except Exception as error:
+            print(error)
