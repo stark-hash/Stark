@@ -21,6 +21,8 @@ PICS = (environ.get('PICS' ,'https://graph.org/file/01ddfcb1e8203879a63d7.jpg ht
 UPTIME = time.time()
 USE_AS_BOT = environ.get("USE_AS_BOT", True)
 COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
+CLONE_DB_URI = 
+CDB_NAME = 
 
 # Admins, Channels & Users
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
