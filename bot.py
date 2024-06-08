@@ -74,8 +74,7 @@ class Bot(Client):
             for message in messages:
                 yield message
                 current += 1
-app.add_handler(calculate)
-app.add_handler(handle_calculator_callback)
+Client.add_handler(calculate)
+Client.add_handler(handle_calculator_callback)
 
-app = Bot()
 Bot().run()
