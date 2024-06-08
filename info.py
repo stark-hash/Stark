@@ -22,11 +22,6 @@ UPTIME = time.time()
 USE_AS_BOT = environ.get("USE_AS_BOT", True)
 COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 
-#Cloner
-CLONE_DB_URI = 
-CDB_NAME = 
-BOT_USERNAME = int(environ.get("BOT_USERNAME", "AnAutoFilterBot"))
-
 # Admins, Channels & Users
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
