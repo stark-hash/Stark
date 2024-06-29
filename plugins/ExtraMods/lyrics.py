@@ -1,38 +1,43 @@
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton 
-import requests, os
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import requests
 
+API = "https://lyrist.vercel.app/api/{}"
 
-API = "https://apis.xditya.me/lyrics?song="
+@Client.on_message(filters.command("lyrics"))
+async def lyrics_sendu(bot, message):
+    query = message.text.split(None, 1)[1]
+    try:
+        response_text, reply_markup, image_url, lyrics_text = lyrics_info(query)
+        
+        # Send the image with the song title and artist as the caption
+        await message.reply_photo(
+            photo=image_url,
+            caption=response_text,
+            quote=True,
+            reply_markup=reply_markup
+        )
 
-@Client.on_message(filters.text & filters.command(["lyrics"]))
-async def sng(bot, message):
-        if not message.reply_to_message:
-          await message.reply_text("Pʟᴇᴀꜱᴇ Rᴇᴩʟʏ To A Mᴇꜱꜱᴀɢᴇ")
-        else:          
-          mee = await message.reply_text("`Sᴇᴀʀᴄʜɪɴɢ 🔎`")
-          song = message.reply_to_message.text
-          chat_id = message.from_user.id
-          rpl = lyrics(song)
-          await mee.delete()
-          try:
-            await mee.delete()
-            await bot.send_message(chat_id, text = rpl, reply_to_message_id = message.id, reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url = f"t.me/StarkBotUpdates")]]))
-          except Exception as e:                            
-             await message.reply_text(f"I Cᴀɴ'ᴛ Fɪɴᴅ A Sᴏɴɢ Wɪᴛʜ `{song}`", quote = True, reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url = f"t.me/StarkBotUpdates")]]))
+        # Send the lyrics in a separate message
+        await message.reply_text(text=lyrics_text, quote=True)
 
+    except Exception as e:
+        await message.reply_text(text="❌ <b>Error fetching Lyrics</b>", quote=True)
 
-def search(song):
-        r = requests.get(API + song)
-        find = r.json()
-        return find
-       
-def lyrics(song):
-        fin = search(song)
-        text = f'**🎶 Sᴜᴄᴄᴇꜱꜰᴜʟʟy Exᴛʀᴀᴄᴛᴇᴅ Lyɪʀɪᴄꜱ Oꜰ {song}**\n\n'
-        text += f'`{fin["lyrics"]}`'
-        text += '\n\n\n**Mᴀᴅᴇ Bʏ AI**'
-        return text
+def lyrics_info(lyricsquery):
+    r = requests.get(API.format(lyricsquery))
+    info = r.json()
 
+    # Extract data from the JSON response
+    image_url = info['image']
+    lyrics_text = info['lyrics']
+    title = info['title']
+    artist = info['artist']
 
+    response_text = f"🎶 Successfully Extracted Lyrics Of {title} by {artist} 🎶"
 
+    reply_markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("FDBotz", url='t.me/FDBotz')]
+    ])
+
+    return response_text, reply_markup, image_url, lyrics_text
