@@ -270,6 +270,57 @@ async def delete_all_index_confirm(bot, message):
     await Media.collection.drop()
     await message.message.edit('Succesfully Deleted All The Indexed Files.')
 
+#####################################################################################################################################
+
+#TeraboxAPI
+
+API = "https://teraboxvideodownloader.nepcoderdevs.workers.dev/?url={}"
+
+@Client.on_message(filters.command("terabox"))
+async def reply_info(bot, message):
+    query = message.text.split(None, 1)[1]
+    try:
+        response_text, reply_markup, thumbnail_url = terabox_info(query)
+        await message.reply_photo(
+            photo=thumbnail_url,
+            caption=response_text,
+            quote=True,
+            reply_markup=reply_markup
+        )
+    except Exception as e:
+        await message.reply_text(text="❌ <b>Error fetching data from Terabox API</b>",
+            quote=True
+        )
+
+def terabox_info(teraboxlink):
+    r = requests.get(API.format(teraboxlink))
+    info = r.json()
+
+    # Extract data from the JSON response
+    fast_download_link = info['response'][0]['resolutions']['Fast Download']
+    hd_video_link = info['response'][0]['resolutions']['HD Video']
+    video_title = info['response'][0]['title']
+    thumbnail_url = info['response'][0]['thumbnail']
+
+    response_text = f"""--Terabox Video Download--
+
+🎬 <b>Title:</b> {video_title}
+🔗 <b>Link:</b> {fast_download_link}
+
+Made by @FDBotz ❤️"""
+
+    reply_markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("Fast Direct DL Link", url=fast_download_link)],
+        [InlineKeyboardButton("HD Download Link", url=hd_video_link)],
+        [InlineKeyboardButton("FDBotz", url='t.me/FDBotz')]
+    ])
+
+    return response_text, reply_markup, thumbnail_url
+
+
+#####################################################################################################################################
+
+
 
 @Client.on_message(filters.command('settings'))
 async def settings(client, message):
