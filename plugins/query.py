@@ -453,9 +453,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅᴇ', 'extmod'),
             InlineKeyboardButton('ғᴜɴ', callback_data='fun')
             ],[           
+            InlineKeyboardButton('ᴄʜᴀᴛɢᴘᴛ', 'chatgpt'), 
+            InlineKeyboardButton('ᴀɪ ɪᴍᴀɢᴇ', callback_data='aiimage'),
+            InlineKeyboardButton('ᴛᴇʀᴀʙᴏx', callback_data='terabox')
+            ],[
             InlineKeyboardButton('ᴀʟɪᴠᴇ', 'alive'), 
             InlineKeyboardButton('sᴏɴɢ', callback_data='song'),
             InlineKeyboardButton('ᴛᴇʟᴇɢʀᴀᴘʜ', callback_data='telegraph')
+            ],[
+            InlineKeyboardButton('ᴄʀʏᴘᴛᴏ', 'crypto'), 
+            InlineKeyboardButton('ᴀᴘᴋ ᴅʟ', callback_data='apkdl'),
+            InlineKeyboardButton('ᴡᴇʙ ꜱꜱ', callback_data='webss')
             ],[
             InlineKeyboardButton('ᴊsᴏɴ', callback_data='json'),
             InlineKeyboardButton('Cᴏʀᴏɴᴀ', callback_data='corona'),
