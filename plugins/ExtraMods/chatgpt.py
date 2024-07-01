@@ -23,7 +23,7 @@ async def ask_chatgpt(bot, message):
     # Check for vulgar words
     if any(word in query.lower() for word in vulgar_words):
         await message.reply_text(
-            text="❌ <b>You cannot ask questions with vulgar content.</b>",
+            text="❌ <b>Please refrain from asking questions with inappropriate content.</b>",
             quote=True
         )
         return
