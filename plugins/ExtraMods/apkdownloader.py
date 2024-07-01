@@ -25,7 +25,7 @@ async def apk_download(bot, message):
     # Check for vulgar words
     if any(word in query.lower() for word in vulgar_words):
         await message.reply_text(
-            text="❌ <b>You cannot search for APKs with vulgar content.</b>",
+            text="❌ <b>Searching for APKs with explicit content is not permitted.</b>",
             quote=True
         )
         return
