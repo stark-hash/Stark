@@ -13,7 +13,7 @@ async def get_crypto_info(bot, message):
     except IndexError:
         await message.reply_text(text="❌ <b>Please provide a cryptocurrency symbol. Usage:</b> /crypto [symbol]", quote=True)
     except Exception as e:
-        await message.reply_text(text=f"❌ <b>Error fetching data from CoinGecko API:</b> {str(e)}", quote=True)
+        await message.reply_text(text=f"❌ <b>Error fetching data from CoinGecko:</b> {str(e)}", quote=True)
 
 def fetch_crypto_info(symbol):
     response = requests.get(API_BASE.format(symbol))
