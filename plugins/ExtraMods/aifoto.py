@@ -24,7 +24,7 @@ async def aiimage_sendu(bot, message):
     # Check for vulgar words
     if any(word in query.lower() for word in vulgar_words):
         await message.reply_text(
-            text="❌ <b>You cannot generate images with vulgar prompts.</b>",
+            text="❌ <b>Images cannot be created using offensive language or prompts.</b>",
             quote=True
         )
         return
