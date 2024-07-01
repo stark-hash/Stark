@@ -465,6 +465,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ᴀᴘᴋ ᴅʟ', callback_data='apkdl'),
             InlineKeyboardButton('ᴡᴇʙ ꜱꜱ', callback_data='webss')
             ],[
+            InlineKeyboardButton('ᴘɪɴᴛᴇʀᴇꜱᴛ', 'pinterest'), 
+            InlineKeyboardButton('ᴡɪᴋɪ', callback_data='wiki'),
+            InlineKeyboardButton('​🇶​​🇷​', callback_data='qr')
+            ],[
             InlineKeyboardButton('ᴊsᴏɴ', callback_data='json'),
             InlineKeyboardButton('Cᴏʀᴏɴᴀ', callback_data='corona'),
             InlineKeyboardButton('ᴘᴀsᴛᴇ', callback_data='paste')
@@ -583,7 +587,63 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PWGEN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
-
+###############################################################################################################
+    
+    elif query.data == "qr":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.QR_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "wiki":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.WIKI_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "pinterest":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PINTEREST_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "webss":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.WEBSS_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "apkdl":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.APKDL_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "crypto":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.CRYPTO_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "terabox":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.TERABOX_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "aiimage":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.AIIMAGE_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+    elif query.data == "chatgpt":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.CHATGPT_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+###############################################################################################################
     elif query.data == "fun":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
