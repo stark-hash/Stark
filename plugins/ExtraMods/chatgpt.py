@@ -16,7 +16,7 @@ vulgar_words = [
     "chode", "rimjob", "foreskin", "herpes", "titfuck", "tranny", "shemale"
 ]
 
-@Client.on_message(filters.command("ask"))
+@Client.on_message(filters.command("ai"))
 async def ask_chatgpt(bot, message):
     query = message.text.split(None, 1)[1]
 
