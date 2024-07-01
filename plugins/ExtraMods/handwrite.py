@@ -25,7 +25,7 @@ async def write_text(bot, message):
     # Check for vulgar words
     if any(word in query.lower() for word in vulgar_words):
         await message.reply_text(
-            text="❌ <b>You cannot generate handwriting with vulgar content.</b>",
+            text="❌ <b>Handwriting cannot be generated from prompts containing offensive language.</b>",
             quote=True
         )
         return
