@@ -29,11 +29,10 @@ async def start(client, message):
     ]]
 
     # Reply with a photo, caption, and buttons
-    owner = mongo_db.bots.find_one({'bot_id': id})
-    ownerid = int(owner['user_id'])
+    
     await message.reply_photo(
         photo=random.choice(CPICS),
-        caption=CLONE_START_MESSAGE.format(ownerid),
+        caption=CLONE_START_MESSAGE,
         reply_markup=InlineKeyboardMarkup(buttons),
         parse_mode=enums.ParseMode.HTML
     )
