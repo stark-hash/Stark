@@ -425,6 +425,33 @@ Wᴇʟᴄᴏᴍᴇ ᴛᴏ {chat}.
 🌟 Rᴀᴛɪɴɢ: <a href={url}/ratings>{rating}</a>/10"""
     
 
+    IMDB_CLONETEMPLATE = """<b>Qᴜᴇʀʏ: {query}</b>
+
+🏷 Tɪᴛʟᴇ: <a href={url}>{title}</a>
+🎭 Gᴇɴʀᴇꜱ: {genres}
+📆 Yᴇᴀʀ: <a href={url}/releaseinfo>{year}</a>
+🌟 Rᴀᴛɪɴɢ: <a href={url}/ratings>{rating}</a>/10
+🗳 Vᴏᴛᴇꜱ: {votes}
+💯ID : {imdb_id}
+🎬 Aʟsᴏ Kɴᴏᴡɴ Aꜱ: {aka}
+📺 Sᴇᴀꜱᴏɴꜱ: {seasons}
+💵 Bᴏx Oғғɪᴄᴇ: {box_office}
+🌐 Lᴏᴄᴀʟɪᴢᴇᴅ Tɪᴛʟᴇ: {localized_title}
+📑 Kɪɴᴅ: {kind}
+🕒 Rᴜɴᴛɪᴍᴇ: {runtime}
+🌍 Cᴏᴜɴᴛʀɪᴇꜱ: {countries}
+🔞 Cᴇʀᴛɪғɪᴄᴀᴛᴇꜱ: {certificates}
+🗣 Lᴀɴɢᴜᴀɢᴇꜱ: {languages}
+🎥 Dɪʀᴇᴄᴛᴏʀ: {director}
+🖋 Wʀɪᴛᴇʀ: {writer}
+👤 Pʀᴏᴅᴜᴄᴇʀ: {producer}
+🎼 Cᴏᴍᴘᴏsᴇʀ: {composer}
+📸 Cɪɴᴇᴍᴀᴛᴏɢʀᴀᴘʜᴇʀ: {cinematographer}
+🎶 Mᴜꜱɪᴄ Tᴇᴀᴍ: {music_team}
+🏢 Dɪꜱᴛʀɪʙᴜᴛᴏʀꜱ: {distributors}
+📅 Rᴇʟᴇᴀsᴇ Dᴀᴛᴇ: {release_date}
+📜 Pʟᴏᴛ: {plot}"""
+
     CUSTOM_FILE_CAPTION = """<b>Hey {mention} ⚡️</b>
 {file_name} 
 size - {file_size} 
