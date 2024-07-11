@@ -21,8 +21,7 @@ mongo_collection = mongo_db[CDB_NAME]
 @Client.on_message(filters.command("start") & filters.incoming & filters.text)
 async def start(client, message):
     # Define inline buttons
-    buttons = [[
-        InlineKeyboardButton("Sᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
+    buttons = [[ 
         InlineKeyboardButton("ᴍʏ ᴘᴀʀᴇɴᴛ 🔈", url="https://t.me/AnAutoFilterBot")
     ],[
         InlineKeyboardButton("Hᴇʟᴩ 🕸", callback_data="help"),
@@ -30,9 +29,11 @@ async def start(client, message):
     ]]
 
     # Reply with a photo, caption, and buttons
+    owner = mongo_db.bots.find_one({'bot_id': id})
+    ownerid = int(owner['user_id'])
     await message.reply_photo(
         photo=random.choice(CPICS),
-        caption=CLONE_START_MESSAGE,
+        caption=CLONE_START_MESSAGE.format(ownerid),
         reply_markup=InlineKeyboardMarkup(buttons),
         parse_mode=enums.ParseMode.HTML
     )
