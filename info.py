@@ -22,6 +22,13 @@ UPTIME = time.time()
 USE_AS_BOT = environ.get("USE_AS_BOT", True)
 COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 
+#Clone UndamPori
+CLONE_DB_URI = environ.get('CLONE_DB_URI', "mongodb+srv://fdtekkz7:fdtekkz7@cluster0.i4ygcfx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+CDB_NAME = environ.get('CDB_NAME', "Cluster0")
+AUTO_DELETE = int(environ.get("AUTO_DELETE", "30000")) 
+AUTO_DELETE_TIME = int(environ.get("AUTO_DELETE_TIME", "1800"))
+
+
 # Admins, Channels & Users
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
