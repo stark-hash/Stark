@@ -28,6 +28,9 @@ CDB_NAME = environ.get('CDB_NAME', "Cluster0")
 AUTO_DELETE = int(environ.get("AUTO_DELETE", "30000")) 
 AUTO_DELETE_TIME = int(environ.get("AUTO_DELETE_TIME", "1800"))
 IMDB_CLONETEMPLATE = environ.get("IMDB_CLONETEMPLATE", script.IMDB_CLONETEMPLATE)
+BOT_USERNAME = environ.get("BOT_USERNAME", "AnAutoFilterBot")
+CPICS = (environ.get('PICS' ,'https://graph.org/file/01ddfcb1e8203879a63d7.jpg')).split()
+
 
 # Admins, Channels & Users
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
