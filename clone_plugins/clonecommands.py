@@ -91,7 +91,7 @@ async def start(client, message):
         protect_content=True if pre == 'filep' else False,
         )
 
-@Client.on_callback_query(filters.regex("^(help|about|start|extmod|aifoto|apkdownloader|terabox|carbon|chatgpt|crypto|font|handwrite|lyrics|password|paste|photo|pinterest|qr|share_text|telegraph)$"))
+@Client.on_callback_query(filters.regex("^(help|about|json|tts|wiki|webss|wallpapers|alive|trailers|start|extmod|aifoto|apkdownloader|terabox|carbon|chatgpt|crypto|font|handwrite|lyrics|password|paste|photo|pinterest|qr|sharetext|telegraph)$"))
 async def handle_callback_query(client, query: CallbackQuery):
     if query.data == "help":
         buttons = [
@@ -152,7 +152,7 @@ async def handle_callback_query(client, query: CallbackQuery):
             media=InputMediaPhoto(random.choice(CPICS))
         )
         await query.message.edit_text(
-            text=script.HELP_TXT,
+            text=script.CHELP_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -220,7 +220,7 @@ async def handle_callback_query(client, query: CallbackQuery):
             media=InputMediaPhoto(random.choice(CPICS))
         )
         await query.message.edit_text(
-            text=script.AIIMAGE_TXT,
+            text=script.CEXTRAMOD_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
@@ -698,27 +698,7 @@ async def handle_callback_query(client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     
-    elif query.data == "webss":
-        buttons = [
-            [
-                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
-            ],
-            [
-                InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
-            ]
-        ]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            chat_id=query.message.chat.id, 
-            message_id=query.message.id, 
-            media=InputMediaPhoto(random.choice(CPICS))
-        )
-        await query.message.edit_text(
-            text=script.WEBSS_TXT,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-
+    
     elif query.data == "trailers":
         buttons = [
             [
