@@ -458,7 +458,6 @@ Wᴇʟᴄᴏᴍᴇ ᴛᴏ {chat}.
 📆 Yᴇᴀʀ: <a href={url}/releaseinfo>{year}</a>
 🌟 Rᴀᴛɪɴɢ: <a href={url}/ratings>{rating}</a>/10
 🗳 Vᴏᴛᴇꜱ: {votes}
-💯ID : {imdb_id}
 🎬 Aʟsᴏ Kɴᴏᴡɴ Aꜱ: {aka}
 📺 Sᴇᴀꜱᴏɴꜱ: {seasons}
 💵 Bᴏx Oғғɪᴄᴇ: {box_office}
@@ -466,17 +465,16 @@ Wᴇʟᴄᴏᴍᴇ ᴛᴏ {chat}.
 📑 Kɪɴᴅ: {kind}
 🕒 Rᴜɴᴛɪᴍᴇ: {runtime}
 🌍 Cᴏᴜɴᴛʀɪᴇꜱ: {countries}
-🔞 Cᴇʀᴛɪғɪᴄᴀᴛᴇꜱ: {certificates}
 🗣 Lᴀɴɢᴜᴀɢᴇꜱ: {languages}
 🎥 Dɪʀᴇᴄᴛᴏʀ: {director}
 🖋 Wʀɪᴛᴇʀ: {writer}
 👤 Pʀᴏᴅᴜᴄᴇʀ: {producer}
 🎼 Cᴏᴍᴘᴏsᴇʀ: {composer}
 📸 Cɪɴᴇᴍᴀᴛᴏɢʀᴀᴘʜᴇʀ: {cinematographer}
-🎶 Mᴜꜱɪᴄ Tᴇᴀᴍ: {music_team}
-🏢 Dɪꜱᴛʀɪʙᴜᴛᴏʀꜱ: {distributors}
 📅 Rᴇʟᴇᴀsᴇ Dᴀᴛᴇ: {release_date}
-📜 Pʟᴏᴛ: {plot}"""
+📜 Pʟᴏᴛ: {plot}
+
+<b>𝚄𝚂𝙴 @AnAutoFilterBot 𝙵𝙾𝚁 𝙼𝙾𝚅𝙸𝙴𝚂</b>"""
 
     CUSTOM_FILE_CAPTION = """<b>Hey {mention} ⚡️</b>
 {file_name} 

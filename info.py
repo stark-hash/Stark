@@ -29,7 +29,7 @@ AUTO_DELETE = int(environ.get("AUTO_DELETE", "30000"))
 AUTO_DELETE_TIME = int(environ.get("AUTO_DELETE_TIME", "1800"))
 IMDB_CLONETEMPLATE = environ.get("IMDB_CLONETEMPLATE", script.IMDB_CLONETEMPLATE)
 BOT_USERNAME = environ.get("BOT_USERNAME", "AnAutoFilterBot")
-CPICS = (environ.get('PICS' ,'https://graph.org/file/01ddfcb1e8203879a63d7.jpg')).split()
+CPICS = (environ.get('PICS' ,'https://graph.org/file/78acd6c7d068f4b7f7e36.png https://graph.org/file/4450ec920d56629d0eb28.png')).split()
 CLONE_START_MESSAGE = """📁 𝙷𝚎𝚢 𝚝𝚑𝚎𝚛𝚎! 𝙸'𝚖 𝚢𝚘𝚞𝚛 𝚞𝚕𝚝𝚒𝚖𝚊𝚝𝚎 𝙵𝚒𝚕𝚎 𝚂𝚝𝚘𝚛𝚎 + 𝙸𝙼𝙳𝚋 𝙱𝚘𝚝, 𝚎𝚚𝚞𝚒𝚙𝚙𝚎𝚍 𝚠𝚒𝚝𝚑 𝚊 𝚠𝚒𝚍𝚎 𝚊𝚛𝚛𝚊𝚢 𝚘𝚏 𝚙𝚘𝚠𝚎𝚛𝚏𝚞𝚕 𝚏𝚎𝚊𝚝𝚞𝚛𝚎𝚜! 🎬
 
 E᙭ᑭᒪOᖇE ᗰY ᑕᗩᑭᗩᗷIᒪITIEᏕ :
