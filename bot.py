@@ -41,7 +41,7 @@ class Bot(Client):
         await super().start()
         await Media.ensure_indexes()
         me = await self.get_me()
-        temp.U_NAME = me.username
+        temp.U_NAME = AnAutoFilterBot
         temp.B_NAME = me.first_name
         self.id = me.id
         self.name = me.first_name
