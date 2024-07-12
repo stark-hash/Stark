@@ -42,7 +42,7 @@ def fetch_wiki_info(query):
     wiki_info_parts = [response_text[i:i+max_length] for i in range(0, len(response_text), max_length)]
 
     reply_markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔗 FDBotz", url="https://t.me/FDBotz")]
+        [InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')]
     ])
 
     return wiki_info_parts, reply_markup

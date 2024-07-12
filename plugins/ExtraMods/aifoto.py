@@ -53,7 +53,7 @@ def aiimage_info(promptquery):
     response_text = "Your AI-generated image has been successfully created."
 
     reply_markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("FDBotz", url='t.me/FDBotz')]
+        [InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')]
     ])
 
     return response_text, reply_markup, image_url

@@ -31,7 +31,7 @@ def qr_info(qrcodequery):
     response_text = "Your QR code has been successfully generated. | By @FDBotz"
 
     reply_markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("FDBotz", url='t.me/FDBotz')]
+        [InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')]
     ])
 
     return response_text, reply_markup, image_url

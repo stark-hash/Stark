@@ -37,7 +37,7 @@ def lyrics_info(lyricsquery):
     response_text = f"🎶 Successfully Extracted Lyrics Of {title} by {artist} 🎶"
 
     reply_markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("FDBotz", url='t.me/FDBotz')]
+        [InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')]
     ])
 
     return response_text, reply_markup, image_url, lyrics_text

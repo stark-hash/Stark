@@ -74,7 +74,7 @@ Made by @FDBotz ❤️"""
 
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("📥 Download APK", url=download_url)],
-            [InlineKeyboardButton("FDBotz", url='t.me/FDBotz')]
+            [InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')]
         ])
 
         results.append((response_text, reply_markup, image_url))

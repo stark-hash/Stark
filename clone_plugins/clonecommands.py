@@ -159,7 +159,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "about":
         buttons = [
             [
-                InlineKeyboardButton('ꜰᴅʙᴏᴛᴢ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('ʙᴀᴄᴋ', 'help'),
@@ -207,7 +207,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "extmod":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -228,7 +228,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "sharetext":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -249,7 +249,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "wallpapers":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -270,7 +270,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "aifoto":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -291,7 +291,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "alive":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -312,7 +312,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "json":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -333,7 +333,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "carbon":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -354,7 +354,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "apkdownloader":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -375,7 +375,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "terabox":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -396,7 +396,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "carbon":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -407,7 +407,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "chatgpt":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -428,7 +428,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "crypto":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -449,7 +449,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "font":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -470,7 +470,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "handwrite":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -491,7 +491,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "lyrics":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -512,7 +512,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "password":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -533,7 +533,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "paste":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -554,7 +554,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "photo":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -575,7 +575,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "pinterest":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -595,7 +595,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "qr":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -617,7 +617,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "telegraph":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -638,7 +638,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "tts":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -659,7 +659,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "webss":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -680,7 +680,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "wiki":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -701,7 +701,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "webss":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')
@@ -722,7 +722,7 @@ async def handle_callback_query(client, query: CallbackQuery):
     elif query.data == "trailers":
         buttons = [
             [
-                InlineKeyboardButton('ＦＤ  ＢＯＴＺ ', url='https://t.me/FDBotz')
+                InlineKeyboardButton("​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​", url='t.me/StarkBotUpdates')
             ],
             [
                 InlineKeyboardButton('‹ Bᴀᴄᴋ', callback_data='help')

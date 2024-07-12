@@ -227,7 +227,7 @@ Made With ❤️ BY @StarkBotUpdates"""
     STICKER_TXT ="""<b>COMMAND /stickerid\n𝖨𝖿 𝖸𝗈𝗎 𝖭𝖾𝖾𝖽 𝖳𝖾𝗅𝖾𝗀𝗋𝖺𝗆 𝖲𝗍𝗂𝖼𝗄𝖾𝗋 𝖨𝖽 𝖢𝗅𝗂𝖼𝗄 /stickerid 𝖳𝗈 𝖦𝖾𝗍 𝖲𝗍𝗂𝖼𝗄𝖾𝗋 𝖨𝖽 (𝖱𝖾𝗉𝗅𝗒 𝖶𝗂𝗍𝗁 𝖲𝗍𝗂𝖼𝗄𝖾𝗋)</b>
     
     Made With ❤️ BY @StarkBotUpdates"""
-    ALIVE_TXT ="""╔════❰ <b>ALIVE MODULE</b> ❱═════❍⊱❁۪۪
+    ALIVE_TXT ="""╔════❰ <b>ALIVE MODULE</b> ❱════❍⊱❁۪۪
 ║
 ║╭━━━━━━━━━━━━━━━➣
 ║┣⪼ /alive - check me alive or dead🤧
@@ -238,15 +238,15 @@ Made With ❤️ BY @StarkBotUpdates"""
 ║
 ║Made With ❤️ BY @StarkBotUpdates
 ║
-╚══════════════════════❍⊱❁۪۪"""
-    FUN_TXT ="""╔═══════❰ <b>FUN MODULE</b> ❱══════❍⊱❁۪۪
+╚════════════════════❍⊱❁۪۪"""
+    FUN_TXT ="""╔═══❰ <b>FUN MODULE</b> ❱═══❍⊱❁۪۪
 ║
 ║╭━━━━━━━━━━━━━━━➣
-║┣⪼🎲 NOTHING MUCH JUST SOME FUN THINGS
+║┣⪼🎲 SOME FUN THINGS
 ║
 ║┣⪼𝟣. /dice - Roll The Dice 
 ║┣⪼𝟤. /Throw 𝗈𝗋 /Dart - 𝖳𝗈 𝖬𝖺𝗄𝖾 Dart
-║┣⪼𝟣. /Goal or /Shoot - To Make A Goal Or Shoot
+║┣⪼𝟣. /Goal or /Shoot - Goal Or Shoot
 ║┣⪼𝟤. /luck - To Spin 
 ║┣⪼𝟣. /pinball or /tenpin - Bowling
 ║┣⪼𝟤. /break
@@ -269,26 +269,19 @@ Made With ❤️ BY @StarkBotUpdates"""
     CHATGPT_TXT = """ /ai [ᴛᴇxᴛ] - ★·.·´ᴄʜᴀᴛɢᴘᴛ ᴍᴏᴅᴜʟᴇ`·.·★"""
     HANDWRITE_TXT = """/handwrite [ᴛᴇxᴛ] - ✍️📝 Tᴇxᴛ"""
 
-    CONNECTION_TXT = """╔═══❰ <b>Hᴇʟᴘ Fᴏʀ Cᴏɴɴᴇᴄᴛɪᴏɴs</b> ❱═══❍⊱❁
-║
-║╭━━━━━━━━━━━━━━━━━━━➣
-║┣⪼ <i> Usᴇᴅ Tᴏ Cᴏɴɴᴇᴄᴛ Bᴏᴛ Tᴏ Pᴍ Fᴏʀ Mᴀɴᴀɢɪɴɢ Fɪʟᴛᴇʀs</i>
-║┣⪼ <i> Iᴛ Hᴇʟᴘs Tᴏ Aᴠᴏɪᴅ Sᴘᴀᴍᴍɪɴɢ Iɴ Gʀᴏᴜᴘs</i>
-║┣⪼ <b>Nᴏᴛᴇ:</b>
-║┣⪼ ❖ Oɴʟʏ Aᴅᴍɪɴs Cᴀɴ Aᴅᴅ A Cᴏɴɴᴇᴄᴛɪᴏɴ.
-║┣⪼ ❖ Sᴇɴᴅ /connect Fᴏʀ Cᴏɴɴᴇᴄᴛɪɴɢ Mᴇ Tᴏ Uʀ Pᴍ
-║
-║┣⪼ <b>Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:</b>
-║┣⪼ /connect - Cᴏɴɴᴇᴄᴛ A Pᴀʀᴛɪᴄᴜʟᴀʀ Cʜᴀᴛ Tᴏ Yᴏᴜʀ Pᴍ
-║┣⪼ /disconnect - Dɪsᴄᴏɴɴᴇᴄᴛ Fʀᴏᴍ A Cʜᴀᴛ
-║┣⪼ /connections - Lɪsᴛ Aʟʟ Yᴏᴜʀ Cᴏɴɴᴇᴄᴛɪᴏɴs
-║
-║╰━━━━━━━━━━━━━━━━━━━➣
-║
-║Made With ❤️ BY @StarkBotUpdates
-║
-╚═══════════════════════❍⊱❁
-"""
+    CONNECTION_TXT = """<b>Hᴇʟᴘ Fᴏʀ Cᴏɴɴᴇᴄᴛɪᴏɴs</b>
+<i> Usᴇᴅ Tᴏ Cᴏɴɴᴇᴄᴛ Bᴏᴛ Tᴏ Pᴍ Fᴏʀ Mᴀɴᴀɢɪɴɢ Fɪʟᴛᴇʀs</i>
+<i> Iᴛ Hᴇʟᴘs Tᴏ Aᴠᴏɪᴅ Sᴘᴀᴍᴍɪɴɢ Iɴ Gʀᴏᴜᴘs</i>
+<b>Nᴏᴛᴇ:</b>
+❖ Oɴʟʏ Aᴅᴍɪɴs Cᴀɴ Aᴅᴅ A Cᴏɴɴᴇᴄᴛɪᴏɴ.
+❖ Sᴇɴᴅ /connect Fᴏʀ Cᴏɴɴᴇᴄᴛɪɴɢ Mᴇ Tᴏ Uʀ Pᴍ
+
+<b>Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:</b>
+❖ /connect - Cᴏɴɴᴇᴄᴛ A Pᴀʀᴛɪᴄᴜʟᴀʀ Cʜᴀᴛ Tᴏ Yᴏᴜʀ Pᴍ
+❖ /disconnect - Dɪsᴄᴏɴɴᴇᴄᴛ Fʀᴏᴍ A Cʜᴀᴛ
+❖ /connections - Lɪsᴛ Aʟʟ Yᴏᴜʀ Cᴏɴɴᴇᴄᴛɪᴏɴs
+
+Made With ❤️ BY @StarkBotUpdates"""
 
     ADMIN_TXT = """<b>Hᴇʟᴩ Fᴏʀ Aᴅᴍɪɴꜱ</b>
     
