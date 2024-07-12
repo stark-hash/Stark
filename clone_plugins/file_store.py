@@ -1,6 +1,6 @@
 import base64, logging
 from pyrogram import filters, Client, enums
-from info import ADMINS, LOG_CHANNEL, PUBLIC_FILE_STORE
+from info import ADMINS, LOGS_CHANNEL, PUBLIC_FILE_STORE
 from database.ia_filterdb import unpack_new_file_id
 from utils import temp
 from info import CLONE_DB_URI as MONGO_URL
@@ -48,6 +48,6 @@ async def gen_link_s(bot, message):
     
     # Send the generated link to the log channel
     await bot.send_message(
-        chat_id=LOG_CHANNEL,
+        chat_id=LOGS_CHANNEL,
         text=f"Generated Link: {link}\n\nBy: @{message.from_user.username} (ID: {message.from_user.id})"
     )
