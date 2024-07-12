@@ -40,8 +40,8 @@ async def gen_link_s(bot, message):
     string += file_id
     outstr = base64.urlsafe_b64encode(string.encode("ascii")).decode().strip("=")
     bot_username = (await bot.get_me()).username
-    temp.U_NAME = bot_username
-    link = f"https://t.me/{temp.U_NAME}?start={outstr}"
+    temp.CU_NAME = bot_username
+    link = f"https://t.me/{temp.CU_NAME}?start={outstr}"
     
     # Reply to the user with the generated link
     await message.reply(f"Here is your Link:\n{link}")
