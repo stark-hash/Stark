@@ -1,4 +1,4 @@
-import os, re, json, base64, logging, random, asyncio
+import os, re, json, base64, logging, random, asyncio, requests
 
 from Script import script
 from database.users_chats_db import db
