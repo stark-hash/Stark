@@ -37,7 +37,9 @@ async def start(client, message):
             ],[
             InlineKeyboardButton("Sᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
             InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/StarkBotUpdates")
-            ],[      
+            ],[
+            InlineKeyboardButton("ᴄʟᴏɴᴇ 🧬", callback_data="cloning")
+            ],[          
             InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
         ]]
@@ -73,7 +75,9 @@ async def start(client, message):
             ],[
             InlineKeyboardButton("Sᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
             InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/StarkBotUpdates")
-            ],[      
+            ],[ 
+            InlineKeyboardButton("ᴄʟᴏɴᴇ 🧬", callback_data="cloning")
+            ],[     
             InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
         ]]

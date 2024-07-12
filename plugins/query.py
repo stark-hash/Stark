@@ -433,7 +433,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton("Sᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
             InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/StarkBotUpdates")
-            ],[      
+            ],[  
+            InlineKeyboardButton("ᴄʟᴏɴᴇ 🧬", callback_data="cloning")
+            ],[    
             InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
         ]]
@@ -507,7 +509,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('‹ Bᴀᴄᴋ', 'about')
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.SOURCE_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
-      
+
+    elif query.data == "cloning":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help') 
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.CLONE_TXT.format(user=query.from_user.mention), enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+
     elif query.data == "admin":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
