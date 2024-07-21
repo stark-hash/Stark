@@ -1,118 +1,77 @@
-import os
+# Don't Remove Credit Tg - @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+# Clone Code Credit : YT - @Tech_VJ / TG - @VJ_Bots / GitHub - @VJBots
+
+from info import API_ID, API_HASH, CLONE_MODE, LOG_CHANNEL
+from pyrogram import Client, filters, enums
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
+from database.users_chats_db import db
 import re
-import logging
-from pymongo import MongoClient
-from pyrogram import Client, filters
-from info import API_ID, API_HASH, ADMINS, CDB_NAME, LOG_CHANNEL
-from dotenv import load_dotenv
-from info import CLONE_DB_URI as MONGO_URL
 from Script import script
 
-
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-
-# Fetch the MongoDB URI from environment variables
-mongo_client = MongoClient(MONGO_URL)
-mongo_db = mongo_client["cloned_fdbotz"]
-mongo_collection = mongo_db[CDB_NAME]
-
-# Initialize MongoDB client with SSL configuration
-try:
-    mongo_client = MongoClient(MONGO_URL, serverSelectionTimeoutMS=5000)
-    mongo_db = mongo_client["cloned_fdbotz"]
-    mongo_collection = mongo_db["your_collection_name"]
-    logging.info("Connected to MongoDB successfully.")
-except Exception as e:
-    logging.exception("Error connecting to MongoDB: %s", e)
-    raise
-
-def is_bot_creator(user_id, bot_token):
-    bot = mongo_collection.find_one({"token": bot_token})
-    return bot and bot['user_id'] == user_id
-
-@Client.on_message(filters.command("clone") & filters.private)
-async def clone(client, message):
-    await message.reply_text(" sᴇɴᴅ /newbot ᴛᴏ @BotFather ɢɪᴠᴇ ᴀ ɴᴀᴍᴇ ꜰᴏʀ ʏᴏᴜʀ ʙᴏᴛ. \n\nɢɪᴠᴇ ᴀ ᴜɴɪǫᴜᴇ ᴜsᴇʀɴᴀᴍᴇ \n\nᴛʜᴇɴ ʏᴏᴜ ᴡɪʟʟ ɢᴇᴛ ᴀ ᴍᴇssᴀɢᴇ ᴡɪᴛʜ ʏᴏᴜʀ ʙᴏᴛ ᴛᴏᴋᴇɴ \n\nꜰᴏʀᴡᴀʀᴅ ᴛʜᴀᴛ ᴍᴇssᴀɢᴇ ᴛᴏ ᴍᴇ")
-
-@Client.on_message(filters.regex(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}') & filters.private)
-async def on_clone(client, message):
+@Client.on_message(filters.command('clone'))
+async def clone_menu(client, message):
+    if CLONE_MODE == False:
+        return 
+    if await db.is_clone_exist(message.from_user.id):
+        return await message.reply("**ʏᴏᴜ ʜᴀᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴏɴᴇᴅ ᴀ ʙᴏᴛ ᴅᴇʟᴇᴛᴇ ғɪʀsᴛ ɪᴛ ʙʏ /deleteclone**")
+    else:
+        pass
+    techvj = await client.ask(message.chat.id, "<b>1) sᴇɴᴅ <code>/newbot</code> ᴛᴏ @BotFather\n2) ɢɪᴠᴇ ᴀ ɴᴀᴍᴇ ꜰᴏʀ ʏᴏᴜʀ ʙᴏᴛ.\n3) ɢɪᴠᴇ ᴀ ᴜɴɪǫᴜᴇ ᴜsᴇʀɴᴀᴍᴇ.\n4) ᴛʜᴇɴ ʏᴏᴜ ᴡɪʟʟ ɢᴇᴛ ᴀ ᴍᴇssᴀɢᴇ ᴡɪᴛʜ ʏᴏᴜʀ ʙᴏᴛ ᴛᴏᴋᴇɴ.\n5) ꜰᴏʀᴡᴀʀᴅ ᴛʜᴀᴛ ᴍᴇssᴀɢᴇ ᴛᴏ ᴍᴇ.\n\n/cancel - ᴄᴀɴᴄᴇʟ ᴛʜɪs ᴘʀᴏᴄᴇss.</b>")
+    if techvj.text == '/cancel':
+        await techvj.delete()
+        return await message.reply('<b>ᴄᴀɴᴄᴇʟᴇᴅ ᴛʜɪs ᴘʀᴏᴄᴇss 🚫</b>')
+    if techvj.forward_from and techvj.forward_from.id == 93372553:
+        try:
+            bot_token = re.findall(r"\b(\d+:[A-Za-z0-9_-]+)\b", techvj.text)[0]
+        except:
+            return await message.reply('<b>sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ 😕</b>')
+    else:
+        return await message.reply('<b>ɴᴏᴛ ꜰᴏʀᴡᴀʀᴅᴇᴅ ꜰʀᴏᴍ @BotFather 😑</b>')
+    user_id = message.from_user.id
+    msg = await message.reply_text("**👨‍💻 ᴡᴀɪᴛ ᴀ ᴍɪɴᴜᴛᴇ ɪ ᴀᴍ ᴄʀᴇᴀᴛɪɴɢ ʏᴏᴜʀ ʙᴏᴛ ❣️**")
     try:
-        user_id = message.from_user.id
-        user_name = message.from_user.first_name
-        bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
-        bot_token = bot_token[0] if bot_token else None
-
-        bots = list(mongo_db.bots.find())
-        bot_tokens = [bot['token'] for bot in bots]
-
-        forward_from_id = message.forward_from.id if message.forward_from else None
-        if bot_token in bot_tokens and forward_from_id == 93372553:
-            await message.reply_text("**©️ ᴛʜɪs ʙᴏᴛ ɪs ᴀʟʀᴇᴀᴅʏ ᴄʟᴏɴᴇᴅ 🐥**")
-            return
-
-        if forward_from_id == 93372553:
-            msg = await message.reply_text("**👨‍💻 ᴡᴀɪᴛ ᴀ ᴍɪɴᴜᴛᴇ ɪ ᴀᴍ ᴄʀᴇᴀᴛɪɴɢ ʏᴏᴜʀ ʙᴏᴛ ❣️**")
-            try:
-                ai = Client(
-                    f"{bot_token}", API_ID, API_HASH,
-                    bot_token=bot_token,
-                    plugins={"root": "clone_plugins"},
-                    # Use in-memory storage to avoid SQLite issues
-                )
-
-                await ai.start()
-                bot = await ai.get_me()
-                details = {
-                    'bot_id': bot.id,
-                    'is_bot': True,
-                    'user_id': user_id,
-                    'name': bot.first_name,
-                    'token': bot_token,
-                    'username': bot.username
-                }
-                mongo_db.bots.insert_one(details)
-                success_message = f"<b>sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʟᴏɴᴇᴅ ʏᴏᴜʀ ʙᴏᴛ: @{bot.username}.\n\nғᴏʀ ᴍᴏʀᴇ ɪɴғᴏ sᴛᴀʀᴛ ʏᴏᴜʀ ᴄʟᴏɴᴇᴅ ʙᴏᴛ</b>"
-                await msg.edit_text(success_message)
+        vj = Client(
+            f"{bot_token}", API_ID, API_HASH,
+            bot_token=bot_token,
+            plugins={"root": "CloneTechVJ"}
+        )
+        await vj.start()
+        bot = await vj.get_me()
+        await db.add_clone_bot(bot.id, user_id, bot_token)
+        success_message=f"<b>sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʟᴏɴᴇᴅ ʏᴏᴜʀ ʙᴏᴛ: @{bot.username}.\n\nʏᴏᴜ ᴄᴀɴ ᴄᴜsᴛᴏᴍɪsᴇ ʏᴏᴜʀ ᴄʟᴏɴᴇ ʙᴏᴛ ʙʏ /settings ᴄᴏᴍᴍᴀɴᴅ ɪɴ ʏᴏᴜʀ ᴄʟᴏɴᴇ ʙᴏᴛ</b>"
+        await msg.edit_text(success_message)
 
                 # Send the success message to the log channel
-                await client.send_message(
-                    chat_id=LOG_CHANNEL,
-                    text=success_message
+        await client.send_message(
+                chat_id=LOG_CHANNEL,
+                text=success_message
                 )
-            except BaseException as e:
-                logging.exception("Error while cloning bot.")
-                await msg.edit_text(f"⚠️ <b>Bot Error:</b>\n\n<code>{e}</code>\n\n**Kindly forward this message to @TGTesla to get assistance.**")
-    except Exception as e:
-        logging.exception("Error while handling message: %s", e)
+    except BaseException as e:
+        await msg.edit_text(f"⚠️ <b>Bot Error:</b>\n\n<code>{e}</code>\n\n**Kindly forward this message to @KingVJ01 to get assistance.**")
 
-@Client.on_message(filters.command("deletecloned") & filters.private)
-async def delete_cloned_bot(client, message):
-    try:
-        bot_token = re.findall(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}', message.text, re.IGNORECASE)
-        bot_token = bot_token[0] if bot_token else None
+@Client.on_message(filters.command('deleteclone'))
+async def delete_clone_menu(client, message):
+    if await db.is_clone_exist(message.from_user.id):
+        await db.delete_clone(message.from_user.id)
+        await message.reply("**sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ʏᴏᴜʀ ᴄʟᴏɴᴇ ʙᴏᴛ, ʏᴏᴜ ᴄᴀɴ ᴄʀᴇᴀᴛᴇ ᴀɢᴀɪɴ ʙʏ /clone**")
+    else:
+        await message.reply("**ɴᴏ ᴄʟᴏɴᴇ ʙᴏᴛ ғᴏᴜɴᴅ**")
 
-        cloned_bot = mongo_collection.find_one({"token": bot_token})
-        if cloned_bot:
-            mongo_collection.delete_one({"token": bot_token})
-            await message.reply_text("**🤖 ᴛʜᴇ ᴄʟᴏɴᴇᴅ ʙᴏᴛ ʜᴀs ʙᴇᴇɴ ʀᴇᴍᴏᴠᴇᴅ ғʀᴏᴍ ᴛʜᴇ ʟɪsᴛ ᴀɴᴅ ɪᴛs ᴅᴇᴛᴀɪʟs ʜᴀᴠᴇ ʙᴇᴇɴ ʀᴇᴍᴏᴠᴇᴅ ғʀᴏᴍ ᴛʜᴇ ᴅᴀᴛᴀʙᴀsᴇ. ☠️**")
-        else:
-            await message.reply_text("**⚠️ ᴛʜᴇ ʙᴏᴛ ᴛᴏᴋᴇɴ ᴘʀᴏᴠɪᴅᴇᴅ ɪs ɴᴏᴛ ɪɴ ᴛʜᴇ ᴄʟᴏɴᴇᴅ ʟɪsᴛ.**")
-    except Exception as e:
-        logging.exception("Error while deleting cloned bot.")
-        await message.reply_text("An error occurred while deleting the cloned bot.")
-
-async def restart_bot():
-    logging.info("Restarting all bots........")
-    bots = list(mongo_db.bots.find())
+async def restart_bots():
+    bots_cursor = await db.get_all_bots()
+    bots = await bots_cursor.to_list(None)
     for bot in bots:
-        bot_token = bot['token']
+        bot_token = bot['bot_token']
         try:
-            ai = Client(
+            vj = Client(
                 f"{bot_token}", API_ID, API_HASH,
                 bot_token=bot_token,
-                plugins={"root": "clone_plugins"},
+                plugins={"root": "CloneTechVJ"},
             )
-            await ai.start()
+            await vj.start()
         except Exception as e:
-            logging.exception(f"Error while restarting bot with token {bot_token}: {e}")
+            print(f"Error while restarting bot with token {bot_token}: {e}")
+        

@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-import requests
+import requests, asyncio
 
 API = "https://lyrist.vercel.app/api/{}"
 
@@ -8,6 +8,16 @@ API = "https://lyrist.vercel.app/api/{}"
 async def lyrics_sendu(bot, message):
     query = message.text.split(None, 1)[1]
     try:
+        
+         # Send a "Processing..." message
+        processing_message = await message.reply_text(text="⏳ `Processing...`", quote=True)
+        
+        # Wait for 5 seconds
+        await asyncio.sleep(10)
+        
+        # Delete the "Processing..." message
+        await processing_message.delete()
+        
         response_text, reply_markup, image_url, lyrics_text = lyrics_info(query)
         
         # Send the image with the song title and artist as the caption

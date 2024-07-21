@@ -12,7 +12,7 @@ from utils import temp, __repo__, __license__, __copyright__, __version__
 from typing import Union, Optional, AsyncGenerator
 from plugins import web_server 
 
-from plugins.clone import restart_bot
+from plugins.clone import restart_bots
 from aiohttp import web
 
 # Get logging configurations
@@ -59,7 +59,10 @@ class Bot(Client):
             app = web.AppRunner(await web_server())
             await app.setup()
             await web.TCPSite(app, "0.0.0.0", 8080).start()
-            await restart_bot()
+            if CLONE_MODE == True:
+                print("Restarting All Clone Bots.......")
+                await restart_bots()
+                print("Restarted All Clone Bots.")
             logger.info("Web Response Is Running......🕸️")
             
     async def stop(self, *args):

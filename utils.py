@@ -8,6 +8,7 @@ from typing import Union, List
 from datetime import datetime, timedelta
 from database.users_chats_db import db
 from bs4 import BeautifulSoup
+from shortzy import Shortzy
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -45,6 +46,10 @@ async def is_subscribed(bot, query):
             return True
     return False
 
+async def get_clone_shortlink(link, url, api):
+    shortzy = Shortzy(api_key=api, base_site=url)
+    link = await shortzy.convert(link)
+    return link
 
 async def get_poster(query, bulk=False, id=False, file=None):
     imdb = Cinemagoer() 
