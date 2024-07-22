@@ -47,7 +47,7 @@ async def clone_menu(client, message):
             )
         except BaseException as e:
             print(f"Error during bot creation: {e}")
-            await msg.edit_text(f"⚠️ <b>Bot Error:</b>\n\n<code>{e}</code>\n\n**Kindly forward this message to @KingVJ01 to get assistance.**")
+            await msg.edit_text(f"⚠️ <b>Bot Error:</b>\n\n<code>{e}</code>\n\n**Kindly forward this message to @TGTesla to get assistance.**")
 
     except Exception as e:
         print(f"Error in clone_menu: {e}")
