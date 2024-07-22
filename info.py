@@ -25,8 +25,6 @@ COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 #Clone UndamPori
 CLONE_DB_URI = environ.get('CLONE_DB_URI', "mongodb+srv://fdtekkz7:fdtekkz7@cluster0.i4ygcfx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 CDB_NAME = environ.get('CDB_NAME', "Cluster0")
-AUTO_DELETE = int(environ.get("AUTO_DELETE", "30000")) 
-AUTO_DELETE_TIME = int(environ.get("AUTO_DELETE_TIME", "1800"))
 IMDB_CLONETEMPLATE = environ.get("IMDB_CLONETEMPLATE", script.IMDB_CLONETEMPLATE)
 BOT_USERNAME = environ.get("BOT_USERNAME", "AnAutoFilterBot")
 CPICS = (environ.get('CPICS' ,'https://graph.org/file/78acd6c7d068f4b7f7e36.png https://graph.org/file/4450ec920d56629d0eb28.png')).split()
