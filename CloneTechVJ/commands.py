@@ -4,12 +4,11 @@
 
 # Clone Code Credit : YT - @Tech_VJ / TG - @VJ_Bots / GitHub - @VJBots
 
-import os, string, logging, random, asyncio, time, datetime, re, sys, json, base64
+import logging, asyncio, base64
 from Script import script
 from pyrogram import Client, filters, enums
-from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import *
-from database.ia_filterdb import Media, get_file_details, unpack_new_file_id
+from database.ia_filterdb import Media, get_file_details
 from database.users_chats_db import db
 from CloneTechVJ.database.clone_bot_userdb import clonedb
 from info import *

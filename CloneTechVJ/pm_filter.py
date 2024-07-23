@@ -4,17 +4,17 @@
 
 # Clone Code Credit : YT - @Tech_VJ / TG - @VJ_Bots / GitHub - @VJBots
 
-import os, logging, string, asyncio, time, re, ast, random, math, pytz, pyrogram
-from datetime import datetime, timedelta, date, time
+import logging, asyncio, re, math, pytz
+from datetime import datetime, timedelta
 from Script import script
 from info import *
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto, ChatPermissions, WebAppInfo
-from pyrogram import Client, filters, enums
-from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram import Client, filters
+from pyrogram.errors import UserIsBlocked, MessageNotModified, PeerIdInvalid
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
-from utils import get_size, is_subscribed, pub_is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink, get_tutorial, send_all, get_cap
+from utils import get_size, get_poster, temp, get_settings, send_all
 from database.users_chats_db import db
-from database.ia_filterdb import Media, get_file_details, get_search_results
+from database.ia_filterdb import get_file_details, get_search_results
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
