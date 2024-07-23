@@ -33,6 +33,7 @@ class temp(object):
     PM_BUTTONS = {}
     PM_SPELL = {}
     GP_SPELL = {}
+    IMDB_CAP = {}
 
 async def is_subscribed(bot, query):
     try:
