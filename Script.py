@@ -487,7 +487,7 @@ Wᴇʟᴄᴏᴍᴇ ᴛᴏ {chat}.
 🌟 Rᴀᴛɪɴɢ: <a href={url}/ratings>{rating}</a>/10"""
 
     IMDB_TEMPLATE_TXT = """
-<b>Query: {qurey}
+<b>Query: {query}
 
 IMDb Data:
 
