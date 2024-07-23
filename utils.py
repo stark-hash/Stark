@@ -34,6 +34,8 @@ class temp(object):
     PM_SPELL = {}
     GP_SPELL = {}
     IMDB_CAP = {}
+    GETALL = {}
+    SHORT = {}
 
 async def is_subscribed(bot, query):
     try:

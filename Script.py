@@ -56,15 +56,15 @@ E᙭ᑭᒪOᖇE ᗰY ᑕᗩᑭᗩᗷIᒪITIEᏕ :
 
 ᴛʜᴇɴ ɪ ᴡɪʟʟ ᴛʀʏ ᴛᴏ ᴄʀᴇᴀᴛᴇ ᴀ ᴄʟᴏɴᴇ ғᴏʀ ʏᴏᴜ 😌</b>"""
 
-    CABOUT_TXT = """<b>📁 𝙷𝚎𝚢 𝚝𝚑𝚎𝚛𝚎! 𝙸'𝚖 𝚊𝚗 𝚞𝚕𝚝𝚒𝚖𝚊𝚝𝚎 𝙵𝚒𝚕𝚎 𝚂𝚝𝚘𝚛𝚎 + 𝙸𝙼𝙳𝚋 𝙱𝚘𝚝, 𝚎𝚚𝚞𝚒𝚙𝚙𝚎𝚍 𝚠𝚒𝚝𝚑 𝚊 𝚠𝚒𝚍𝚎 𝚊𝚛𝚛𝚊𝚢 𝚘𝚏 𝚙𝚘𝚠𝚎𝚛𝚏𝚞𝚕 𝚏𝚎𝚊𝚝𝚞𝚛𝚎𝚜! 
-
-🤖 ᴍʏ ɴᴀᴍᴇ: {}
-
-📝 ʟᴀɴɢᴜᴀɢᴇ: <a href=https://www.python.org>𝙿𝚈𝚃𝙷𝙾𝙽 𝟹</a>
-
-📚 ʟɪʙʀᴀʀʏ: <a href=https://docs.pyrogram.org>𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼</a>
-
-🧑🏻‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ: <a href=tg://user?id={}>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></b>"""    
+    CLONE_ABOUT_TXT = """<b><blockquote>⍟───[ ᴍʏ ᴀʙᴏᴜᴛ ]───⍟</blockquote>
+    
+‣ ᴍʏ ɴᴀᴍᴇ : {}
+‣ ᴍʏ ʙᴇsᴛ ғʀɪᴇɴᴅ : <a href='tg://settings'>ᴛʜɪs ᴘᴇʀsᴏɴ</a> 
+‣ ᴄʟᴏɴᴇᴅ ғʀᴏᴍ : <a href=https://t.me/{}>{}</a>
+‣ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a> 
+‣ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 3</a> 
+‣ ᴅᴀᴛᴀ ʙᴀsᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
+‣ ʙᴜɪʟᴅ sᴛᴀᴛᴜs : ᴠ2.7.1 [sᴛᴀʙʟᴇ]></b>"""  
 
 
     ALRT_TXT = """ʜᴇʟʟᴏ {},
