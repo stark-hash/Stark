@@ -7,6 +7,7 @@
 import logging, asyncio, base64
 from Script import script
 from pyrogram import Client, filters, enums
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.types import *
 from database.ia_filterdb import Media, get_file_details
 from database.users_chats_db import db
