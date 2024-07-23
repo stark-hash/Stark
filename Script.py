@@ -498,12 +498,7 @@ IMDb Data:
 ☀️ Languages : <code>{languages}</code>
 📀 RunTime: {runtime} Minutes
 📆 Release Info : {release_date}
-🎛 Countries : <code>{countries}</code>
-
-
-⏰Result Shown in: {remaining_seconds} <i>seconds</i> 🔥
-
-Requested by : {message.from_user.mention}</b>"""
+🎛 Countries : <code>{countries}</code></b>"""
     
 
     IMDB_CLONETEMPLATE = """<b>Qᴜᴇʀʏ: {query}</b>
