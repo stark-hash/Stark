@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 import requests
 
-# Vulgar words list (same as before)
+API = "https://chatgpt.apinepdev.workers.dev/?question={}"
 vulgar_words = [
     "nudegirl", "nude", "sex", "porn", "vulgarwords", "ass", "bitch", "boobs", "breast", "cock", 
     "cunt", "dick", "fuck", "motherfucker", "pussy", "slut", "whore", "damn", "bastard", 
@@ -15,11 +15,6 @@ vulgar_words = [
     "shag", "shite", "shitface", "shithead", "shlong", "spunk", "titty", "turd", "willy",
     "chode", "rimjob", "foreskin", "herpes", "titfuck", "tranny", "shemale"
 ]
-
-# RapidAPI credentials
-RAPIDAPI_URL = "https://chatgpt-42.p.rapidapi.com/conversationgpt4-2"
-RAPIDAPI_KEY = "645c5bb55emsh4a9339f4e45b563p183a3cjsneaef1f5eae8d"
-RAPIDAPI_HOST = "chatgpt-42.p.rapidapi.com"
 
 @Client.on_message(filters.command("ai"))
 async def ask_chatgpt(bot, message):
@@ -45,33 +40,10 @@ async def ask_chatgpt(bot, message):
         await message.reply_text(text="❌ <b>Error fetching response from ChatGPT</b>", quote=True)
 
 def chatgpt_info(question):
-    # Define the payload for the API request
-    payload = {
-        "messages": [
-            {
-                "role": "user",
-                "content": question
-            }
-        ],
-        "system_prompt": "",
-        "temperature": 0.9,
-        "top_k": 5,
-        "top_p": 0.9,
-        "max_tokens": 256,
-        "web_access": False
-    }
+    response = requests.get(API.format(question))
+    info = response.json()
 
-    headers = {
-        "x-rapidapi-key": RAPIDAPI_KEY,
-        "x-rapidapi-host": RAPIDAPI_HOST,
-        "Content-Type": "application/json"
-    }
-
-    # Make the API request
-    response = requests.post(RAPIDAPI_URL, json=payload, headers=headers)
-    response_data = response.json()
-
-    # Extract the answer from the JSON response
-    answer = response_data.get('result', 'Sorry, no response was returned.')
+    # Extract the answer part from the JSON response
+    answer = info['answer']
 
     return answer
