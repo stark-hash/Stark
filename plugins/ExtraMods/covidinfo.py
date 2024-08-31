@@ -44,13 +44,6 @@ async def get_covid_info(bot, message):
     country_code = message.text.split()[1].upper()
 
     # Check for vulgar words
-    if any(word in country_code.lower() for word in vulgar_words):
-        await message.reply_text(
-            text="❌ <b>Please refrain from using inappropriate content.</b>",
-            quote=True
-        )
-        return
-
     try:
         answer = fetch_covid_data(country_code)
         await message.reply_text(
