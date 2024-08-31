@@ -276,9 +276,10 @@ async def delete_all_index_confirm(bot, message):
 
 #####################################################################################################################################
 
-#TeraboxAPI
-
-API = "https://teraboxvideodownloader.nepcoderdevs.workers.dev/?url={}"
+# RapidAPI credentials
+RAPIDAPI_URL = "https://terabox-downloader-direct-download-link-generator.p.rapidapi.com/fetch"
+RAPIDAPI_KEY = "645c5bb55emsh4a9339f4e45b563p183a3cjsneaef1f5eae8d"
+RAPIDAPI_HOST = "terabox-downloader-direct-download-link-generator.p.rapidapi.com"
 
 @Client.on_message(filters.command("terabox"))
 async def reply_info(bot, message):
@@ -292,19 +293,28 @@ async def reply_info(bot, message):
             reply_markup=reply_markup
         )
     except Exception as e:
-        await message.reply_text(text="❌ <b>Error fetching data from Terabox API</b>",
-            quote=True
-        )
+        await message.reply_text(text="❌ <b>Error fetching data from Terabox API</b>", quote=True)
 
 def terabox_info(teraboxlink):
-    r = requests.get(API.format(teraboxlink))
-    info = r.json()
+    # Define the payload for the API request
+    payload = { "url": teraboxlink }
+    
+    headers = {
+        "x-rapidapi-key": RAPIDAPI_KEY,
+        "x-rapidapi-host": RAPIDAPI_HOST,
+        "Content-Type": "application/json"
+    }
+
+    # Make the API request
+    response = requests.post(RAPIDAPI_URL, json=payload, headers=headers)
+    response_data = response.json()
 
     # Extract data from the JSON response
-    fast_download_link = info['response'][0]['resolutions']['Fast Download']
-    hd_video_link = info['response'][0]['resolutions']['HD Video']
-    video_title = info['response'][0]['title']
-    thumbnail_url = info['response'][0]['thumbnail']
+    file_info = response_data[0]
+    fast_download_link = file_info['fastdlink']
+    hd_video_link = file_info['dlink']
+    video_title = file_info['server_filename']
+    thumbnail_url = file_info['thumbs']['url1']
 
     response_text = f"""--Terabox Video Download--
 
@@ -320,10 +330,6 @@ Made by @FDBotz ❤️"""
     ])
 
     return response_text, reply_markup, thumbnail_url
-
-
-#####################################################################################################################################
-
 
 
 @Client.on_message(filters.command('settings'))
