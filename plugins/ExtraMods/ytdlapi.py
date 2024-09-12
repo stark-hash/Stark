@@ -28,7 +28,7 @@ def extract_video_id(url):
             break
     return video_id
 
-@Client.on_message(filters.command("video") & filters.private)
+@Client.on_message(filters.command("vvideo") & filters.private)
 async def handle_video(client, message):
     if len(message.command) != 2:
         await message.reply_text("Usage: /video <YouTube URL>")
