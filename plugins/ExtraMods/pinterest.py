@@ -1,6 +1,6 @@
 import requests
 import logging
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 import os
 
 # Set up logging
@@ -80,7 +80,7 @@ async def handle_pinterest(client, message):
                 chat_id=message.chat.id,
                 video=video_path,
                 caption=f"{title}\n[Download Video]({video_url})",
-                parse_mode="markdown"
+                parse_mode=enums.ParseMode.MARKDOWN
             )
             logger.info(f"Video sent to chat: {message.chat.id}")
         except Exception as e:
@@ -99,7 +99,7 @@ async def handle_pinterest(client, message):
                 chat_id=message.chat.id,
                 photo=image_url,
                 caption=f"{title}\n[View Image]({image_url})",
-                parse_mode="markdown"
+                parse_mode=enums.ParseMode.MARKDOWN
             )
             logger.info(f"Image sent to chat: {message.chat.id}")
         except Exception as e:
