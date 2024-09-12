@@ -1,56 +1,67 @@
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import requests
+from pyrogram import Client, filters
+import os
 
-API = "https://pinteresimage.nepcoderdevs.workers.dev/?query={}&limit=12"
-vulgar_words = [
-    "nudegirl", "nude", "sex", "porn", "vulgarwords", "ass", "bitch", "boobs", "breast", "cock", 
-    "cunt", "dick", "fuck", "motherfucker", "pussy", "slut", "whore", "damn", "bastard", 
-    "shit", "bollocks", "bugger", "bloody", "blowjob", "dildo", "fag", "faggot", "handjob", 
-    "jizz", "knob", "muff", "nigger", "penis", "prick", "snatch", "tit", "twat", "vagina", 
-    "wank", "wanker", "cum", "jugs", "spunk", "skank", "slutty", "tits", "milf", "hentai",
-    "gangbang", "hardcore", "incest", "lesbian", "masturbate", "orgasm", "rape", "screw", 
-    "stripper", "suck", "threesome", "xxx", "anus", "arse", "arsehole", "bollock", "boner",
-    "clit", "clitoris", "douche", "dyke", "fellatio", "felch", "gonads", "horny", "jizzum", 
-    "knobend", "knobhead", "minge", "nutsack", "pecker", "piss", "scrote", "scrotum", "semen",
-    "shag", "shite", "shitface", "shithead", "shlong", "spunk", "titty", "turd", "willy",
-    "chode", "rimjob", "foreskin", "herpes", "titfuck", "tranny", "shemale"
-]
+# API details
+API_URL = "https://pinterest-downloader-download-pinterest-image-video-and-reels.p.rapidapi.com/api/server"
+HEADERS = {
+    "x-rapidapi-key": "645c5bb55emsh4a9339f4e45b563p183a3cjsneaef1f5eae8d",  # Replace with your own API key
+    "x-rapidapi-host": "pinterest-downloader-download-pinterest-image-video-and-reels.p.rapidapi.com",
+    "Content-Type": "application/json"
+}
 
-@Client.on_message(filters.command("pinterest"))
-async def pinterest_sendu(bot, message):
-    query = message.text.split(None, 1)[1]
+def fetch_pinterest_content(pinterest_url):
+    """Fetch Pinterest content using the API."""
+    payload = {"id": pinterest_url}
+    response = requests.post(API_URL, json=payload, headers=HEADERS)
+    return response.json()
 
-    # Check for vulgar words
-    if any(word in query.lower() for word in vulgar_words):
-        await message.reply_text(
-            text="❌ <b>You cannot search for images with vulgar prompts.</b>",
-            quote=True
-        )
+def download_video(video_url, video_path):
+    """Download video from the given URL."""
+    response = requests.get(video_url, stream=True)
+    with open(video_path, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=1024):
+            if chunk:
+                file.write(chunk)
+
+@Client.on_message(filters.command("pinterest") & filters.private)
+async def handle_pinterest(client, message):
+    if len(message.command) != 2:
+        await message.reply_text("Usage: /pinterest <Pinterest URL>")
         return
 
-    try:
-        results = pinterest_info(query)
+    pinterest_url = message.command[1]
+    pinterest_data = fetch_pinterest_content(pinterest_url)
+
+    if not pinterest_data or not pinterest_data.get("data"):
+        await message.reply_text("Unable to fetch details from Pinterest.")
+        return
+
+    # Extract data from the response
+    data = pinterest_data["data"]
+    title = data.get("title", "No Title Available")
+    videos = data.get("stories")[0]["video"]["video_list"] if data.get("stories") else None
+    image_url = data.get("image_medium_url")
+    
+    if videos:  # If there is a video, download and send it
+        video_url = videos["V_EXP3"]["url"]  # Picking the mp4 version (you can change it based on preference)
+        video_path = f"{message.chat.id}_pinterest_video.mp4"
+        download_video(video_url, video_path)
+
+        await client.send_video(
+            chat_id=message.chat.id,
+            video=video_path,
+            caption=f"{title}\n[Download Video]({video_url})",
+            parse_mode="markdown"
+        )
         
-        if results:
-            for result in results:
-                image_url = result['imageUrl']
-                title = result['title']
-                
-                await message.reply_photo(
-                    photo=image_url,
-                    caption=title,
-                    quote=True
-                )
-        else:
-            await message.reply_text(text="❌ <b>No images found for your query.</b>", quote=True)
+        os.remove(video_path)  # Remove the video file after sending
+    else:  # If there is no video, send the image
+        await client.send_photo(
+            chat_id=message.chat.id,
+            photo=image_url,
+            caption=f"{title}\n[View Image]({image_url})",
+            parse_mode="markdown"
+        )
 
-    except Exception as e:
-        await message.reply_text(text="❌ <b>Error fetching Pinterest Images</b>", quote=True)
-
-def pinterest_info(pinterestpromptquery):
-    response = requests.get(API.format(pinterestpromptquery))
-    info = response.json()
-
-    return info.get('results', [])
 
