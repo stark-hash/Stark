@@ -4,11 +4,11 @@ import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-# Setup logging
+# Initialize logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Sample list of credit card (CC) details with additional fields
+# Example list of credit card details
 CC_DETAILS = [
     {"number": "4219 4000 0245 4560", "expiry": "09/26", "cvv": "173", "name": "", "address": "", "country": "ES"},
     {"number": "5374 1001 5289 0716", "expiry": "12/26", "cvv": "667", "name": "", "address": "", "country": " "},
@@ -120,115 +120,77 @@ CC_DETAILS = [
    {"number": "4532 4122 1678 5204", "expiry": "01/27", "cvv": "690", "name": "", "address": "", "country": "ES"}
 ]
 
-# Store user refresh times (user_id -> last refresh timestamp)
+# Cooldown tracking dictionary
 USER_REFRESH_TIMES = {}
+COOLDOWN_PERIOD = 24 * 60 * 60  # 24 hours in seconds
 
-# Set the cooldown period (24 hours in seconds)
-COOLDOWN_PERIOD = 24 * 60 * 60  # 24 hours
-
-# Function to return a random CC from the list
+# Function to get random CC
 def get_random_cc():
-    """Return a random CC from the list."""
     return random.choice(CC_DETAILS)
 
-# Function to check cooldown period
+# Function to check cooldown
 def is_cooldown_expired(user_id):
-    """Check if the cooldown period has expired for the given user."""
     last_refresh = USER_REFRESH_TIMES.get(user_id, 0)
-    current_time = time.time()
-    return (current_time - last_refresh) > COOLDOWN_PERIOD
+    return (time.time() - last_refresh) > COOLDOWN_PERIOD
 
-# Function to set last refresh time
+# Function to set the user's refresh time
 def set_refresh_time(user_id):
-    """Set the current time as the last refresh time for the user."""
     USER_REFRESH_TIMES[user_id] = time.time()
 
-# Handle the /cc command
-@Client.on_message(filters.command("cc", prefixes=['/', '!']) & filters.private)
+# Command handler for /cc
+@Client.on_message(filters.command("cc") & filters.private)
 async def handle_cc(client, message):
-    """Handle the /cc command and send a random CC with a refresh button."""
     user_id = message.from_user.id
-    
-    logger.info(f"Received /cc command from user: {user_id}")  # Log the event
-    
+    logger.info(f"User {user_id} requested a CC")
+
+    # Generate random CC
     cc = get_random_cc()
-    
-    # Create the message text with the random CC details
     cc_text = (f"**Card Number**: {cc['number']}\n"
-               f"**Expiry Date**: {cc['expiry']}\n"
+               f"**Expiry**: {cc['expiry']}\n"
                f"**CVV**: {cc['cvv']}\n"
-               f"**Name**: {cc['name']}\n"
-               f"**Address**: {cc['address']}\n"
                f"**Country**: {cc['country']}")
     
-    # Create an inline keyboard with a "Refresh" button
+    # Create inline keyboard for refresh
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🔄 Refresh", callback_data="refresh_cc")],
         [InlineKeyboardButton("💳 Get Unlimited CCs (Crypto)", callback_data="get_subscription")]
     ])
     
-    # Send the CC details with the refresh button
     await message.reply_text(cc_text, reply_markup=keyboard)
-    logger.info(f"Sent CC details to user: {user_id}")  # Log the event
 
-# Handle the refresh button click
+# Callback query handler for refresh button
 @Client.on_callback_query(filters.regex("refresh_cc"))
 async def refresh_cc(client, callback_query):
-    """Handle the refresh button click to send a new random CC with cooldown and subscription option."""
     user_id = callback_query.from_user.id
-    
-    logger.info(f"User {user_id} requested CC refresh")  # Log the event
-    
-    # Check if the user is in the cooldown period
+
     if not is_cooldown_expired(user_id):
-        # Show alert if cooldown is not expired
-        await callback_query.answer("Next refresh available in 24 hours. Get unlimited CCs with a subscription!", show_alert=True)
-        logger.info(f"User {user_id} tried refreshing before cooldown expired")  # Log the event
+        # Alert user if refresh is on cooldown
+        await callback_query.answer("Next refresh available in 24 hours.", show_alert=True)
         return
 
-    # Update the last refresh time for the user
+    # Reset the refresh cooldown
     set_refresh_time(user_id)
-    
-    # Send a new random CC
+
+    # Send new random CC
     cc = get_random_cc()
     cc_text = (f"**Card Number**: {cc['number']}\n"
-               f"**Expiry Date**: {cc['expiry']}\n"
+               f"**Expiry**: {cc['expiry']}\n"
                f"**CVV**: {cc['cvv']}\n"
-               f"**Name**: {cc['name']}\n"
-               f"**Address**: {cc['address']}\n"
                f"**Country**: {cc['country']}")
-    
-    # Create a new keyboard with the refresh button and subscription option
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔄 Refresh", callback_data="refresh_cc")],
-        [InlineKeyboardButton("💳 Get Unlimited CCs (Crypto)", callback_data="get_subscription")]
-    ])
-    
-    # Edit the original message with the new random CC
-    await callback_query.message.edit_text(cc_text, reply_markup=keyboard)
-    logger.info(f"User {user_id} received new CC details after refresh")  # Log the event
 
-# Handle the subscription button click
+    # Edit the message with the new CC
+    await callback_query.message.edit_text(cc_text, reply_markup=callback_query.message.reply_markup)
+
+# Callback query handler for subscription button
 @Client.on_callback_query(filters.regex("get_subscription"))
 async def get_subscription(client, callback_query):
-    """Handle the subscription button click to show subscription options."""
-    user_id = callback_query.from_user.id
-    logger.info(f"User {user_id} requested subscription options")  # Log the event
+    subscription_text = (
+        "**Subscription Plans:**\n"
+        "1. Basic: 1 week unlimited CC refresh - $5 (crypto)\n"
+        "2. Standard: 1 month unlimited CC refresh - $15 (crypto)\n"
+        "3. Premium: 3 months unlimited CC refresh - $40 (crypto)\n"
+        "Contact support to pay in Bitcoin, Ethereum, or USDT."
+    )
     
-    # Show subscription plans with crypto payments
-    subscription_text = """
-**Subscription Plans:**
-1. 🟢 Basic: 1 week unlimited CC refresh - $5 in crypto
-2. 🟡 Standard: 1 month unlimited CC refresh - $15 in crypto
-3. 🔵 Premium: 3 months unlimited CC refresh - $40 in crypto
-
-💳 We accept payments via Bitcoin, Ethereum, USDT, and Sol.
-
-Please contact our support to process the payment and unlock your subscription!
-"""
-    # Edit the message to show subscription plans
     await callback_query.message.edit_text(subscription_text)
-    
-    # Show an alert (optional)
-    await callback_query.answer("Contact us for crypto payments to get unlimited CC refreshes!", show_alert=True)
-    logger.info(f"User {user_id} was shown subscription options")  # Log the event
+    await callback_query.answer("Contact support for more info!", show_alert=True)
