@@ -1,3 +1,4 @@
+import os
 import requests
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -9,6 +10,8 @@ HEADERS = {
     "x-rapidapi-key": "645c5bb55emsh4a9339f4e45b563p183a3cjsneaef1f5eae8d",
     "x-rapidapi-host": "full-downloader-social-media.p.rapidapi.com"
 }
+
+MAX_FILE_SIZE = 200 * 1024 * 1024  # 200 MB limit
 
 def fetch_video_data(url):
     """Fetch video data using the downloader API."""
@@ -31,12 +34,12 @@ async def handle_download(client, message):
         text=f"New download request from [{user.first_name}](tg://user?id={user.id})\nURL: {url}"
     )
 
-    # Special case for Pinterest URLs
-    if "pinterest" in url.lower():
+    # Blacklist for Pinterest and Pin URLs
+    if "pinterest" in url.lower() or "pin" in url.lower():
         await message.reply_text("For Pinterest downloads, use the /pinterest command.")
         await client.send_message(
             chat_id=LOG_CHANNEL,
-            text=f"Pinterest URL detected. Redirected user [{user.first_name}](tg://user?id={user.id}) to /pinterest."
+            text=f"Pinterest/Pin URL detected. Redirected user [{user.first_name}](tg://user?id={user.id}) to /pinterest."
         )
         return
 
@@ -60,26 +63,59 @@ async def handle_download(client, message):
         await handle_other_platform(client, message, video_data)
 
 async def handle_youtube(client, message, video_data):
-    """Handle YouTube video download with inline buttons."""
+    """Handle YouTube video download, download 360p if under 200 MB, show buttons for other qualities."""
     title = video_data.get("title", "YouTube Video")
     videos = video_data.get("videos", [])
-    thumb_url = video_data.get("thumb")
     user = message.from_user
+    download_url_360p = None
+    video_size_360p = None
 
+    # Prepare the buttons for other resolutions
     buttons = []
-    for i, video in enumerate(videos[:7]):  # Limit to 0-6
-        quality = video.get("quality")
-        size = video.get("size")
-        dlink = video.get("dlink")
-        buttons.append([InlineKeyboardButton(f"{quality} ({size})", url=dlink)])
 
-    keyboard = InlineKeyboardMarkup(buttons)
-    await client.send_photo(
+    # Search for the 360p version and also create buttons for other qualities
+    for video in videos:
+        quality = video.get("quality")
+        dlink = video.get("dlink")
+        size = video.get("size", "Unknown size")
+
+        # Check if this is the 360p version and get the download link
+        if quality == "360p":
+            download_url_360p = dlink
+            video_size_360p = size
+        else:
+            # Add buttons for other qualities
+            buttons.append([InlineKeyboardButton(f"{quality} ({size})", url=dlink)])
+
+    # Check if the 360p version is found
+    if not download_url_360p:
+        await message.reply_text("360p version not available for this video.")
+        return
+
+    # Check if the 360p video is under 200 MB
+    if video_size_360p and video_size_360p.endswith("MB"):
+        size_in_mb = float(video_size_360p.replace("MB", "").strip())
+        if size_in_mb > 200:
+            await message.reply_text("The 360p video is larger than 200 MB and cannot be downloaded.")
+            return
+
+    # If 360p is found and within size limit, download the video
+    response = requests.get(download_url_360p)
+    file_name = f"{title}.mp4"
+    with open(file_name, "wb") as file:
+        file.write(response.content)
+
+    # Send the video and show buttons for other resolutions
+    keyboard = InlineKeyboardMarkup(buttons) if buttons else None
+    await client.send_video(
         chat_id=message.chat.id,
-        photo=thumb_url,
-        caption=f"**{title}**\n\nSelect your preferred video quality:",
+        video=file_name,
+        caption=f"**{title}**\n\nDownloaded in 360p.",
         reply_markup=keyboard
     )
+
+    # Delete the file after sending
+    os.remove(file_name)
 
     # Log the YouTube video details
     await client.send_message(
@@ -91,7 +127,6 @@ async def handle_instagram(client, message, video_data):
     """Handle Instagram video download."""
     caption = video_data.get("caption", "Instagram Reel")
     video_url = video_data.get("download_url")
-    thumb_url = video_data.get("thumb")
     user = message.from_user
 
     await client.send_video(
@@ -110,7 +145,6 @@ async def handle_other_platform(client, message, video_data):
     """Handle videos from TikTok or other platforms."""
     video_url = video_data.get("download_url")
     caption = video_data.get("title", "Video")
-    thumb_url = video_data.get("thumb")
     user = message.from_user
 
     await client.send_video(
