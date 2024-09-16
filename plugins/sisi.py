@@ -201,7 +201,7 @@ async def get_subscription(client, callback_query):
 2. 🟡 Standard: 1 month unlimited CC refresh - $15 in crypto
 3. 🔵 Premium: 3 months unlimited CC refresh - $40 in crypto
 
-💳 We accept payments via Bitcoin, Ethereum, and USDT.
+💳 We accept payments via Bitcoin, Ethereum, and USDT and Sol.
 
 Please contact our support to process the payment and unlock your subscription!
 """
