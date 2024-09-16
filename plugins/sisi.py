@@ -1,7 +1,12 @@
 import random
 import time
+import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Sample list of credit card (CC) details with additional fields
 CC_DETAILS = [
@@ -114,8 +119,6 @@ CC_DETAILS = [
     {"number": "4716 6580 3101 4433", "expiry": "11/25", "cvv": "871", "name": "", "address": "", "country": "ES"},
    {"number": "4532 4122 1678 5204", "expiry": "01/27", "cvv": "690", "name": "", "address": "", "country": "ES"}
 ]
-
-
 # Store user refresh times (user_id -> last refresh timestamp)
 USER_REFRESH_TIMES = {}
 
@@ -140,62 +143,66 @@ def set_refresh_time(user_id):
 async def handle_cc(client, message):
     """Handle the /cc command and send a random CC with a refresh button."""
     user_id = message.from_user.id
-    cc = get_random_cc()
-    
-    # Create the message text with the random CC details
-    cc_text = (f"**Card Number**: {cc['number']}\n"
-               f"**Expiry Date**: {cc['expiry']}\n"
-               f"**CVV**: {cc['cvv']}\n"
-               f"**Name**: {cc['name']}\n"
-               f"**Address**: {cc['address']}\n"
-               f"**Country**: {cc['country']}")
-    
-    # Create an inline keyboard with a "Refresh" button
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔄 Refresh", callback_data="refresh_cc")],
-        [InlineKeyboardButton("💳 Get Unlimited CCs (Crypto)", callback_data="get_subscription")]
-    ])
-    
-    # Send the CC details with the refresh button
-    await message.reply_text(cc_text, reply_markup=keyboard)
+    logger.info(f"Received /cc command from user {user_id}")
+
+    try:
+        cc = get_random_cc()
+        cc_text = (f"**Card Number**: {cc['number']}\n"
+                   f"**Expiry Date**: {cc['expiry']}\n"
+                   f"**CVV**: {cc['cvv']}\n"
+                   f"**Name**: {cc['name']}\n"
+                   f"**Address**: {cc['address']}\n"
+                   f"**Country**: {cc['country']}")
+        
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔄 Refresh", callback_data="refresh_cc")],
+            [InlineKeyboardButton("💳 Get Unlimited CCs (Crypto)", callback_data="get_subscription")]
+        ])
+        
+        await message.reply_text(cc_text, reply_markup=keyboard)
+        logger.info("CC details sent to user.")
+    except Exception as e:
+        logger.error(f"Error handling /cc command: {e}")
 
 @Client.on_callback_query(filters.regex("refresh_cc"))
 async def refresh_cc(client, callback_query):
     """Handle the refresh button click to send a new random CC with cooldown and subscription option."""
     user_id = callback_query.from_user.id
-    
-    # Check if the user is in the cooldown period
-    if not is_cooldown_expired(user_id):
-        # Show alert if cooldown is not expired
-        await callback_query.answer("Next refresh available in 24 hours. Get unlimited CCs with a subscription!", show_alert=True)
-        return
+    logger.info(f"Refresh request received from user {user_id}")
 
-    # Update the last refresh time for the user
-    set_refresh_time(user_id)
-    
-    # Send a new random CC
-    cc = get_random_cc()
-    cc_text = (f"**Card Number**: {cc['number']}\n"
-               f"**Expiry Date**: {cc['expiry']}\n"
-               f"**CVV**: {cc['cvv']}\n"
-               f"**Name**: {cc['name']}\n"
-               f"**Address**: {cc['address']}\n"
-               f"**Country**: {cc['country']}")
-    
-    # Create a new keyboard with the refresh button and subscription option
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔄 Refresh", callback_data="refresh_cc")],
-        [InlineKeyboardButton("💳 Get Unlimited CCs (Crypto)", callback_data="get_subscription")]
-    ])
-    
-    # Edit the original message with the new random CC
-    await callback_query.message.edit_text(cc_text, reply_markup=keyboard)
+    try:
+        if not is_cooldown_expired(user_id):
+            await callback_query.answer("Next refresh available in 24 hours. Get unlimited CCs with a subscription!", show_alert=True)
+            logger.info(f"User {user_id} tried to refresh too soon.")
+            return
+
+        set_refresh_time(user_id)
+        
+        cc = get_random_cc()
+        cc_text = (f"**Card Number**: {cc['number']}\n"
+                   f"**Expiry Date**: {cc['expiry']}\n"
+                   f"**CVV**: {cc['cvv']}\n"
+                   f"**Name**: {cc['name']}\n"
+                   f"**Address**: {cc['address']}\n"
+                   f"**Country**: {cc['country']}")
+        
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔄 Refresh", callback_data="refresh_cc")],
+            [InlineKeyboardButton("💳 Get Unlimited CCs (Crypto)", callback_data="get_subscription")]
+        ])
+        
+        await callback_query.message.edit_text(cc_text, reply_markup=keyboard)
+        logger.info("CC details refreshed for user.")
+    except Exception as e:
+        logger.error(f"Error handling refresh request: {e}")
 
 @Client.on_callback_query(filters.regex("get_subscription"))
 async def get_subscription(client, callback_query):
     """Handle the subscription button click to show subscription options."""
-    # Show subscription plans with crypto payments
-    subscription_text = """
+    logger.info(f"Subscription request received from user {callback_query.from_user.id}")
+
+    try:
+        subscription_text = """
 **Subscription Plans:**
 1. 🟢 Basic: 1 week unlimited CC refresh - $5 in crypto
 2. 🟡 Standard: 1 month unlimited CC refresh - $15 in crypto
@@ -205,8 +212,9 @@ async def get_subscription(client, callback_query):
 
 Please contact our support to process the payment and unlock your subscription!
 """
-    # Edit the message to show subscription plans
-    await callback_query.message.edit_text(subscription_text)
+        await callback_query.message.edit_text(subscription_text)
+        await callback_query.answer("Contact us for crypto payments to get unlimited CC refreshes!", show_alert=True)
+        logger.info("Subscription options sent to user.")
+    except Exception as e:
+        logger.error(f"Error handling subscription request: {e}")
 
-    # Show an alert (optional)
-    await callback_query.answer("Contact us for crypto payments to get unlimited CC refreshes!", show_alert=True)
