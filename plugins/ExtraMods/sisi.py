@@ -141,7 +141,11 @@ def set_refresh_time(user_id):
 @Client.on_message(filters.command("cc") & filters.private)
 async def handle_cc(client, message):
     user_id = message.from_user.id
-    logger.info(f"User {user_id} requested a CC")
+    
+    # Check if the user is eligible to use the /cc command
+    if not is_cooldown_expired(user_id):
+        await message.reply_text("You can only use this command once every 24 hours.")
+        return
 
     # Generate random CC
     cc = get_random_cc()
@@ -157,6 +161,9 @@ async def handle_cc(client, message):
     ])
     
     await message.reply_text(cc_text, reply_markup=keyboard)
+
+    # Update the refresh time for the user
+    set_refresh_time(user_id)
 
 # Callback query handler for refresh button
 @Client.on_callback_query(filters.regex("refresh_cc"))
@@ -194,3 +201,4 @@ async def get_subscription(client, callback_query):
     
     await callback_query.message.edit_text(subscription_text)
     await callback_query.answer("Contact support for more info!", show_alert=True)
+
