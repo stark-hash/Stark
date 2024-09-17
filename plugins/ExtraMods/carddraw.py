@@ -8,9 +8,7 @@ API_URL = "https://www.deckofcardsapi.com/api/deck/"
 # A dictionary to store each user's current deck ID
 user_decks = {}
 
-
-
-@Client.on_message(filters.command("shuffle"))
+@app.on_message(filters.command("shuffle"))
 async def shuffle_deck(client, message):
     # Call the API to shuffle a new deck
     response = requests.get(f"{API_URL}new/shuffle/?deck_count=1")
@@ -20,9 +18,11 @@ async def shuffle_deck(client, message):
         deck_id = data['deck_id']
         user_decks[message.from_user.id] = deck_id  # Store the deck ID for the user
 
-        # Send message that the deck is shuffled
+        # Send message that the deck is shuffled and provide the deck ID
         await message.reply(
-            f"Deck shuffled successfully!\nDeck ID: `{deck_id}`\nYou can now draw cards using `/draw {number}` (Max 5)."
+            f"🃏 Deck shuffled successfully!\n"
+            f"Deck ID: `{deck_id}`\n\n"
+            "You can now draw cards using `/draw {number}` (Max 5)."
         )
         
         # Log the shuffle event
@@ -31,9 +31,9 @@ async def shuffle_deck(client, message):
             text=f"User {message.from_user.username} ({message.from_user.id}) shuffled a new deck with Deck ID: {deck_id}."
         )
     else:
-        await message.reply("Failed to shuffle the deck. Please try again.")
+        await message.reply("❌ Failed to shuffle the deck. Please try again.")
 
-@Client.on_message(filters.command("draw"))
+@app.on_message(filters.command("draw"))
 async def draw_cards(client, message):
     try:
         # Get the number of cards to draw from the command
