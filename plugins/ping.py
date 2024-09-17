@@ -19,10 +19,6 @@ REPO = "ᴅᴏ ʏᴏᴜ ᴀʟꜱᴏ ᴀꜱᴋ ᴍᴀɢɪᴄɪᴀɴꜱ ᴛᴏ ʀ�
 async def check_alive(_, message):
     await message.reply_text(ALIVE)
 
-@Client.on_message(filters.command("musik", COMMAND_HAND_LER) & f_onw_fliter)
-async def check_alive(_, message):
-    await message.reply_text(MUSIK)
-
 
 @Client.on_message(filters.command("helpme", COMMAND_HAND_LER) & f_onw_fliter)
 async def help_me(_, message):
