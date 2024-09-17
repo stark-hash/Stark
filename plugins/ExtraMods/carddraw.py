@@ -1,6 +1,6 @@
 import requests
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InputMediaPhoto
 from info import LOG_CHANNEL  # Assumes LOG_CHANNEL is configured in info.py
 
 API_URL = "https://www.deckofcardsapi.com/api/deck/"
@@ -8,8 +8,7 @@ API_URL = "https://www.deckofcardsapi.com/api/deck/"
 # A dictionary to store each user's current deck ID
 user_decks = {}
 
-
-
+# Shuffle the deck command
 @Client.on_message(filters.command("shuffle"))
 async def shuffle_deck(client, message):
     # Call the API to shuffle a new deck
@@ -35,6 +34,7 @@ async def shuffle_deck(client, message):
     else:
         await message.reply("❌ Failed to shuffle the deck. Please try again.")
 
+# Draw cards command
 @Client.on_message(filters.command("draw"))
 async def draw_cards(client, message):
     try:
@@ -70,8 +70,9 @@ async def draw_cards(client, message):
                      f"\n\nRemaining cards in the deck: {remaining_cards}"
             )
 
-            # Send all card images together
-            await message.reply_media_group(media=card_images)
+            # Send each card image individually
+            for card_image in card_images:
+                await message.reply_photo(photo=card_image)
 
             # Log the draw event
             await client.send_message(
@@ -82,5 +83,4 @@ async def draw_cards(client, message):
             await message.reply("Failed to draw cards. Please shuffle the deck again using /shuffle.")
     except (IndexError, ValueError):
         await message.reply("Please provide a valid number of cards to draw, e.g. `/draw 3`.")
-
 
