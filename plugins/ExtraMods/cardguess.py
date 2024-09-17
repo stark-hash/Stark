@@ -5,7 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from info import LOG_CHANNEL  # Assumes LOG_CHANNEL is configured in info.py
 
 API_URL = "https://www.deckofcardsapi.com/api/deck/"
-HIDDEN_CARD_IMAGE = "https://path-to-your-hidden-card-image.png"  # Provide your hidden card image
+HIDDEN_CARD_IMAGE = "https://i.pinimg.com/564x/0e/b8/06/0eb8068627ee9ec3c724ecfb7a042a59.jpg"  # Provide your hidden card image
 
 # A dictionary to store each user's current deck ID and card to guess
 user_game_data = {}
