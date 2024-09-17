@@ -8,7 +8,9 @@ API_URL = "https://www.deckofcardsapi.com/api/deck/"
 # A dictionary to store each user's current deck ID
 user_decks = {}
 
-@app.on_message(filters.command("shuffle"))
+
+
+@Client.on_message(filters.command("shuffle"))
 async def shuffle_deck(client, message):
     # Call the API to shuffle a new deck
     response = requests.get(f"{API_URL}new/shuffle/?deck_count=1")
@@ -33,7 +35,7 @@ async def shuffle_deck(client, message):
     else:
         await message.reply("❌ Failed to shuffle the deck. Please try again.")
 
-@app.on_message(filters.command("draw"))
+@Client.on_message(filters.command("draw"))
 async def draw_cards(client, message):
     try:
         # Get the number of cards to draw from the command
@@ -61,17 +63,15 @@ async def draw_cards(client, message):
             card_images = [card['image'] for card in cards]
             remaining_cards = draw_data['remaining']
 
-            # Send the cards as a message
-            await message.reply_photo(
-                photo=card_images[0],  # Send the first card image as the main photo
-                caption=f"Here are your {num_cards} cards:\n" +
-                        "\n".join([f"Value: {card['value']} of {card['suit']}" for card in cards]) +
-                        f"\n\nRemaining cards in the deck: {remaining_cards}"
+            # Send the caption as a message
+            await message.reply(
+                text=f"Here are your {num_cards} cards:\n" +
+                     "\n".join([f"Value: {card['value']} of {card['suit']}" for card in cards]) +
+                     f"\n\nRemaining cards in the deck: {remaining_cards}"
             )
 
-            # Send any additional cards as subsequent messages
-            for card_image in card_images[1:]:
-                await message.reply_photo(photo=card_image)
+            # Send all card images together
+            await message.reply_media_group(media=card_images)
 
             # Log the draw event
             await client.send_message(
