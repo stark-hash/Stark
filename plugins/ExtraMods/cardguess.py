@@ -98,5 +98,3 @@ async def handle_guess(client, callback_query: CallbackQuery):
     # Remove the game data for the user
     del user_game_data[user_id]
 
-# Start the bot (ensure to configure your own Client instance and API keys)
-app.run()
