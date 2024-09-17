@@ -1,14 +1,15 @@
 import random
 import requests
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from info import LOG_CHANNEL  # Assumes LOG_CHANNEL is configured in info.py
 
 API_URL = "https://www.deckofcardsapi.com/api/deck/"
-HIDDEN_CARD_IMAGE = "https://i.pinimg.com/564x/0e/b8/06/0eb8068627ee9ec3c724ecfb7a042a59.jpg"  # Provide your hidden card image
+HIDDEN_CARD_IMAGE = "https://path-to-your-hidden-card-image.png"  # Provide your hidden card image
 
 # A dictionary to store each user's current deck ID and card to guess
 user_game_data = {}
+
 
 # Start a guessing game
 @Client.on_message(filters.command("guess"))
@@ -77,15 +78,13 @@ async def handle_guess(client, callback_query: CallbackQuery):
     if guessed_value == actual_card['card_value']:
         # Correct guess, reveal the card
         await callback_query.edit_message_media(
-            media=InputMediaPhoto(media=actual_card['card_image']),
-            reply_markup=None
+            media=InputMediaPhoto(media=actual_card['card_image'])
         )
         await callback_query.message.reply(f"🎉 Congratulations! You guessed it right. The card was {actual_card['card_value']}.")
     else:
         # Incorrect guess, reveal the card
         await callback_query.edit_message_media(
-            media=InputMediaPhoto(media=actual_card['card_image']),
-            reply_markup=None
+            media=InputMediaPhoto(media=actual_card['card_image'])
         )
         await callback_query.message.reply(f"❌ Oops! Incorrect guess. The card was {actual_card['card_value']}.")
 
@@ -97,4 +96,5 @@ async def handle_guess(client, callback_query: CallbackQuery):
 
     # Remove the game data for the user
     del user_game_data[user_id]
+
 
