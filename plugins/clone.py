@@ -32,7 +32,7 @@ async def clone_menu(client, message):
             vj = Client(
                 f"{bot_token}", API_ID, API_HASH,
                 bot_token=bot_token,
-                plugins={"root": "CloneTechVJ"}
+                plugins={"root": "clone_plugins"}
             )
             await vj.start()
             bot = await vj.get_me()
