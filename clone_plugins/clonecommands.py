@@ -19,80 +19,111 @@ mongo_client = MongoClient(MONGO_URL)
 mongo_db = mongo_client["cloned_fdbotz"]
 mongo_collection = mongo_db[CDB_NAME]
 
-
 @Client.on_message(filters.command("start") & filters.incoming & filters.text)
 async def start(client, message):
-    # Define inline buttons
-    buttons = [[
-        InlineKeyboardButton("ᴍʏ ᴘᴀʀᴇɴᴛ 🔈", url="https://t.me/AnAutoFilterBot")
-    ],[
-        InlineKeyboardButton("Hᴇʟᴩ 🕸", callback_data="help"),
-        InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
-    ]]
-
-    # Reply with a photo, caption, and buttons
-    owner = mongo_db.bots.find_one({'bot_id': id})
-    ownerid = int(owner['user_id'])
-    await message.reply_photo(
-        photo=random.choice(CPICS),
-        caption=CLONE_START_MESSAGE,
-        reply_markup=InlineKeyboardMarkup(buttons),
-        parse_mode=enums.ParseMode.HTML
-    )
-
-    data = message.command[1]
+    # Log when the start command is triggered
+    logger.info(f"Start command received from user {message.from_user.id}")
+    
     try:
-        pre, file_id = data.split('_', 1)
-    except:
-        file_id = data
-        pre = ""   
+        # Define inline buttons
+        buttons = [[
+            InlineKeyboardButton("ᴍʏ ᴘᴀʀᴇɴᴛ 🔈", url="https://t.me/AnAutoFilterBot")
+        ],[
+            InlineKeyboardButton("Hᴇʟᴩ 🕸", callback_data="help"),
+            InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
+        ]]
 
-    files_ = await get_file_details(file_id)           
-    if not files_:
-        pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
+        # Reply with a photo, caption, and buttons
+        owner = mongo_db.bots.find_one({'bot_id': client.me.id})
+        if owner is None:
+            logger.error("Owner not found in the database")
+        ownerid = int(owner['user_id'])
+
+        logger.info(f"Replying to the start command with a random photo")
+        await message.reply_photo(
+            photo=random.choice(CPICS),
+            caption=CLONE_START_MESSAGE,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=enums.ParseMode.HTML
+        )
+
+        # Handle file data if provided in the command
+        data = message.command[1] if len(message.command) > 1 else ""
+        logger.info(f"Received file data: {data}")
+
         try:
-            msg = await client.send_cached_media(
-                chat_id=message.from_user.id,
-                file_id=file_id,
-                protect_content=True if pre == 'filep' else False,
+            pre, file_id = data.split('_', 1)
+        except Exception as e:
+            logger.warning(f"Error parsing file data: {e}")
+            pre = ""
+            file_id = data
+
+        # Get file details from the database
+        files_ = await get_file_details(file_id)
+        if not files_:
+            logger.warning("No file details found, attempting to decode base64 data")
+            try:
+                pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
+                msg = await client.send_cached_media(
+                    chat_id=message.from_user.id,
+                    file_id=file_id,
+                    protect_content=True if pre == 'filep' else False,
                 )
-            filetype = msg.media
-            file = getattr(msg, filetype.value)
-            title = '@StarkBotUpdates  ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), file.file_name.split()))
-            size=get_size(file.file_size)
-            f_caption = f"<code>{title}</code>"
+                logger.info(f"Media sent successfully to user {message.from_user.id}")
+                filetype = msg.media
+                file = getattr(msg, filetype.value)
+                title = '@StarkBotUpdates  ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), file.file_name.split()))
+                size = get_size(file.file_size)
+                f_caption = f"<code>{title}</code>"
+
+                # Handle custom caption
+                if CUSTOM_FILE_CAPTION:
+                    try:
+                        f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title, file_size='' if size is None else size, file_caption='')
+                    except Exception as e:
+                        logger.error(f"Error formatting custom caption: {e}")
+                        return
+
+                await msg.edit_caption(f_caption)
+                logger.info(f"Caption edited for media: {file_id}")
+                
+                # Auto-delete logic
+                k = await msg.reply(f"<b><u>❗️❗️❗️IMPORTANT❗️️❗️❗️</u></b>\n\nThis Movie File/Video will be deleted in <b><u>{AUTO_DELETE} mins</u> 🫥 <i></b>(Due to Copyright Issues)</i>.\n\n<b><i>Please forward this File/Video to your Saved Messages and Start Download there</i></b>", quote=True)
+                await asyncio.sleep(AUTO_DELETE_TIME)
+                await msg.delete()
+                await k.edit_text("<b>Your File/Video is successfully deleted!!!</b>")
+                return
+            except Exception as e:
+                logger.error(f"Failed to send cached media or process auto-delete: {e}")
+                return await message.reply('No such file exists.')
+        else:
+            files = files_[0]
+            title = files.file_name
+            size = get_size(files.file_size)
+            f_caption = files.caption
+
+            # Handle custom caption
             if CUSTOM_FILE_CAPTION:
                 try:
-                    f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='')
-                except:
-                    return
-            await msg.edit_caption(f_caption)
-            k = await msg.reply(f"<b><u>❗️❗️❗️IMPORTANT❗️️❗️❗️</u></b>\n\nThis Movie File/Video will be deleted in <b><u>{AUTO_DELETE} mins</u> 🫥 <i></b>(Due to Copyright Issues)</i>.\n\n<b><i>Please forward this File/Video to your Saved Messages and Start Download there</i></b>",quote=True)
-            await asyncio.sleep(AUTO_DELETE_TIME)
-            await msg.delete()
-            await k.edit_text("<b>Your File/Video is successfully deleted!!!</b>")
-            return
-        except:
-            pass
-        return await message.reply('No such file exist.')
-    files = files_[0]
-    title = files.file_name
-    size=get_size(files.file_size)
-    f_caption=files.caption
-    if CUSTOM_FILE_CAPTION:
-        try:
-            f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
-        except Exception as e:
-            logger.exception(e)
-            f_caption=f_caption
-    if f_caption is None:
-        f_caption = f"{files.file_name}"
-    await client.send_cached_media(
-        chat_id=message.from_user.id,
-        file_id=file_id,
-        caption=f_caption,
-        protect_content=True if pre == 'filep' else False,
-        )
+                    f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
+                except Exception as e:
+                    logger.error(f"Error formatting custom caption: {e}")
+                    f_caption = f_caption
+            
+            if f_caption is None:
+                f_caption = f"{files.file_name}"
+            
+            await client.send_cached_media(
+                chat_id=message.from_user.id,
+                file_id=file_id,
+                caption=f_caption,
+                protect_content=True if pre == 'filep' else False,
+            )
+            logger.info(f"Media file sent successfully with file_id: {file_id}")
+    
+    except Exception as e:
+        logger.error(f"An error occurred in the start command: {e}")
+        await message.reply("An error occurred. Please try again later.")
 
 @Client.on_callback_query(filters.regex("^(help|about|start|aifoto|apkdownloader|terabox|carbon|chatgpt|crypto|font|handwrite|lyrics|password|paste|photo|pinterest|qr|share_text|telegraph)$"))
 async def handle_callback_query(client, query: CallbackQuery):
