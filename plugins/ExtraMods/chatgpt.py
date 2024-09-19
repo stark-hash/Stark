@@ -1,4 +1,5 @@
 import requests
+import logging
 from pyrogram import Client, filters
 
 # API details
@@ -31,6 +32,9 @@ def contains_vulgar_words(text):
             return True
     return False
 
+# Set up logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
 # New command for AI Assistant with blacklist filtering
 @Client.on_message(filters.command("ai"))
 async def chatgpt(bot, message):
@@ -38,12 +42,15 @@ async def chatgpt(bot, message):
         # Extract the query from the user's message
         if len(message.text.split()) > 1:
             query = message.text.split(None, 1)[1]
+            logging.debug(f"Received query: {query}")
         else:
+            logging.warning("No query provided by user.")
             await message.reply_text("❌ Please provide a message for the ChatGPT AI.")
             return
 
         # Check if the message contains any vulgar words
         if contains_vulgar_words(query):
+            logging.warning(f"Vulgar words detected in query: {query}")
             await message.reply_text("🚫 Your message contains inappropriate language. Please refrain from using vulgar words.")
             return
 
@@ -58,16 +65,22 @@ async def chatgpt(bot, message):
                 "role": "user"
             }
         ]
+        
+        logging.debug(f"Sending request to API: {payload}")
 
         # Sending request to the API
         response = requests.post(AI_URL, json=payload, headers=AI_HEADERS)
+        logging.debug(f"API response status code: {response.status_code}")
         data = response.json()
+        logging.debug(f"API response data: {data}")
 
         # Extracting the AI-generated response
         ai_response = data.get("text", "Sorry, I couldn't process your request.")
+        logging.debug(f"AI response: {ai_response}")
 
         # Sending the AI response back to the user
         await message.reply_text(text=f"🤖 {ai_response}", quote=True)
 
     except Exception as e:
+        logging.error(f"Error occurred: {e}", exc_info=True)
         await message.reply_text(text="❌ <b>Error processing your request</b>", quote=True)
