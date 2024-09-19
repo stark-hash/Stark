@@ -43,6 +43,7 @@ async def chatgpt(bot, message):
         if len(message.text.split()) > 1:
             query = message.text.split(None, 1)[1]
             logging.debug(f"Received query: {query}")
+            print(f"Received query: {query}")  # For testing
         else:
             logging.warning("No query provided by user.")
             await message.reply_text("❌ Please provide a message for the ChatGPT AI.")
@@ -51,6 +52,7 @@ async def chatgpt(bot, message):
         # Check if the message contains any vulgar words
         if contains_vulgar_words(query):
             logging.warning(f"Vulgar words detected in query: {query}")
+            print(f"Vulgar words detected: {query}")  # For testing
             await message.reply_text("🚫 Your message contains inappropriate language. Please refrain from using vulgar words.")
             return
 
@@ -67,20 +69,25 @@ async def chatgpt(bot, message):
         ]
         
         logging.debug(f"Sending request to API: {payload}")
+        print(f"Sending request: {payload}")  # For testing
 
         # Sending request to the API
         response = requests.post(AI_URL, json=payload, headers=AI_HEADERS)
         logging.debug(f"API response status code: {response.status_code}")
+        print(f"API status code: {response.status_code}")  # For testing
         data = response.json()
         logging.debug(f"API response data: {data}")
+        print(f"API response: {data}")  # For testing
 
         # Extracting the AI-generated response
         ai_response = data.get("text", "Sorry, I couldn't process your request.")
         logging.debug(f"AI response: {ai_response}")
+        print(f"AI response: {ai_response}")  # For testing
 
         # Sending the AI response back to the user
         await message.reply_text(text=f"🤖 {ai_response}", quote=True)
 
     except Exception as e:
         logging.error(f"Error occurred: {e}", exc_info=True)
+        print(f"Error occurred: {e}")  # For testing
         await message.reply_text(text="❌ <b>Error processing your request</b>", quote=True)
