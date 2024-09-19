@@ -1,8 +1,13 @@
+# Don't Remove Credit @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+
 import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 
-@Client.on_message(filters.command(["json", 'js', 'id']))
+@Client.on_message(filters.command(["json", 'js']))
 async def jsonify(_, message):
     the_real_message = None
     reply_to_id = None

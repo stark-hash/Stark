@@ -1,3 +1,7 @@
+# Don't Remove Credit @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
 import random, os
 from pyrogram import Client, filters, enums 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -5,7 +9,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 @Client.on_message(filters.command(["genpassword", 'genpw']))
 async def password(bot, update):
-    message = await update.reply_text(text="`Pʀᴏᴄᴇꜱꜱɪɴɢ..`")
+    message = await update.reply_text(text="`Processing...`")
     password = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+".lower()
     if len(update.command) > 1:
         qw = update.text.split(" ", 1)[1]
@@ -14,6 +18,6 @@ async def password(bot, update):
         qw = random.choice(ST)
     limit = int(qw)
     random_value = "".join(random.sample(password, limit))
-    txt = f"<b>Lɪᴍɪᴛ:</b> {str(limit)} \n<b>Pᴀꜱꜱᴡᴏʀᴅ: <code>{random_value}</code>"
-    btn = InlineKeyboardMarkup([[InlineKeyboardButton('​🇸​​🇹​​🇦​​🇷​​🇰​ ​🇧​​🇴​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​', url='https://t.me/StarkBotUpdates')]])
+    txt = f"<b>Limit:</b> {str(limit)} \n<b>Password: <code>{random_value}</code>"
+    btn = InlineKeyboardMarkup([[InlineKeyboardButton('Updates', url='https://t.me/StarkBotUpdates')]])
     await message.edit_text(text=txt, reply_markup=btn, parse_mode=enums.ParseMode.HTML)
