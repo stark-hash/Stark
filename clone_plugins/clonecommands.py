@@ -35,7 +35,7 @@ async def start(client, message):
     ownerid = int(owner['user_id'])
     await message.reply_photo(
         photo=random.choice(CPICS),
-        caption=CLONE_START_MESSAGE.format(ownerid),
+        caption=CLONE_START_MESSAGE,
         reply_markup=InlineKeyboardMarkup(buttons),
         parse_mode=enums.ParseMode.HTML
     )
