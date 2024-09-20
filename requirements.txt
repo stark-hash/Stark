@@ -7,10 +7,10 @@ requests
 bs4==0.0.1
 
 #---database---#
-pymongo==4.4.1
+pymongo
 dnspython==2.3.0
 marshmallow==3.20.1
-umongo==3.1.0
+umongo
 motor==3.0.0
 PyLeaves==1.0.2
 
@@ -40,16 +40,3 @@ wget
 pytz
 openai==0.25.0
 
-#---------RENAME AND STREAM AND STUFF----------#
-jinja2
-colorama
-shortzy
-apscheduler
-pyshorteners
-hachoir
-python-decouple 
-ffmpeg
-ffmpeg-python>=0.2.0
-speedtest==0.0.1 
-humanize==4.6.0
-pyromod==1.5
