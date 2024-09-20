@@ -39,4 +39,15 @@ ujson
 wget
 pytz
 openai==0.25.0
-
+jinja2
+colorama
+shortzy
+apscheduler
+pyshorteners
+hachoir
+python-decouple 
+ffmpeg
+ffmpeg-python>=0.2.0
+speedtest==0.0.1 
+humanize==4.6.0
+pyromod==1.5
