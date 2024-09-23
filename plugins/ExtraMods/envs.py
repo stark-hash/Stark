@@ -84,18 +84,6 @@ def change_expiration(token, expires):
 
 # Command Handlers
 
-@Client.on_message(filters.command("start") & filters.private)
-def start_command(client: Client, message: Message):
-    message.reply_text(
-        "Hello! I'm your EnvS.sh Bot.\n\n"
-        "You can use the following commands:\n"
-        "/upload - Upload a photo.\n"
-        "/uploadurl <URL> - Upload a file from a URL.\n"
-        "/shorten <URL> - Shorten a URL.\n"
-        "/delete <token> - Delete an uploaded file.\n"
-        "/expire <token> <hours> - Change expiration time."
-    )
-
 @Client.on_message(filters.command("upload") & filters.private)
 def handle_upload(client: Client, message: Message):
     if message.reply_to_message and (message.reply_to_message.photo or message.reply_to_message.document):
