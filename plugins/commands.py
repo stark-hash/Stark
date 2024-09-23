@@ -13,6 +13,13 @@ from database.connections_mdb import active_connection
 logger = logging.getLogger(__name__)
 BATCH_FILES = {}
 
+async def send_support_sticker(client, chat_id):
+    try:
+        await client.send_sticker(chat_id=chat_id, sticker="CAACAgQAAxkBAAEBNCVm8OCz2lCqGeDw1Ge93XTuhNRfLAACwhkAAmKeiVNTZZuDq49TWB4E")
+    except Exception as e:
+        logger.error(f"Failed to send support sticker: {e}")
+
+
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
@@ -43,7 +50,7 @@ async def start(client, message):
             InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
         ]]
-        m = await message.reply_sticker("CAACAgUAAxkBAAINm2ZYnBU-rLRRDX-yFmmQ4Wc4o75LAALdAgAC-jpJVCtSPemHPN0KHgQ") 
+        m = await message.reply_sticker("CAACAgQAAxkBAAEBNCJm8OCEAAGg3ggzLXD3m23PD4DHhdMAAhYUAAL5v4hTwcx_Y_NRLpEeBA") 
         await asyncio.sleep(2)
         await message.reply_photo(photo=random.choice(PICS), caption=START_MESSAGE.format(user=message.from_user.mention, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         return await m.delete()
@@ -81,7 +88,7 @@ async def start(client, message):
             InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
         ]]
-        m = await message.reply_sticker("CAACAgUAAxkBAAINm2ZYnBU-rLRRDX-yFmmQ4Wc4o75LAALdAgAC-jpJVCtSPemHPN0KHgQ")
+        m = await message.reply_sticker("CAACAgQAAxkBAAEBNCJm8OCEAAGg3ggzLXD3m23PD4DHhdMAAhYUAAL5v4hTwcx_Y_NRLpEeBA")
         await asyncio.sleep(2)
         await message.reply_photo(photo=random.choice(PICS), caption=START_MESSAGE.format(user=message.from_user.mention, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
         return await m.delete()
@@ -124,6 +131,7 @@ async def start(client, message):
             except FloodWait as e:
                 await asyncio.sleep(e.value)
                 await client.send_cached_media(chat_id=message.from_user.id, file_id=msg.get("file_id"), caption=f_caption, protect_content=msg.get('protect', False))
+                await send_support_sticker(client, message.chat.id)            
             except Exception as e:
                 logger.warning(e, exc_info=True)
                 continue
@@ -158,6 +166,7 @@ async def start(client, message):
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
                     await msg.copy(message.chat.id, caption=f_caption, protect_content=True if protect == "/pbatch" else False)
+                    await send_support_sticker(client, message.chat.id)
                 except Exception as e:
                     logger.exception(e)
                     continue
@@ -169,6 +178,7 @@ async def start(client, message):
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
                     await msg.copy(message.chat.id, protect_content=True if protect == "/pbatch" else False)
+                    await send_support_sticker(client, message.chat.id)
                 except Exception as e:
                     logger.exception(e)
                     continue
@@ -206,6 +216,7 @@ async def start(client, message):
     if f_caption is None:
         f_caption = f"{files.file_name}"
     await client.send_cached_media(chat_id=message.from_user.id, file_id=file_id, caption=f_caption, protect_content=True if pre == 'filep' else False,)
+    await send_support_sticker(client, message.from_user.id)
                     
 
 
