@@ -50,10 +50,6 @@ def upload_image(file_path, name=None, expiration=None):
         logger.error(f"File not found: {file_path}")
         return None
 
-# Initialize Pyrogram Client
-# Replace 'my_account' with your session name or appropriate credentials
-app = Client("my_account")
-
 # Command Handlers
 
 @Client.on_message(filters.command("upload") & filters.private)
