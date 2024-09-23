@@ -5,82 +5,54 @@ from pyrogram.types import Message
 import requests
 
 
+
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.INFO,  # Change to DEBUG for more detailed logs
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger(__name__)
 
+# Load ImgBB API key from environment variables
+IMGBB_API_KEY = "7c37fa1960dcf159f2714faaa75ef12d"
 
-# Define envs.sh interaction functions
-def upload_file(file_path, secret=None, expires=None):
-    url = 'https://envs.sh'
+# Define ImgBB interaction functions
+def upload_image(file_path, name=None, expiration=None):
+    url = 'https://api.imgbb.com/1/upload'
     try:
         with open(file_path, 'rb') as f:
-            files = {'file': f}
-            data = {}
-            if secret:
-                data['secret'] = secret
-            if expires:
-                data['expires'] = expires
-            response = requests.post(url, files=files, data=data)
+            files = {'image': f}
+            data = {'key': IMGBB_API_KEY}
+            if name:
+                data['name'] = name
+            if expiration:
+                data['expiration'] = expiration  # in seconds (60-15552000)
+
+            logger.debug(f"Uploading image to {url} with data: {data} and files: {files.keys()}")
+            response = requests.post(url, data=data, files=files)
             response.raise_for_status()
-            return response.text.strip()
+            logger.debug(f"Response status: {response.status_code}")
+            logger.debug(f"Response body: {response.text}")
+
+            json_response = response.json()
+            if json_response.get('success'):
+                return json_response['data']['url']
+            else:
+                logger.error(f"ImgBB upload failed: {json_response}")
+                return None
     except requests.exceptions.RequestException as e:
-        logger.error(f"Error uploading file: {e}")
+        logger.error(f"Error uploading image: {e}")
+        if e.response is not None:
+            logger.error(f"Response status: {e.response.status_code}")
+            logger.error(f"Response body: {e.response.text}")
         return None
     except FileNotFoundError:
         logger.error(f"File not found: {file_path}")
         return None
 
-def upload_remote_url(remote_url, secret=None, expires=None):
-    url = 'https://envs.sh'
-    data = {'url': remote_url}
-    if secret:
-        data['secret'] = secret
-    if expires:
-        data['expires'] = expires
-    try:
-        response = requests.post(url, data=data)
-        response.raise_for_status()
-        return response.text.strip()
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Error uploading URL: {e}")
-        return None
-
-def shorten_url(long_url):
-    url = 'https://envs.sh'
-    data = {'shorten': long_url}
-    try:
-        response = requests.post(url, data=data)
-        response.raise_for_status()
-        return response.text.strip()
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Error shortening URL: {e}")
-        return None
-
-def delete_file(token):
-    url = 'https://envs.sh'
-    data = {'token': token, 'delete': ''}
-    try:
-        response = requests.post(url, data=data)
-        response.raise_for_status()
-        return response.text.strip()
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Error deleting file: {e}")
-        return None
-
-def change_expiration(token, expires):
-    url = 'https://envs.sh'
-    data = {'token': token, 'expires': expires}
-    try:
-        response = requests.post(url, data=data)
-        response.raise_for_status()
-        return response.text.strip()
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Error changing expiration: {e}")
-        return None
+# Initialize Pyrogram Client
+# Replace 'my_account' with your session name or appropriate credentials
+app = Client("my_account")
 
 # Command Handlers
 
@@ -91,72 +63,15 @@ def handle_upload(client: Client, message: Message):
         media = message.reply_to_message.photo or message.reply_to_message.document
         file_path = media.download()
         if not file_path:
-            message.reply_text("Failed to download the file.")
+            message.reply_text("❌ Failed to download the file.")
             return
 
-        uploaded_url = upload_file(file_path)
+        uploaded_url = upload_image(file_path)
         if uploaded_url:
-            message.reply_text(f"📤 *File uploaded successfully:*\n{uploaded_url}")
+            message.reply_text(f"📤 *Image uploaded successfully:*\n{uploaded_url}")
         else:
-            message.reply_text("❌ Failed to upload the file.")
+            message.reply_text("❌ Failed to upload the image. Please check the logs for more details.")
     else:
         message.reply_text("❗ Please reply to a photo or document with the /upload command.")
-
-@Client.on_message(filters.command("shorten") & filters.private)
-def handle_shorten(client: Client, message: Message):
-    try:
-        _, long_url = message.text.split(None, 1)
-        if not long_url.startswith(("http://", "https://")):
-            message.reply_text("❌ Please provide a valid URL starting with http:// or https://")
-            return
-        short_url = shorten_url(long_url)
-        if short_url:
-            message.reply_text(f"🔗 *Shortened URL:*\n{short_url}")
-        else:
-            message.reply_text("❌ Failed to shorten the URL.")
-    except ValueError:
-        message.reply_text("ℹ️ Usage: /shorten <URL>")
-
-@Client.on_message(filters.command("uploadurl") & filters.private)
-def handle_upload_url(client: Client, message: Message):
-    try:
-        _, remote_url = message.text.split(None, 1)
-        if not remote_url.startswith(("http://", "https://")):
-            message.reply_text("❌ Please provide a valid URL starting with http:// or https://")
-            return
-        uploaded_url = upload_remote_url(remote_url)
-        if uploaded_url:
-            message.reply_text(f"📤 *URL uploaded successfully:*\n{uploaded_url}")
-        else:
-            message.reply_text("❌ Failed to upload the URL.")
-    except ValueError:
-        message.reply_text("ℹ️ Usage: /uploadurl <URL>")
-
-@Client.on_message(filters.command("delete") & filters.private)
-def handle_delete(client: Client, message: Message):
-    try:
-        _, token = message.text.split(None, 1)
-        confirmation = delete_file(token)
-        if confirmation:
-            message.reply_text(f"✅ *File deleted successfully:*\n{confirmation}")
-        else:
-            message.reply_text("❌ Failed to delete the file. Please check the token.")
-    except ValueError:
-        message.reply_text("ℹ️ Usage: /delete <token>")
-
-@Client.on_message(filters.command("expire") & filters.private)
-def handle_expire(client: Client, message: Message):
-    try:
-        _, token, expires = message.text.split(None, 2)
-        if not expires.isdigit():
-            message.reply_text("❌ The expiration time must be a number representing hours.")
-            return
-        confirmation = change_expiration(token, expires)
-        if confirmation:
-            message.reply_text(f"⏳ *Expiration updated successfully:*\n{confirmation}")
-        else:
-            message.reply_text("❌ Failed to update expiration. Please check the token.")
-    except ValueError:
-        message.reply_text("ℹ️ Usage: /expire <token> <hours>")
 
 
