@@ -54,7 +54,7 @@ async def start_guessing_game(client, message):
             # Send the hidden card and options to guess
             await message.reply_photo(
                 photo=HIDDEN_CARD_IMAGE,
-                caption="Guess the card value!",
+                caption="ＧＵＥＳＳ ＴＨＥ ＣＡＲＤ !",
                 reply_markup=InlineKeyboardMarkup(buttons)
             )
         else:
@@ -80,13 +80,13 @@ async def handle_guess(client, callback_query: CallbackQuery):
         await callback_query.edit_message_media(
             media=InputMediaPhoto(media=actual_card['card_image'])
         )
-        await callback_query.message.reply(f"🎉 Congratulations! You guessed it right. The card was {actual_card['card_value']}.")
+        await callback_query.message.reply(f"🎉 ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴꜱ! ʏᴏᴜ ɢᴜᴇꜱꜱᴇᴅ ɪᴛ ʀɪɢʜᴛ. ᴛʜᴇ ᴄᴀʀᴅ ᴡᴀꜱ {actual_card['card_value']}.")
     else:
         # Incorrect guess, reveal the card
         await callback_query.edit_message_media(
             media=InputMediaPhoto(media=actual_card['card_image'])
         )
-        await callback_query.message.reply(f"❌ Oops! Incorrect guess. The card was {actual_card['card_value']}.")
+        await callback_query.message.reply(f"❌ ᴏᴏᴘꜱ! ɪɴᴄᴏʀʀᴇᴄᴛ ɢᴜᴇꜱꜱ. ᴛʜᴇ ᴄᴀʀᴅ ᴡᴀꜱ {actual_card['card_value']}.")
 
     # Log the game event
     await client.send_message(
