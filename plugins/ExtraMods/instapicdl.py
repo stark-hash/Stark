@@ -27,7 +27,7 @@ async def instagram_picture_download(bot, message):
         await message.reply_text("❌ <b>Please provide an Instagram post URL.</b>", quote=True)
     except Exception as e:
         # Handle any other errors
-        await message.reply_text(f"❌ <b>Error fetching Instagram picture:</b> {str(e)}", quote=True)
+        await message.reply_text(f"❌ <b>Error fetching Instagram posts:</b> {str(e)}", quote=True)
 
 # Function to fetch Instagram picture download link
 def download_instagram_picture(insta_url):
@@ -53,11 +53,11 @@ def download_instagram_picture(insta_url):
 
         if picture_url:
             # Create a response text for the user
-            response_text = "Here is the Instagram picture you requested."
+            response_text = "By @AnAutoFilterBot"
             return response_text, picture_url
         else:
             # Handle case where the picture URL is not available
             raise Exception("Picture URL not found in the response.")
     else:
         # Handle unsuccessful responses
-        raise Exception(f"Failed to fetch Instagram picture: {response.status_code}")
+        raise Exception(f"Failed to fetch Instagram posts: {response.status_code}")
