@@ -96,7 +96,7 @@ async def handle_youtube(client, message, video_data):
     if video_size_360p and video_size_360p.endswith("MB"):
         size_in_mb = float(video_size_360p.replace("MB", "").strip())
         if size_in_mb > 200:
-            await message.reply_text("The 360p video is larger than 200 MB and cannot be downloaded.")
+            await message.reply_text("ᴛʜᴇ 360ᴘ ᴠᴇʀꜱɪᴏɴ ɪꜱ ʟᴀʀɢᴇʀ ᴛʜᴀɴ 200 ᴍʙ ꜱᴏ ᴄᴀɴɴᴏᴛ ʙᴇ ꜱᴇɴᴛ ᴅᴜᴇ ᴛᴏ ᴏᴠᴇʀʟᴏᴀᴅ ,ᴄʟɪᴄᴋ ᴏɴ ʙᴇʟᴏᴡ ʟɪɴᴋꜱ ᴀɴᴅ ᴡᴀɪᴛ ꜰᴏʀ ɪᴛ ᴛᴏ ʟᴏᴀᴅ")
             return
 
     # If 360p is found and within size limit, download the video
@@ -110,7 +110,7 @@ async def handle_youtube(client, message, video_data):
     await client.send_video(
         chat_id=message.chat.id,
         video=file_name,
-        caption=f"**{title}**\n\nDownloaded in 360p.",
+        caption=f"**{title}**\n\n360ᴘ ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ , ꜰᴏʀ ᴏᴛʜᴇʀ ʀᴇꜱᴏʟᴜᴛɪᴏɴꜱ,  ᴄʟɪᴄᴋ ᴏɴ ʙᴇʟᴏᴡ ʟɪɴᴋꜱ ᴀɴᴅ ᴡᴀɪᴛ ꜰᴏʀ ɪᴛ ᴛᴏ ʟᴏᴀᴅ",
         reply_markup=keyboard
     )
 
