@@ -95,18 +95,18 @@ async def start(client, message):
         
     data = message.command[1]
     if data.split("-", 1)[0] == "STARK": 
-    user_id = int(data.split("-", 1)[1])
-    vj = await referal_add_user(user_id, message.from_user.id)
-    if vj == True: 
-        await message.reply(f"<b>Wᴇʟᴄᴏᴍᴇ!🎉 Yᴏᴜ'ᴠᴇ ɪᴏɪɴᴇᴅ ᴜsɪɴɢ ᴀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ. Jᴜsᴛ ʜɪᴛ /sᴛᴀʀᴛ ᴛᴏ ʙᴇɢɪɴ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ᴀɴᴅ ᴜɴʟᴏᴄᴋ ᴇxᴄʟᴜsɪᴠᴇ ᴀᴄᴄᴇss ᴛᴏ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴍᴏᴠɪᴇs. Eɴɪᴏʏ!</b>")
-        num_referrals = await get_referal_users_count(user_id)
-        await client.send_message(chat_id=user_id, text="<b>{} start the bot with your referral link\n\nTotal Referrals - {}</b>".format(message.from_user.mention, num_referrals))
-        
-        # Check if the user has completed 500 referrals
-        if num_referrals == 500:
-            await client.send_message(chat_id=LOG_CHANNEL, text=f"<b>User with ID {user_id} has completed 500 referrals!</b>")
-            await client.send_message(chat_id=user_id, text="<b>Congratulations! You've completed 500 referrals. Please forward this message to @TGTesla.</b>")
-            return 
+        user_id = int(data.split("-", 1)[1])
+        vj = await referal_add_user(user_id, message.from_user.id)
+        if vj == True: 
+            await message.reply(f"<b>Wᴇʟᴄᴏᴍᴇ!🎉 Yᴏᴜ'ᴠᴇ ɪᴏɪɴᴇᴅ ᴜsɪɴɢ ᴀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ. Jᴜsᴛ ʜɪᴛ /sᴛᴀʀᴛ ᴛᴏ ʙᴇɢɪɴ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ᴀɴᴅ ᴜɴʟᴏᴄᴋ ᴇxᴄʟᴜsɪᴠᴇ ᴀᴄᴄᴇss ᴛᴏ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴍᴏᴠɪᴇs. Eɴɪᴏʏ!</b>")
+            num_referrals = await get_referal_users_count(user_id)
+            await client.send_message(chat_id=user_id, text="<b>{} start the bot with your referral link\n\nTotal Referrals - {}</b>".format(message.from_user.mention, num_referrals))
+            
+            # Check if the user has completed 500 referrals
+            if num_referrals == 500:
+                await client.send_message(chat_id=LOG_CHANNEL, text=f"<b>User with ID {user_id} has completed 500 referrals!</b>")
+                await client.send_message(chat_id=user_id, text="<b>Congratulations! You've completed 500 referrals. Please forward this message to @TGTesla.</b>")
+                return 
     else:
         buttons = [[
             InlineKeyboardButton("➕️ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url=f"http://t.me/{temp.U_NAME}?startgroup=true")
