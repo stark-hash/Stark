@@ -530,6 +530,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
         stats_pic = await make_carbon(stats, True)
         await query.edit_message_media(InputMediaPhoto(stats_pic, script.ADMIN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
         
+    elif query.data == "subscription":
+        buttons = [[
+            InlineKeyboardButton('ʀᴇᴡᴀʀᴅᴇ', 'rewards'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', callback_data='start')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(random.choice(PICS))
+        )
+        await query.message.edit_text(
+            text=script.SUBSCRIPTION_TXT.format(temp.U_NAME, query.from_user.id),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+
+    elif query.data == "rewards":
+        await query.answer("ɴᴇᴛғʟɪx ᴀᴄᴄᴏᴜɴᴛs ᴀɴᴅ ᴍᴏʀᴇ ʀᴇᴡᴀʀᴅs ᴄᴏᴍɪɴɢ sᴏᴏɴ 😃", show_alert=True)
     elif query.data == "openfilter":
         buttons = [[
             InlineKeyboardButton('AᴜᴛᴏFɪʟᴛᴇʀ', 'autofilter'),
