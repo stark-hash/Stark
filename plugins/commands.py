@@ -94,6 +94,43 @@ async def start(client, message):
         return await m.delete()
         
     data = message.command[1]
+    if data.split("-", 1)[0] == "STARK": 
+    user_id = int(data.split("-", 1)[1])
+    vj = await referal_add_user(user_id, message.from_user.id)
+    if vj == True: 
+        await message.reply(f"<b>Wᴇʟᴄᴏᴍᴇ!🎉 Yᴏᴜ'ᴠᴇ ɪᴏɪɴᴇᴅ ᴜsɪɴɢ ᴀ ʀᴇғᴇʀʀᴀʟ ʟɪɴᴋ. Jᴜsᴛ ʜɪᴛ /sᴛᴀʀᴛ ᴛᴏ ʙᴇɢɪɴ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ᴀɴᴅ ᴜɴʟᴏᴄᴋ ᴇxᴄʟᴜsɪᴠᴇ ᴀᴄᴄᴇss ᴛᴏ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴍᴏᴠɪᴇs. Eɴɪᴏʏ!</b>")
+        num_referrals = await get_referal_users_count(user_id)
+        await client.send_message(chat_id=user_id, text="<b>{} start the bot with your referral link\n\nTotal Referrals - {}</b>".format(message.from_user.mention, num_referrals))
+        
+        # Check if the user has completed 500 referrals
+        if num_referrals == 500:
+            await client.send_message(chat_id=LOG_CHANNEL, text=f"<b>User with ID {user_id} has completed 500 referrals!</b>")
+            await client.send_message(chat_id=user_id, text="<b>Congratulations! You've completed 500 referrals. Please forward this message to @TGTesla.</b>")
+            return 
+    else:
+        buttons = [[
+            InlineKeyboardButton("➕️ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀᴛ ➕", url=f"http://t.me/{temp.U_NAME}?startgroup=true")
+            ],[
+            InlineKeyboardButton("Sᴇᴀʀᴄʜ 🔎", switch_inline_query_current_chat=''), 
+            InlineKeyboardButton("Cʜᴀɴɴᴇʟ 🔈", url="https://t.me/StarkBotUpdates")
+            ],[ 
+            InlineKeyboardButton("ᴄʟᴏɴᴇ 🧬", callback_data="cloning")
+            ],[     
+            InlineKeyboardButton("Hᴇʟᴩ 🕸️", callback_data="help"),
+            InlineKeyboardButton("Aʙᴏᴜᴛ ✨", callback_data="about")
+            ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        m = await message.reply_sticker("CAACAgQAAxkBAAEBNCJm8OCEAAGg3ggzLXD3m23PD4DHhdMAAhYUAAL5v4hTwcx_Y_NRLpEeBA") 
+        await asyncio.sleep(1)
+        await m.delete()
+        await message.reply_photo(
+            photo=random.choice(PICS),
+            caption=script.START_MESSAGE.format(user=message.from_user.mention, bot=client.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+        return
+
     try:
         pre, file_id = data.split('_', 1)
     except:
