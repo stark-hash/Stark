@@ -154,7 +154,7 @@ Made With ❤️ BY @StarkBotUpdates"""
 
 ʀᴇғᴇʀᴀʟ ʟɪɴᴋ - https://telegram.me/{}?start=STARK-{}
 
-ɪғ {} ᴜɴɪǫᴜᴇ ᴜsᴇʀs sᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴡɪᴛʜ ʏᴏᴜʀ ʀᴇғᴇʀᴀʟ ʟɪɴᴋ ᴛʜᴇɴ ʏᴏᴜ ᴡɪʟʟ ʙᴇ ʀᴇᴡᴀʀᴅᴇᴅ."""
+ɪғ 𝟓𝟎𝟎 ᴜɴɪǫᴜᴇ ᴜsᴇʀs sᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴡɪᴛʜ ʏᴏᴜʀ ʀᴇғᴇʀᴀʟ ʟɪɴᴋ ᴛʜᴇɴ ʏᴏᴜ ᴡɪʟʟ ʙᴇ ʀᴇᴡᴀʀᴅᴇᴅ."""
     PIN_TXT = """📌 <b>Pin :-</b>
 
 All The Pin Related Commands Can Be Found Here; Keep Your Chat Up To Date On The Latest News With A Simple Pinned Message!
