@@ -544,7 +544,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text=script.SUBSCRIPTION_TXT.format(temp.U_NAME, query.from_user.id),
             reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
+            parse_mode=enums.ParseMode.HTML)
 
     elif query.data == "rewards":
         await query.answer("ɴᴇᴛғʟɪx ᴀᴄᴄᴏᴜɴᴛs ᴀɴᴅ ᴍᴏʀᴇ ʀᴇᴡᴀʀᴅs ᴄᴏᴍɪɴɢ sᴏᴏɴ 😃", show_alert=True)
