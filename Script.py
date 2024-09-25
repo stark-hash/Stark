@@ -148,6 +148,13 @@ Made With ❤️ BY @StarkBotUpdates"""
 ❖ /telegraph - upload supported media (within 5MB) to telegraph.
 
 Made With ❤️ BY @StarkBotUpdates"""
+
+    SUBSCRIPTION_TXT = """
+<b>ʀᴇғᴇʀʀᴇ ʏᴏᴜʀ ʟɪɴᴋ ᴛᴏ ʏᴏᴜʀ ғʀɪᴇɴᴅs, ғᴀᴍɪʟʏ, ᴄʜᴀɴɴᴇʟ ᴀɴᴅ ɢʀᴏᴜᴘ ᴛᴏ ɢᴇᴛ ғʀᴇᴇ ᴘᴇʀᴋs
+
+ʀᴇғᴇʀᴀʟ ʟɪɴᴋ - https://telegram.me/{}?start=STARK-{}
+
+ɪғ {} ᴜɴɪǫᴜᴇ ᴜsᴇʀs sᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴡɪᴛʜ ʏᴏᴜʀ ʀᴇғᴇʀᴀʟ ʟɪɴᴋ ᴛʜᴇɴ ʏᴏᴜ ᴡɪʟʟ ʙᴇ ʀᴇᴡᴀʀᴅᴇᴅ."""
     PIN_TXT = """📌 <b>Pin :-</b>
 
 All The Pin Related Commands Can Be Found Here; Keep Your Chat Up To Date On The Latest News With A Simple Pinned Message!
