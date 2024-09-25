@@ -1,6 +1,31 @@
 import motor.motor_asyncio
 from info import DATABASE_NAME, DATABASE_URL, IMDB, IMDB_TEMPLATE, MELCOW_NEW_USERS, P_TTI_SHOW_OFF, SINGLE_BUTTON, SPELL_CHECK_REPLY, PROTECT_CONTENT, MAX_RIST_BTNS, IMDB_DELET_TIME                  
 
+
+async def referal_add_user(user_id, ref_user_id):
+    user_db = mydb[str(user_id)]
+    user = {'_id': ref_user_id}
+    try:
+        user_db.insert_one(user)
+        return True
+    except DuplicateKeyError:
+        return False
+    
+
+async def get_referal_all_users(user_id):
+    user_db = mydb[str(user_id)]
+    return user_db.find()
+    
+async def get_referal_users_count(user_id):
+    user_db = mydb[str(user_id)]
+    count = user_db.count_documents({})
+    return count
+    
+
+async def delete_all_referal_users(user_id):
+    user_db = mydb[str(user_id)]
+    user_db.delete_many({}) 
+
 class Database:
     
     def __init__(self, uri, database_name):
