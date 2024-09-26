@@ -23,11 +23,13 @@ def get_song_metadata(song_url):
             download_link = song_data.get("downloadLink")
             cover_link = song_data.get("cover")
             title = song_data["title"]
-            return download_link, cover_link, title, response.status_code
+            album = song_data.get("album")
+            release_date = song_data.get("releaseDate")
+            return download_link, cover_link, title, album, release_date, response.status_code
         else:
-            return None, None, None, response.status_code
+            return None, None, None, None, None, response.status_code
     else:
-        return None, None, None, response.status_code
+        return None, None, None, None, None, response.status_code
 
 # Function to download the song from the download link
 def download_song(download_link, song_title):
@@ -59,7 +61,7 @@ async def download_song_handler(client, message):
     song_url = message.command[1]
     await message.reply_text(f"ѕєαrchíng чσur ѕσng: {song_url}")
 
-    download_link, cover_link, song_title, status_code = get_song_metadata(song_url)
+    download_link, cover_link, song_title, album, release_date, status_code = get_song_metadata(song_url)
 
     if download_link and cover_link:
         await message.reply_text(f"dσwnlσαdíng чσur ѕσng: {song_title}")
@@ -69,8 +71,11 @@ async def download_song_handler(client, message):
         cover_file_name = download_cover(cover_link, song_title)
 
         if song_file_name and cover_file_name:
-            # Send the cover photo
-            await client.send_photo(message.chat.id, cover_file_name, caption=f"Cover of '{song_title}'")
+            # Create caption with title, album, and release date
+            caption = f"Title: '{song_title}'\nAlbum: '{album}'\nRelease Date: {release_date}"
+            
+            # Send the cover photo with detailed caption
+            await client.send_photo(message.chat.id, cover_file_name, caption=caption)
             
             # Send the song file to the user
             await client.send_audio(message.chat.id, song_file_name)
@@ -79,8 +84,7 @@ async def download_song_handler(client, message):
             os.remove(song_file_name)
             os.remove(cover_file_name)
         else:
-            await message.reply_text("Failed to download the song .")
+            await message.reply_text("Failed to download the song.")
     else:
-        await message.reply_text(f"Failed to fetch song.")
-
+        await message.reply_text(f"Failed to fetch song metadata.")
 
