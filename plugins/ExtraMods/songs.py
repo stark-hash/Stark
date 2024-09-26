@@ -1,261 +1,86 @@
-import os
 import requests
-import time
+import os
 from pyrogram import Client, filters
-from info import LOG_CHANNEL  # Ensure this is correctly set up
 
-# Your RapidAPI key and host
-API_HEADERS = {
-    "x-rapidapi-key": "645c5bb55emsh4a9339f4e45b563p183a3cjsneaef1f5eae8d",
-    "x-rapidapi-host": "spotify-downloader9.p.rapidapi.com"
-}
-MAX_SONGS_LIMIT = 20  # Maximum number of songs to download
+# Replace these with your actual API keys and RapidAPI host details
+RAPIDAPI_KEY = "645c5bb55emsh4a9339f4e45b563p183a3cjsneaef1f5eae8d"
+RAPIDAPI_HOST = "spotify-downloader9.p.rapidapi.com"
 
-# ASCII progress bar function
-def show_loading_bar(percent_complete):
-    progress_length = 30
-    bar_length = int((percent_complete / 100) * progress_length)
-    bar = '█' * bar_length + '-' * (progress_length - bar_length)
-    print(f"[{bar}] {percent_complete:.2f}%", end='\r')
+# Function to download song metadata and get the download link and cover image
+def get_song_metadata(song_url):
+    api_url = "https://spotify-downloader9.p.rapidapi.com/downloadSong"
+    querystring = {"songId": song_url}
+    headers = {
+        "x-rapidapi-key": RAPIDAPI_KEY,
+        "x-rapidapi-host": RAPIDAPI_HOST
+    }
 
-def download_file(url, file_name):
-    """Download a file with an ASCII loading bar."""
-    try:
-        response = requests.get(url, stream=True)
-        total_length = int(response.headers.get('content-length', 0))
-        
-        with open(file_name, 'wb') as f:
-            downloaded = 0
-            for chunk in response.iter_content(chunk_size=1024):
-                if chunk:
-                    f.write(chunk)
-                    downloaded += len(chunk)
-                    percent_complete = (downloaded / total_length) * 100
-                    show_loading_bar(percent_complete)
-        print(f"\nDownload complete: {file_name}")
+    response = requests.get(api_url, headers=headers, params=querystring)
+    if response.status_code == 200:
+        data = response.json()
+        if data.get("success"):
+            song_data = data["data"]
+            download_link = song_data.get("downloadLink")
+            cover_link = song_data.get("cover")
+            title = song_data["title"]
+            return download_link, cover_link, title, response.status_code
+        else:
+            return None, None, None, response.status_code
+    else:
+        return None, None, None, response.status_code
+
+# Function to download the song from the download link
+def download_song(download_link, song_title):
+    response = requests.get(download_link)
+    if response.status_code == 200:
+        file_name = f"{song_title}.mp3"
+        with open(file_name, "wb") as f:
+            f.write(response.content)
         return file_name
-    except Exception as e:
-        print(f"Error downloading file: {e}")
-        return None
+    return None
 
-def fetch_album_data(album_id):
-    """Fetch album data from the Spotify downloader API."""
-    url = "https://spotify-downloader9.p.rapidapi.com/downloadAlbum"
-    querystring = {"albumId": album_id}
-    response = requests.get(url, headers=API_HEADERS, params=querystring)
+# Function to download the cover image
+def download_cover(cover_link, song_title):
+    response = requests.get(cover_link)
+    if response.status_code == 200:
+        file_name = f"{song_title}_cover.jpg"
+        with open(file_name, "wb") as f:
+            f.write(response.content)
+        return file_name
+    return None
 
-    # Wait for 60 seconds for the API to process the album data
-    time.sleep(60)
-    response = requests.get(url, headers=API_HEADERS, params=querystring)
-
-    return response.json()
-
-def fetch_playlist_data(playlist_id):
-    """Fetch playlist data from the Spotify downloader API."""
-    url = "https://spotify-downloader9.p.rapidapi.com/downloadPlaylist"
-    querystring = {"playlistId": playlist_id}
-    response = requests.get(url, headers=API_HEADERS, params=querystring)
-
-    # Wait for 60 seconds for the API to process the playlist data
-    time.sleep(60)
-    response = requests.get(url, headers=API_HEADERS, params=querystring)
-
-    return response.json()
-
-def fetch_song_data(song_id):
-    """Fetch song data from the Spotify downloader API."""
-    url = "https://spotify-downloader9.p.rapidapi.com/downloadSong"
-    querystring = {"songId": song_id}
-    response = requests.get(url, headers=API_HEADERS, params=querystring)
-
-    # Wait for 60 seconds for the API to process the song data
-    time.sleep(60)
-    response = requests.get(url, headers=API_HEADERS, params=querystring)
-
-    return response.json()
-
-@Client.on_message(filters.command("downloadalbum") & filters.private)
-async def handle_album_download(client, message):
-    try:
-        if len(message.command) != 2:
-            await message.reply_text("Usage: /downloadalbum <ALBUM_URL>")
-            return
-
-        album_id = message.command[1]
-        user = message.from_user
-
-        # Log the request
-        await client.send_message(
-            chat_id=LOG_CHANNEL,
-            text=f"New album download request from [{user.first_name}](tg://user?id={user.id})\nAlbum ID: {album_id}"
-        )
-
-        # Fetch album data
-        album_data = fetch_album_data(album_id)
-        
-        if not album_data or album_data.get("error"):
-            await message.reply_text("Unable to fetch album details.")
-            await client.send_message(
-                chat_id=LOG_CHANNEL,
-                text=f"Error: Could not fetch album details for Album ID: {album_id} by [{user.first_name}](tg://user?id={user.id})"
-            )
-            return
-
-        album_details = album_data.get("albumDetails", {})
-        album_title = album_details.get("title", "Unknown Title")
-        artist = album_details.get("artist", "Unknown Artist")
-        cover_url = album_details.get("cover", "")
-        release_date = album_details.get("releaseDate", "Unknown Date")
-        songs = album_data.get("songs", [])
-
-        # Check if the album exceeds the song limit
-        if len(songs) > MAX_SONGS_LIMIT:
-            await message.reply_text(
-                f"The album contains more than {MAX_SONGS_LIMIT} songs. Please upgrade your account."
-            )
-            return
-
-        # Send album basic details and cover image
-        await client.send_photo(
-            chat_id=message.chat.id,
-            photo=cover_url,
-            caption=f"**Album:** {album_title}\n**Artist:** {artist}\n**Release Date:** {release_date}\n\nStarting download of songs..."
-        )
-
-        # Download and send each song in the album
-        for song in songs:
-            song_title = song.get("title", "Unknown Song").replace(' ', '_') + ".mp3"
-            download_url = song.get("downloadLink", "")
-
-            # Download the song
-            file_path = download_file(download_url, song_title)
-
-            if file_path:
-                # Send the song to the user
-                await client.send_audio(
-                    chat_id=message.chat.id,
-                    audio=file_path,
-                    caption=f"**{song.get('title')}** - {artist}"
-                )
-
-                # Remove the file after sending
-                os.remove(file_path)
-
-        # Log the album download completion
-        await client.send_message(
-            chat_id=LOG_CHANNEL,
-            text=f"Completed sending album [{album_title}] to [{user.first_name}](tg://user?id={user.id})"
-        )
-    except Exception as e:
-        await message.reply_text(f"An error occurred: {e}")
-        print(f"Error in handle_album_download: {e}")
-
-@Client.on_message(filters.command("downloadplaylist") & filters.private)
-async def handle_playlist_download(client, message):
-    try:
-        if len(message.command) != 2:
-            await message.reply_text("Usage: /downloadplaylist <PLAYLIST_URL>")
-            return
-
-        playlist_id = message.command[1]
-        user = message.from_user
-
-        # Log the request
-        await client.send_message(
-            chat_id=LOG_CHANNEL,
-            text=f"New playlist download request from [{user.first_name}](tg://user?id={user.id})\nPlaylist ID: {playlist_id}"
-        )
-
-        # Fetch playlist data
-        playlist_data = fetch_playlist_data(playlist_id)
-
-        if not playlist_data or playlist_data.get("error"):
-            await message.reply_text("Unable to fetch playlist details.")
-            return
-
-        playlist_title = playlist_data.get("playlistTitle", "Unknown Playlist")
-        songs = playlist_data.get("songs", [])
-
-        # Check if the playlist exceeds the song limit
-        if len(songs) > MAX_SONGS_LIMIT:
-            await message.reply_text(
-                f"The playlist contains more than {MAX_SONGS_LIMIT} songs. Please upgrade your account."
-            )
-            return
-
-        # Download and send each song in the playlist
-        for song in songs:
-            song_title = song.get("title", "Unknown Song").replace(' ', '_') + ".mp3"
-            download_url = song.get("downloadLink", "")
-
-            # Download the song
-            file_path = download_file(download_url, song_title)
-
-            if file_path:
-                # Send the song to the user
-                await client.send_audio(
-                    chat_id=message.chat.id,
-                    audio=file_path,
-                    caption=f"**{song.get('title')}** - {song.get('artist', 'Unknown Artist')}"
-                )
-
-                # Remove the file after sending
-                os.remove(file_path)
-
-        # Log the playlist download completion
-        await client.send_message(
-            chat_id=LOG_CHANNEL,
-            text=f"Completed sending playlist [{playlist_title}] to [{user.first_name}](tg://user?id={user.id})"
-        )
-    except Exception as e:
-        await message.reply_text(f"An error occurred: {e}")
-        print(f"Error in handle_playlist_download: {e}")
-
+# Create the Pyrogram handler for song download and sending
 @Client.on_message(filters.command("downloadsong") & filters.private)
-async def handle_song_download(client, message):
-    try:
-        if len(message.command) != 2:
-            await message.reply_text("Usage: /downloadsong <SONG_URL>")
-            return
+async def download_song_handler(client, message):
+    if len(message.command) < 2:
+        await message.reply_text("Please provide a Spotify track URL.")
+        return
 
-        song_id = message.command[1]
-        user = message.from_user
+    song_url = message.command[1]
+    await message.reply_text(f"Fetching download link for: {song_url}")
 
-        # Log the request
-        await client.send_message(
-            chat_id=LOG_CHANNEL,
-            text=f"New song download request from [{user.first_name}](tg://user?id={user.id})\nSong ID: {song_id}"
-        )
+    download_link, cover_link, song_title, status_code = get_song_metadata(song_url)
 
-        # Fetch song data
-        song_data = fetch_song_data(song_id)
+    if download_link and cover_link:
+        await message.reply_text(f"Downloading song: {song_title}")
+        
+        # Download the song file
+        song_file_name = download_song(download_link, song_title)
+        cover_file_name = download_cover(cover_link, song_title)
 
-        if not song_data or song_data.get("error"):
-            await message.reply_text("Unable to fetch song details.")
-            return
+        if song_file_name and cover_file_name:
+            # Send the cover photo
+            await client.send_photo(message.chat.id, cover_file_name, caption=f"Cover of '{song_title}'")
+            
+            # Send the song file to the user
+            await client.send_audio(message.chat.id, song_file_name)
+            
+            # Clean up by deleting the files after sending
+            os.remove(song_file_name)
+            os.remove(cover_file_name)
+        else:
+            await message.reply_text("Failed to download the song or cover file.")
+    else:
+        await message.reply_text(f"Failed to fetch download link or cover. Response Code: {status_code}")
 
-        song_title = song_data.get("title", "Unknown Song").replace(' ', '_') + ".mp3"
-        download_url = song_data.get("downloadLink", "")
 
-        # Download the song
-        file_path = download_file(download_url, song_title)
-
-        if file_path:
-            # Send the song to the user
-            await client.send_audio(
-                chat_id=message.chat.id,
-                audio=file_path,
-                caption=f"**{song_data.get('title')}** - {song_data.get('artist', 'Unknown Artist')}"
-            )
-
-            # Remove the file after sending
-            os.remove(file_path)
-
-            # Log the song download completion
-            await client.send_message(
-                chat_id=LOG_CHANNEL,
-                text=f"Completed sending song [{song_data.get('title')}] to [{user.first_name}](tg://user?id={user.id})"
-            )
-    except Exception as e:
-        await message.reply_text(f"An error occurred: {e}")
-        print(f"Error in handle_song_download: {e}")
