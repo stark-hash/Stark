@@ -27,7 +27,7 @@ from image.edit_5 import normalglitch_1, normalglitch_2, normalglitch_3, normalg
 
 # Configuration
 from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, PICS, IMDB, PM_IMDB, SINGLE_BUTTON, PROTECT_CONTENT, \
-    SPELL_CHECK_REPLY, IMDB_TEMPLATE, IMDB_DELET_TIME, START_MESSAGE, PMFILTER, G_FILTER, BUTTON_LOCK, BUTTON_LOCK_TEXT, SHORT_URL, SHORT_API
+    SPELL_CHECK_REPLY, IMDB_TEMPLATE, IMDB_DELET_TIME, START_MESSAGE, PMFILTER, G_FILTER, BUTTON_LOCK, BUTTON_LOCK_TEXT, SHORT_URL, SHORT_API, YTPICS, SPOTIPICS, PINTEPICS, INSTAPICS, CARDPICS
 
 
 logger = logging.getLogger(__name__)
@@ -453,14 +453,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[                       
             InlineKeyboardButton('Gʀᴏᴜᴩ Mᴀɴᴀɢᴇʀ', 'gpmanager'),
             InlineKeyboardButton('Exᴛʀᴀ Mᴏᴅᴇ', 'extmod'),
-            InlineKeyboardButton('ғᴜɴ', callback_data='fun')
+            InlineKeyboardButton('ʏᴏᴜᴛᴜʙᴇ', callback_data='videodl')
             ],[           
             InlineKeyboardButton('ᴄʜᴀᴛɢᴘᴛ', 'chatgpt'), 
             InlineKeyboardButton('ᴀɪ ɪᴍᴀɢᴇ', callback_data='aiimage'),
             InlineKeyboardButton('ᴛᴇʀᴀʙᴏx', callback_data='terabox')
             ],[
             InlineKeyboardButton('ᴀʟɪᴠᴇ', 'alive'), 
-            InlineKeyboardButton('sᴏɴɢ', callback_data='song'),
+            InlineKeyboardButton('ꜱᴘᴏᴛɪꜰʏ', callback_data='spotify'),
             InlineKeyboardButton('ᴛᴇʟᴇɢʀᴀᴘʜ', callback_data='telegraph')
             ],[
             InlineKeyboardButton('ᴄʀʏᴘᴛᴏ', 'crypto'), 
@@ -468,7 +468,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ᴡᴇʙ ꜱꜱ', callback_data='webss')
             ],[
             InlineKeyboardButton('ᴘɪɴᴛᴇʀᴇꜱᴛ', 'pinterest'), 
-            InlineKeyboardButton('ᴡɪᴋɪ', callback_data='wiki'),
+            InlineKeyboardButton('ɪɴꜱᴛᴀɢʀᴀᴍ', callback_data='insta'),
             InlineKeyboardButton('​🇶​​🇷​', callback_data='qr')
             ],[
             InlineKeyboardButton('ᴊsᴏɴ', callback_data='json'),
@@ -476,7 +476,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ᴘᴀsᴛᴇ', callback_data='paste')
             ],[
             InlineKeyboardButton('ᴛᴛs', callback_data='tts'),
-            InlineKeyboardButton('ᴘᴀssᴡᴏʀᴅ', callback_data='pwgen'),
+            InlineKeyboardButton('ᴘᴏᴋᴇʀ', callback_data='cardgame'),
             InlineKeyboardButton('​Wᴀʟʟᴘᴀᴘᴇʀ', callback_data='wallpaper')
             ],[
             InlineKeyboardButton('​ꜰᴏɴᴛ', callback_data='font'),
@@ -485,7 +485,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('​ᴡʀɪᴛᴛᴇɴ', callback_data='written'),
             InlineKeyboardButton('​ᴛᴇxᴛ', callback_data='sharetext'),
-            InlineKeyboardButton('ᴠɪᴅ ᴅʟ', callback_data='videodl')
+            InlineKeyboardButton('ғᴜɴ', callback_data='fun')
             ],[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('Bᴏᴛ Sᴛᴀᴛᴜꜱ ❄️', 'stats'),
@@ -608,12 +608,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.JSON_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
         
-    elif query.data == "pwgen":
+    elif query.data == "cardgame":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PWGEN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        await query.edit_message_media(InputMediaPhoto(random.choice(CARDPICS), script.CARD_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 ###############################################################################################################
     
     elif query.data == "qr":
@@ -622,18 +622,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.QR_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
-    elif query.data == "wiki":
+    elif query.data == "insta":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.WIKI_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        await query.edit_message_media(InputMediaPhoto(random.choice(INSTAPICS), script.IGDL_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
     elif query.data == "pinterest":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.PINTEREST_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        await query.edit_message_media(InputMediaPhoto(random.choice(PINTEPICS), script.PINTEREST_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
     elif query.data == "webss":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
@@ -678,12 +678,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.FUN_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
-    elif query.data == "song":
+    elif query.data == "spotify":
         buttons= [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'start')          
         ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.LYRIC_TXT.format(temp.B_NAME), enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        await query.edit_message_media(InputMediaPhoto(random.choice(SPOTIPICS), script.SPOTI_TXT.format(temp.B_NAME), enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
         
     elif query.data == "trailers":
         buttons = [[
@@ -767,7 +767,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
             InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
         ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.VIDEODL_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        await query.edit_message_media(InputMediaPhoto(random.choice(YTPICS), script.YTDL_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
     elif query.data == "corona":
         buttons = [[
