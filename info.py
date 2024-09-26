@@ -73,10 +73,10 @@ YEARS = ["1900", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998",
 
 
 CARDPICS = (environ.get('CARDPICS' ,'https://envs.sh/S0R.jpg')).split()
-YTPICS = (environ.get('CARDPICS' ,'https://envs.sh/S05.jpg')).split()
-SPOTIPICS = (environ.get('CARDPICS' ,'https://envs.sh/S0K.jpg')).split()
-PINTEPICS = (environ.get('CARDPICS' ,'https://envs.sh/S0Y.jpg')).split()
-INSTAPICS = (environ.get('CARDPICS' ,'https://envs.sh/S04.jpg')).split()
+YTPICS = (environ.get('YTPICS' ,'https://envs.sh/S05.jpg')).split()
+SPOTIPICS = (environ.get('SPOTIPICS' ,'https://envs.sh/S0K.jpg')).split()
+PINTEPICS = (environ.get('PINTEPICS' ,'https://envs.sh/S0Y.jpg')).split()
+INSTAPICS = (environ.get('INSTAPICS' ,'https://envs.sh/S04.jpg')).split()
 
 
 # Admins, Channels & Users
