@@ -61,7 +61,7 @@ def get_stored_playlist(chat_id, playlist_url):
         return playlist_data.get("songs", []), playlist_data.get("details", {})
     return [], {}
 
-@app.on_message(filters.command("playlist"))
+@Client.on_message(filters.command("playlist"))
 def send_playlist(client, message):
     # Get playlist URL from user message
     try:
@@ -92,7 +92,7 @@ def send_playlist(client, message):
     )
 
 # Callback handler for pagination (next/prev)
-@app.on_callback_query(filters.regex(r"next_\d+|prev_\d+"))
+@Client.on_callback_query(filters.regex(r"next_\d+|prev_\d+"))
 def paginate_songs(client, callback_query):
     # Extract the offset from the callback data
     offset = int(callback_query.data.split("_")[1])
