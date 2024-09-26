@@ -305,8 +305,15 @@ Made With ❤️ BY @StarkBotUpdates"""
     CRYPTO_TXT = """ /crypto [ꜱʏᴍʙᴏʟ] - ᴛᴏ ɢᴇᴛ ᴄʀʏᴘᴛᴏ ɪɴꜰᴏ"""
     TERABOX_TXT = """ /terabox [ʟɪɴᴋ] - ᴛᴏ ɢᴇᴛ ᴅɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋꜱ ᴏꜰ ᴛᴇʀᴀʙᴏx ꜰɪʟᴇꜱ"""
     AIIMAGE_TXT = """ /aiimage [ᴛᴇxᴛ] - ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴀɪ ɪᴍᴀɢᴇꜱ"""
+    YTDL_TXT = """ /download [ʟɪɴᴋ] - ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴠɪᴅᴇᴏꜱ ꜰʀᴏᴍ ʏᴛ"""
+    IGDL_TXT = """❖/download [ʟɪɴᴋ] - ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ʀᴇᴇʟꜱ
+❖/instadl [ʟɪɴᴋ] ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ɪɴꜱᴛᴀ ᴘᴏꜱᴛꜱ"""
     CHATGPT_TXT = """ /ai [ᴛᴇxᴛ] - ★·.·´ᴄʜᴀᴛɢᴘᴛ ᴍᴏᴅᴜʟᴇ`·.·★"""
-    HANDWRITE_TXT = """/handwrite [ᴛᴇxᴛ] - ✍️📝 Tᴇxᴛ"""
+    CARD_TXT = """❖ꜱʜᴜꜰꜰʟᴇ ᴀ ᴅᴇᴄᴋ ᴡɪᴛʜ /shuffle 
+❖ᴅʀᴀᴡ ᴄᴀʀᴅꜱ ᴡɪᴛʜ /draw (ɴᴜᴍʙᴇʀ) (ᴜᴘ ᴛᴏ 5 ᴄᴀʀᴅꜱ ᴀᴛ ᴀ ᴛɪᴍᴇ)
+❖ᴘʟᴀʏ ɢᴜᴇꜱꜱ ᴛʜᴇ ᴄᴀʀᴅ ɢᴀᴍᴇ ᴡɪᴛʜ /guess"""
+    HANDWRITE_TXT = """/write [ᴛᴇxᴛ] - ✍️📝 Tᴇxᴛ"""
+    SPOTI_TXT = """ /song [ꜱᴘᴏᴛɪꜰʏ ʟɪɴᴋ] - ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ꜱᴏɴɢꜱ ꜰʀᴏᴍ ꜱᴘᴏᴛɪꜰʏ"""
 
     CONNECTION_TXT = """<b>Hᴇʟᴘ Fᴏʀ Cᴏɴɴᴇᴄᴛɪᴏɴs</b>
 <i> Usᴇᴅ Tᴏ Cᴏɴɴᴇᴄᴛ Bᴏᴛ Tᴏ Pᴍ Fᴏʀ Mᴀɴᴀɢɪɴɢ Fɪʟᴛᴇʀs</i>
