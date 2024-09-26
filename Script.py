@@ -183,7 +183,7 @@ Made With ❤️ BY @StarkBotUpdates"""
     CARBON_TXT = """ ❖ /carbon - Rᴇᴘʟʏ Wɪᴛʜ Tᴇxᴛ Tᴏ Gᴇᴛ Cᴀʀʙᴏɴᴀᴛᴇᴅ Iᴍᴀɢᴇ"""
     WRITTEN_TXT = """ ❖ /written - Rᴇᴩʟʏ Wɪᴛʜ Tᴇxᴛ Tᴏ Gᴇᴛ Fɪʟᴇ (ᴜꜱᴇꜰᴜʟʟ ꜰᴏʀ ᴄᴏᴅᴇʀꜱ)"""
     SHARETXT_TXT = """ ❖ /share - Rᴇᴘʟʏ Wɪᴛʜ Tᴇxᴛ Tᴏ Gᴇᴛ Tᴇxᴛ Sʜᴀʀᴀʙʟᴇ Lɪɴᴋ"""
-    VIDEODL_TXT = """ ❖ /video [ʟɪɴᴋ] - Tᴏ Dᴏᴡɴʟᴏᴀᴅ Tʜᴇ YᴏᴜTᴜʙᴇ Vɪᴅᴇᴏ"""
+    VIDEODL_TXT = """ ❖ /download [ʟɪɴᴋ] - Tᴏ Dᴏᴡɴʟᴏᴀᴅ Tʜᴇ YᴏᴜTᴜʙᴇ Vɪᴅᴇᴏ"""
     
    
     SOURCE_TXT = """<b>NOTE:</b>
@@ -299,7 +299,7 @@ Made With ❤️ BY @StarkBotUpdates"""
     FONT_TXT = """ /font [ᴛᴇxᴛ] - Tᴏ Cʜᴀɴɢᴇ Yᴏᴜʀ Tᴇxᴛ Fᴏɴᴛs Tᴏ Fᴀɴᴄʏ Fᴏɴᴛ"""
     QR_TXT = """ /qr [ᴛᴇxᴛ] - Tᴏ Cʜᴀɴɢᴇ Yᴏᴜʀ Tᴇxᴛ/ʟɪɴᴋ ᴛᴏ Qʀ"""
     WIKI_TXT = """ /wiki [ᴛᴏᴘɪᴄ] - ᴛᴏ ꜱᴇᴀʀᴄʜ ᴡɪᴋɪᴘᴇᴅɪᴀ ꜰᴏʀ ᴀ ᴘᴀʀᴛɪᴄᴜʟᴀʀ ᴛᴏᴘɪᴄ"""
-    PINTEREST_TXT = """ API DOWN​"""
+    PINTEREST_TXT = """/pinterest [ʟɪɴᴋ] - ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴠɪᴅᴇᴏꜱ ꜰʀᴏᴍ Pinterest​"""
     WEBSS_TXT = """ /ss [ᴜʀʟ] - ᴛᴏ ᴛᴀᴋᴇ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ ᴏꜰ ᴀ ᴡᴇʙᴘᴀɢᴇ"""
     APKDL_TXT = """ /apk [ᴀᴘᴘ ɴᴀᴍᴇ] - ᴛᴏ ɢᴇᴛ ᴀᴘᴋ ꜰɪʟᴇꜱ"""
     CRYPTO_TXT = """ /crypto [ꜱʏᴍʙᴏʟ] - ᴛᴏ ɢᴇᴛ ᴄʀʏᴘᴛᴏ ɪɴꜰᴏ"""
