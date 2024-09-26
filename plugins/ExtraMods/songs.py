@@ -57,12 +57,12 @@ async def download_song_handler(client, message):
         return
 
     song_url = message.command[1]
-    m = await message.reply(f"**ѕєαrchíng чσur ѕσng...!\n {query}**")
+    m = await message.reply(f"**ѕєαrchíng чσur ѕσng...!\n {song_url}**")
 
     download_link, cover_link, song_title, status_code = get_song_metadata(song_url)
 
     if download_link and cover_link:
-        await m.edit("**dσwnlσαdíng чσur ѕσng...!**")
+        await m.edit("**dσwnlσαdíng чσur ѕσng {song_title}...! **")
         
         # Download the song file
         song_file_name = download_song(download_link, song_title)
