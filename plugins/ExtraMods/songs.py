@@ -80,7 +80,7 @@ async def download_song_handler(client, message):
             await client.send_photo(message.chat.id, cover_file_name, caption=caption)
             
             # Send the song file to the user
-            await client.send_audio(message.chat.id, song_file_name, title=modified_song_title, performer=artist)
+            await client.send_audio(message.chat.id, song_file_name)
             
             # Clean up by deleting the files after sending
             os.remove(song_file_name)
