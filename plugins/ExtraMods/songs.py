@@ -57,12 +57,12 @@ async def download_song_handler(client, message):
         return
 
     song_url = message.command[1]
-    await message.reply_text(f"Fetching download link for: {song_url}")
+    m = await message.reply(f"**ѕєαrchíng чσur ѕσng...!\n {query}**")
 
     download_link, cover_link, song_title, status_code = get_song_metadata(song_url)
 
     if download_link and cover_link:
-        await message.reply_text(f"Downloading song: {song_title}")
+        await m.edit("**dσwnlσαdíng чσur ѕσng...!**")
         
         # Download the song file
         song_file_name = download_song(download_link, song_title)
@@ -70,7 +70,7 @@ async def download_song_handler(client, message):
 
         if song_file_name and cover_file_name:
             # Send the cover photo
-            await client.send_photo(message.chat.id, cover_file_name, caption=f"Cover of '{song_title}'")
+            await client.send_photo(message.chat.id, cover_file_name, caption=f"'{song_title}'")
             
             # Send the song file to the user
             await client.send_audio(message.chat.id, song_file_name)
@@ -79,8 +79,8 @@ async def download_song_handler(client, message):
             os.remove(song_file_name)
             os.remove(cover_file_name)
         else:
-            await message.reply_text("Failed to download the song or cover file.")
+            await message.reply_text("Failed to download the song .")
     else:
-        await message.reply_text(f"Failed to fetch download link or cover. Response Code: {status_code}")
+        await message.reply_text(f"Failed to fetch song.")
 
 
