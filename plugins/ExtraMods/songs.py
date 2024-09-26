@@ -72,7 +72,7 @@ async def download_song_handler(client, message):
 
         if song_file_name and cover_file_name:
             # Create caption with title, album, and release date
-            caption = f"Title: '{song_title}'\nAlbum: '{album}'\nRelease Date: {release_date}"
+            caption = f"🆃🅸🆃🅻🅴: '{song_title}'\n🅰🅻🅱🆄🅼: '{album}'\n🆁🅴🅻🅴🅰🆂🅴 🅳🅰🆃🅴: {release_date}"
             
             # Send the cover photo with detailed caption
             await client.send_photo(message.chat.id, cover_file_name, caption=caption)
