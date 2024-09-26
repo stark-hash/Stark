@@ -1,5 +1,6 @@
 import os
 import requests
+import time
 from pyrogram import Client, filters
 from info import LOG_CHANNEL  # Ensure this is correctly set up
 
@@ -42,6 +43,11 @@ def fetch_album_data(album_id):
     url = "https://spotify-downloader9.p.rapidapi.com/downloadAlbum"
     querystring = {"albumId": album_id}
     response = requests.get(url, headers=API_HEADERS, params=querystring)
+
+    # Wait for 60 seconds for the API to process the album data
+    time.sleep(60)
+    response = requests.get(url, headers=API_HEADERS, params=querystring)
+
     return response.json()
 
 def fetch_playlist_data(playlist_id):
@@ -49,6 +55,11 @@ def fetch_playlist_data(playlist_id):
     url = "https://spotify-downloader9.p.rapidapi.com/downloadPlaylist"
     querystring = {"playlistId": playlist_id}
     response = requests.get(url, headers=API_HEADERS, params=querystring)
+
+    # Wait for 60 seconds for the API to process the playlist data
+    time.sleep(60)
+    response = requests.get(url, headers=API_HEADERS, params=querystring)
+
     return response.json()
 
 def fetch_song_data(song_id):
@@ -56,6 +67,11 @@ def fetch_song_data(song_id):
     url = "https://spotify-downloader9.p.rapidapi.com/downloadSong"
     querystring = {"songId": song_id}
     response = requests.get(url, headers=API_HEADERS, params=querystring)
+
+    # Wait for 60 seconds for the API to process the song data
+    time.sleep(60)
+    response = requests.get(url, headers=API_HEADERS, params=querystring)
+
     return response.json()
 
 @Client.on_message(filters.command("downloadalbum") & filters.private)
@@ -243,4 +259,3 @@ async def handle_song_download(client, message):
     except Exception as e:
         await message.reply_text(f"An error occurred: {e}")
         print(f"Error in handle_song_download: {e}")
-
