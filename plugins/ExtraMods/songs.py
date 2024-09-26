@@ -57,12 +57,12 @@ async def download_song_handler(client, message):
         return
 
     song_url = message.command[1]
-    m = await message.reply(f"**ѕєαrchíng чσur ѕσng...!\n {song_url}**")
+    await message.reply_text(f"ѕєαrchíng чσur ѕσng: {song_url}")
 
     download_link, cover_link, song_title, status_code = get_song_metadata(song_url)
 
     if download_link and cover_link:
-        await m.edit(f"**dσwnlσαdíng чσur ѕσng {song_title}...! **")
+        await message.reply_text(f"dσwnlσαdíng чσur ѕσng: {song_title}")
         
         # Download the song file
         song_file_name = download_song(download_link, song_title)
@@ -70,7 +70,7 @@ async def download_song_handler(client, message):
 
         if song_file_name and cover_file_name:
             # Send the cover photo
-            await client.send_photo(message.chat.id, cover_file_name, caption=f"'{song_title}'")
+            await client.send_photo(message.chat.id, cover_file_name, caption=f"Cover of '{song_title}'")
             
             # Send the song file to the user
             await client.send_audio(message.chat.id, song_file_name)
