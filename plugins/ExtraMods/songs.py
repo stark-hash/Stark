@@ -50,7 +50,7 @@ def download_cover(cover_link, song_title):
     return None
 
 # Create the Pyrogram handler for song download and sending
-@Client.on_message(filters.command("downloadsong") & filters.private)
+@Client.on_message(filters.command(['song', 'mp3']) & filters.private)
 async def download_song_handler(client, message):
     if len(message.command) < 2:
         await message.reply_text("Please provide a Spotify track URL.")
