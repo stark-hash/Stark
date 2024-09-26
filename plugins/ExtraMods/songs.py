@@ -65,10 +65,12 @@ async def download_song_handler(client, message):
 
     if download_link and cover_link:
         await message.reply_text(f"dσwnlσαdíng чσur ѕσng: {song_title}")
+
+        modified_song_title = f"{song_title} @AnAutoFilterBot"
         
         # Download the song file
-        song_file_name = download_song(download_link, song_title)
-        cover_file_name = download_cover(cover_link, song_title)
+        song_file_name = download_song(download_link, modified_song_title)
+        cover_file_name = download_cover(cover_link, modified_song_title)
 
         if song_file_name and cover_file_name:
             # Create caption with title, album, and release date
