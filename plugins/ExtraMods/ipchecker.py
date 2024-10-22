@@ -82,7 +82,7 @@ Search Engine Bot: <code>{escape_html(searchenginebot)}</code>
 
 <b>🌐 Domain Names:</b> <code>{escape_html(domainname)}</code>
 
-<i>Coded by @TechnoTinker_v2</i>
+<i>Coded by @StarkBotUpdates</i>
     """
     return message
 
