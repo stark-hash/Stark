@@ -511,11 +511,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.SOURCE_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
     elif query.data == "cloning":
-        buttons = [[
-            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
-            InlineKeyboardButton('« Bᴀᴄᴋ', 'help') 
-        ]]
-        await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.CLONE_TXT.format(user=query.from_user.mention), enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        await query.answer("Dɪsᴀʙʟᴇᴅ ᴅᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ 🥲", show_alert=True)
 
     elif query.data == "admin":
         buttons = [[
