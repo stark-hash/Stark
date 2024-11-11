@@ -67,6 +67,30 @@ E᙭ᑭᒪOᖇE ᗰY ᑕᗩᑭᗩᗷIᒪITIEᏕ :
 ᴛʜɪꜱ ɪꜱ ɴᴏᴛ ʏᴏᴜʀ ᴍᴏᴠɪᴇ ʀᴇQᴜᴇꜱᴛ,
 ʀᴇQᴜᴇꜱᴛ ʏᴏᴜʀ'ꜱ..."""
 
+    PREMSTUFF_TXT = """🔖 Biggest Premium Collection Ever 
+
+🌟 Learn To Monetize YT, FB, X, Insta
+🌟 Be a YouTube Master 
+🌟 Infinite Ai Reels Bundle 😂
+🌟 ChatGPT Rare Prompts 
+🌟 All Software For Free
+🌟 EBook, Magazines, Themes
+🌟 1000+ Web Themes, Templates
+🌟 Tons of Apps Source Codes
+🌟 340+ Marketing Tools 
+🌟 15000+ WhatsApp Groups Links
+🌟 8000+ Facebook Business Groups
+🌟 10 Million Readymade Articles
+🌟 Tons of Courses and Books
+🌟 Truly endless stuff...
+🌟 Many More ineffable stuff
+🌟 Damn This is Unbelievable Stuff 
+
+💰 Buy this Endless Pack at just ₹600/- or 7$
+💳 Accepted UPI, Crypto Pay Methods
+
+✅ Contact @TGTesla To Deal✔️"""
+
     OLD_ALRT_TXT = """ʜᴇʏ {},
 ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴏɴᴇ ᴏꜰ ᴍʏ ᴏʟᴅ ᴍᴇꜱꜱᴀɢᴇꜱ, 
 ᴘʟᴇᴀꜱᴇ ꜱᴇɴᴅ ᴛʜᴇ ʀᴇQᴜᴇꜱᴛ ᴀɢᴀɪɴ."""
