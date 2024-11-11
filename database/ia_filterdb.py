@@ -31,7 +31,7 @@ class Media(Document):
         collection_name = COLLECTION_NAME
 #secondary db
 client2 = AsyncIOMotorClient(SECONDDB_URI)
-db2 = client2[DATABASE_NAME]
+db2 = client2[FILE_DB_NAME]
 instance2 = Instance.from_db(db2)
 
 @instance2.register
