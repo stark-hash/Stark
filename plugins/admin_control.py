@@ -110,7 +110,7 @@ async def get_ststs(bot, message):
     free = 536870912 - size
     size = get_size(size)
     free = get_size(free)
-    secdb = = await Media2.count_documents()
+    secdb = await Media2.count_documents()
     await rju.edit(script.STATUS_TXT.format(files, secdb, total_users, totl_chats, size, free))
 
 
