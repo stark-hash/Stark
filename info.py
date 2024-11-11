@@ -77,6 +77,7 @@ YTPICS = (environ.get('YTPICS' ,'https://envs.sh/S05.jpg')).split()
 SPOTIPICS = (environ.get('SPOTIPICS' ,'https://envs.sh/S0K.jpg')).split()
 PINTEPICS = (environ.get('PINTEPICS' ,'https://envs.sh/S0Y.jpg')).split()
 INSTAPICS = (environ.get('INSTAPICS' ,'https://envs.sh/S04.jpg')).split()
+PREMPIC = (environ.get('INSTAPICS' ,'https://envs.sh/Zhs.jpg')).split()
 
 
 # Admins, Channels & Users
