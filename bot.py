@@ -5,9 +5,9 @@ from pyrogram.errors import BadRequest, Unauthorized
 from pyrogram import Client
 from pyrogram import types
 
-from database.ia_filterdb import Media
+from database.ia_filterdb import Media, Media2, choose_mediaDB, db as clientDB
 from database.users_chats_db import db
-from info import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, UPTIME, WEBHOOK, LOG_MSG
+from info import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, UPTIME, WEBHOOK, LOG_MSG, SECONDDB_URI
 from utils import temp, __repo__, __license__, __copyright__, __version__
 from typing import Union, Optional, AsyncGenerator
 from plugins import web_server 
@@ -40,6 +40,7 @@ class Bot(Client):
         temp.BANNED_CHATS = b_chats        
         await super().start()
         await Media.ensure_indexes()
+        await Media2.ensure_indexes()
         me = await self.get_me()
         temp.U_NAME = me.username
         temp.B_NAME = me.first_name
