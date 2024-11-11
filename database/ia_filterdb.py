@@ -29,7 +29,34 @@ class Media(Document):
 
     class Meta:
         collection_name = COLLECTION_NAME
+#secondary db
+client2 = AsyncIOMotorClient(SECONDDB_URI)
+db2 = client2[DATABASE_NAME]
+instance2 = Instance.from_db(db2)
 
+@instance2.register
+class Media2(Document):
+    file_id = fields.StrField(attribute='_id')
+    file_ref = fields.StrField(allow_none=True)
+    file_name = fields.StrField(required=True)
+    file_size = fields.IntField(required=True)
+    file_type = fields.StrField(allow_none=True)
+    mime_type = fields.StrField(allow_none=True)
+    caption = fields.StrField(allow_none=True)
+
+    class Meta:
+        indexes = ('$file_name', )
+        collection_name = COLLECTION_NAME
+
+async def choose_mediaDB():
+    """This Function chooses which database to use based on the value of indexDB key in the dict tempDict."""
+    global saveMedia
+    if tempDict['indexDB'] == DATABASE_URI:
+        logger.info("Using first db (Media)")
+        saveMedia = Media
+    else:
+        logger.info("Using second db (Media2)")
+        saveMedia = Media2
 
 async def save_file(media):
     file_id, file_ref = unpack_new_file_id(media.file_id)
@@ -73,12 +100,26 @@ async def get_search_results(query, file_type=None, max_results=(MAX_RIST_BTNS),
     if next_offset > total_results: next_offset = ''
 
     cursor = Media.find(filter)
+    cursor2 = Media2.find(filter)
     # Sort by recent
     cursor.sort('$natural', -1)
+    cursor2.sort('$natural', -1)
     # Slice files according to offset and max results
-    cursor.skip(offset).limit(max_results)
+    cursor2.skip(offset).limit(max_results)
     # Get list of files
-    files = await cursor.to_list(length=max_results)
+    fileList2 = await cursor2.to_list(length=max_results)
+    if len(fileList2)<max_results:
+        next_offset = offset+len(fileList2)
+        cursorSkipper = (next_offset-(await Media2.count_documents(filter)))
+        cursor.skip(cursorSkipper if cursorSkipper>=0 else 0).limit(max_results-len(fileList2))
+        fileList1 = await cursor.to_list(length=(max_results-len(fileList2)))
+        files = fileList2+fileList1
+        next_offset = next_offset + len(fileList1)
+    else:
+        files = fileList2
+        next_offset = offset + max_results
+    if next_offset >= total_results:
+        next_offset = ''
     return files, next_offset, total_results
 
 
@@ -86,6 +127,9 @@ async def get_file_details(query):
     filter = {'file_id': query}
     cursor = Media.find(filter)
     filedetails = await cursor.to_list(length=1)
+    if not filedetails:
+        cursor2 = Media2.find(filter)
+        filedetails = await cursor2.to_list(length=1)
     return filedetails
 
 
