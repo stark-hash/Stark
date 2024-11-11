@@ -27,7 +27,7 @@ from image.edit_5 import normalglitch_1, normalglitch_2, normalglitch_3, normalg
 
 # Configuration
 from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, PICS, IMDB, PM_IMDB, SINGLE_BUTTON, PROTECT_CONTENT, \
-    SPELL_CHECK_REPLY, IMDB_TEMPLATE, IMDB_DELET_TIME, START_MESSAGE, PMFILTER, G_FILTER, BUTTON_LOCK, BUTTON_LOCK_TEXT, SHORT_URL, SHORT_API, YTPICS, SPOTIPICS, PINTEPICS, INSTAPICS, CARDPICS
+    SPELL_CHECK_REPLY, IMDB_TEMPLATE, IMDB_DELET_TIME, START_MESSAGE, PMFILTER, G_FILTER, BUTTON_LOCK, BUTTON_LOCK_TEXT, SHORT_URL, SHORT_API, YTPICS, SPOTIPICS, PINTEPICS, INSTAPICS, CARDPICS, PREMPIC
 
 
 logger = logging.getLogger(__name__)
@@ -447,6 +447,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('🎀 ᴅɪꜱᴄʟᴀɪᴍᴇʀ 🎀', callback_data='trailers')
             ],[
+            InlineKeyboardButton('🔰 Pʀᴇᴍɪᴜᴍ Cᴏʟʟᴇᴄᴛɪᴏɴ 🔰', callback_data='premstuffs')
+            ],[
             InlineKeyboardButton('Fɪʟᴇ Sᴛᴏʀᴇ', 'newdata'),
             InlineKeyboardButton('Fɪʟᴛᴇʀꜱ', 'openfilter'),
             InlineKeyboardButton('Cᴏɴɴᴇᴄᴛ', 'coct')
@@ -688,6 +690,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         await query.edit_message_media(InputMediaPhoto(random.choice(PICS), script.TRAILER_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
 
+    elif query.data == "premstuffs":
+        buttons = [[
+            InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
+            InlineKeyboardButton('« Bᴀᴄᴋ', 'help')           
+        ]]
+        await query.edit_message_media(InputMediaPhoto(random.choice(PREMPIC), script.PREMSTUFF_TXT, enums.ParseMode.HTML), reply_markup=InlineKeyboardMarkup(buttons))
+        
     elif query.data == "alive":
         buttons = [[
             InlineKeyboardButton('✘ Cʟᴏꜱᴇ', 'close_data'),
