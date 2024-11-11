@@ -107,8 +107,8 @@ URL = environ.get("URL", "https://hard-rivkah-fdbotz-3ea6df76.koyeb.app/")
 # MongoDB information
 DATABASE_URL = environ.get('DATABASE_URL', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
-FILE_DB_URL = environ.get("FILE_DB_URL", DATABASE_URL)
-FILE_DB_NAME = environ.get("FILE_DB_NAME", DATABASE_NAME)
+FILE_DB_URL = environ.get("FILE_DB_URL", "")
+FILE_DB_NAME = environ.get("FILE_DB_NAME", "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 SECONDDB_URI = environ.get('SECONDDB_URI', "")
 
