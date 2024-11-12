@@ -8,6 +8,7 @@ from umongo import Instance, Document, fields
 from motor.motor_asyncio import AsyncIOMotorClient
 from marshmallow.exceptions import ValidationError
 from info import FILE_DB_URL, FILE_DB_NAME, COLLECTION_NAME, MAX_RIST_BTNS, SECONDDB_URI
+from sample_info import tempDict 
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
