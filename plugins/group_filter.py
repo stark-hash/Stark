@@ -157,7 +157,6 @@ async def advantage_spoll_choker(bot, query):
 
 @Client.on_message(filters.group & filters.text & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.incoming & filters.group)
 async def give_filter(client, message):
-    thyr = await message.reply_text(f"<b><i>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</i></b>")
     if G_FILTER:
         if G_MODE.get(str(message.chat.id)) == "False":
             return 
@@ -180,6 +179,7 @@ async def give_filter(client, message):
 
 
 async def auto_filter(client, msg, spoll=False):
+    thyr = await msg.reply_text(f"<b>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</b>")
     if not spoll:
         message = msg
         settings = await get_settings(message.chat.id)
