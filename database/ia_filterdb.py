@@ -13,10 +13,14 @@ from sample_info import tempDict
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+saveMedia = None
+
 
 client = AsyncIOMotorClient(FILE_DB_URL)
 db = client[FILE_DB_NAME]
 instance = Instance.from_db(db)
+
+
 
 @instance.register
 class Media(Document):
@@ -29,6 +33,7 @@ class Media(Document):
     caption = fields.StrField(allow_none=True)
 
     class Meta:
+        indexes = ('$file_name', )
         collection_name = COLLECTION_NAME
 #secondary db
 client2 = AsyncIOMotorClient(SECONDDB_URI)
@@ -93,15 +98,17 @@ async def get_search_results(query, file_type=None, max_results=(MAX_RIST_BTNS),
     query = query.strip()
     if not query: raw_pattern = '.'
     elif ' ' not in query: raw_pattern = r'(\b|[\.\+\-_])' + query + r'(\b|[\.\+\-_])'
-    else: raw_pattern = query.replace(' ', r'.*[\s\.\+\-_]')
+    else: raw_pattern = query.replace(' ', r'.*[\s\.\+\-_()]')
     try: regex = re.compile(raw_pattern, flags=re.IGNORECASE)
     except: return [], '', 0
     filter = {'file_name': regex}
     if file_type: filter['file_type'] = file_type
 
     total_results = ((await Media.count_documents(filter))+(await Media2.count_documents(filter)))
-    next_offset = offset + max_results
-    if next_offset > total_results: next_offset = ''
+    #verifies max_results is an even number or not
+    if max_results%2 != 0: #if max_results is an odd number, add 1 to make it an even number
+        logger.info(f"Since max_results is an odd number ({max_results}), bot will use {max_results+1} as max_results to make it even.")
+        max_results += 1
 
     cursor = Media.find(filter)
     cursor2 = Media2.find(filter)
