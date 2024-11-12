@@ -110,7 +110,7 @@ async def pm_spoll_tester(bot, query):
 
 
 async def pm_AutoFilter(client, msg, pmspoll=False):
-    thyr = await m.reply_text(f"<b>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</b>")
+    thyr = await msg.reply_text(f"<b>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</b>")
     if not pmspoll:
         message = msg   
         if message.text.startswith("/"): return  # ignore commands
