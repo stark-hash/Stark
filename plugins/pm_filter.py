@@ -17,6 +17,7 @@ logger.setLevel(logging.ERROR)
 
 @Client.on_message(filters.group & filters.text & filters.chat(AUTH_USERS) if AUTH_USERS else filters.text)
 async def auto_pm_fill(b, m):
+    thyr = await m.reply_text(f"<b><i>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</i></b>"))
     if PMFILTER:       
         if G_FILTER:
             kd = await global_filters(b, m)
@@ -197,23 +198,28 @@ async def pm_AutoFilter(client, msg, pmspoll=False):
             hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap, quote=True, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(IMDB_DELET_TIME)
             await hehe.delete()            
+            await thyr.delete()
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
             hmm = await message.reply_photo(photo=poster, caption=cap, quote=True, reply_markup=InlineKeyboardMarkup(btn))           
             await asyncio.sleep(IMDB_DELET_TIME)
-            await hmm.delete()            
+            await hmm.delete()     
+            await thyr.delete()
         except Exception as e:
             logger.exception(e)
             cdp = await message.reply_text(cap, quote=True, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(IMDB_DELET_TIME)
             await cdp.delete()
+            await thyr.delete()
     else:
         abc = await message.reply_text(cap, quote=True, reply_markup=InlineKeyboardMarkup(btn))
         await asyncio.sleep(IMDB_DELET_TIME)
-        await abc.delete()        
+        await abc.delete()       
+        await thyr.delete()
     if pmspoll:
         await msg.message.delete()
+        await thyr.delete()
 
 
 async def pm_spoll_choker(msg):
