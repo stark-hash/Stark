@@ -17,7 +17,7 @@ logger.setLevel(logging.ERROR)
 
 @Client.on_message(filters.group & filters.text & filters.chat(AUTH_USERS) if AUTH_USERS else filters.text)
 async def auto_pm_fill(b, m):
-    thyr = await m.reply_text(f"<b><i>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</i></b>"))
+    thyr = await m.reply_text(f"<b><i>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</i></b>")
     if PMFILTER:       
         if G_FILTER:
             kd = await global_filters(b, m)
