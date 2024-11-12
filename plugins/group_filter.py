@@ -157,6 +157,7 @@ async def advantage_spoll_choker(bot, query):
 
 @Client.on_message(filters.group & filters.text & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.incoming & filters.group)
 async def give_filter(client, message):
+    thyr = await message.reply_text(f"<b><i>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</i></b>")
     if G_FILTER:
         if G_MODE.get(str(message.chat.id)) == "False":
             return 
@@ -273,6 +274,7 @@ async def auto_filter(client, msg, spoll=False):
             await asyncio.sleep(IMDB_DELET_TIME)
             await hehe.delete() 
             await message.delete()
+            await thyr.delete()
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
@@ -280,19 +282,23 @@ async def auto_filter(client, msg, spoll=False):
             await asyncio.sleep(IMDB_DELET_TIME)
             await hmm.delete() 
             await message.delete()
+            await thyr.delete()
         except Exception as e:
             logger.exception(e)
             cdb = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(IMDB_DELET_TIME)
             await cdb.delete()
             await message.delete()
+            await thyr.delete()
     else:
         crl = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
         await asyncio.sleep(IMDB_DELET_TIME)
         await crl.delete()   
         await message.delete()
+        await thyr.delete()
     if spoll:
         await msg.message.delete()
+        await thyr.delete()
 
 
 
