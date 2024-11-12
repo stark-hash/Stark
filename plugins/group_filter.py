@@ -179,7 +179,7 @@ async def give_filter(client, message):
 
 
 async def auto_filter(client, msg, spoll=False):
-    thyr = await msg.reply_text(f"<b>Sᴇᴀʀᴄʜɪɴɢ ....Pʟᴇᴀsᴇ Wᴀɪᴛ 🔍</b>")
+    
     if not spoll:
         message = msg
         settings = await get_settings(message.chat.id)
@@ -274,7 +274,7 @@ async def auto_filter(client, msg, spoll=False):
             await asyncio.sleep(IMDB_DELET_TIME)
             await hehe.delete() 
             await message.delete()
-            await thyr.delete()
+            
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
@@ -282,23 +282,23 @@ async def auto_filter(client, msg, spoll=False):
             await asyncio.sleep(IMDB_DELET_TIME)
             await hmm.delete() 
             await message.delete()
-            await thyr.delete()
+            
         except Exception as e:
             logger.exception(e)
             cdb = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
             await asyncio.sleep(IMDB_DELET_TIME)
             await cdb.delete()
             await message.delete()
-            await thyr.delete()
+            
     else:
         crl = await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
         await asyncio.sleep(IMDB_DELET_TIME)
         await crl.delete()   
         await message.delete()
-        await thyr.delete()
+        
     if spoll:
         await msg.message.delete()
-        await thyr.delete()
+        
 
 
 
