@@ -63,7 +63,10 @@ async def save_file(media):
     file_id, file_ref = unpack_new_file_id(media.file_id)
     file_name = re.sub(r"@\w+|(_|\-|\.|\+)", " ", str(media.file_name))
     try:
-        file = Media(
+        if await Media.count_documents({'file_id': file_id}, limit=1):
+            logger.warning(f'{getattr(media, "file_name", "NO_FILE")} is already saved in primary DB !')
+            return False, 0
+        file = saveMedia(
             file_id=file_id,
             file_ref=file_ref,
             file_name=file_name,
@@ -96,7 +99,7 @@ async def get_search_results(query, file_type=None, max_results=(MAX_RIST_BTNS),
     filter = {'file_name': regex}
     if file_type: filter['file_type'] = file_type
 
-    total_results = await Media.count_documents(filter)
+    total_results = ((await Media.count_documents(filter))+(await Media2.count_documents(filter)))
     next_offset = offset + max_results
     if next_offset > total_results: next_offset = ''
 
