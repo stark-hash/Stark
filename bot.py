@@ -38,8 +38,8 @@ class Bot(Client):
         b_users, b_chats = await db.get_banned()
         temp.BANNED_USERS = b_users
         temp.BANNED_CHATS = b_chats    
-        await Media.collection.create_index([("file_name", 1)])  # Creates an ascending index on file_name
-        await Media2.collection.create_index([("file_name", 1)])  # Creates an ascending index on file_name
+        await Media.ensure_indexes()
+        await Media2.ensure_indexes()
         await super().start()
         #choose the right db by checking the free space
         stats = await clientDB.command('dbStats')
